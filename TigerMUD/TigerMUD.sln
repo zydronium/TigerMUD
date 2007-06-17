@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerMUD Server", "TigerMUD Server.csproj", "{82BFB808-F7E4-47B6-B453-E6A16D06D1BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLibrary", "..\GameLibrary\GameLibrary.csproj", "{C446E86E-6B66-4E3F-AF79-C8442BFF31CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands", "..\Commands\Commands.csproj", "{4213A234-99EC-47D0-A596-BB4EDED8D18A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteConsole", "..\Loader\RemoteConsole.csproj", "{08334396-5084-4563-BCD4-4B67D9DCD6FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8B8C2CF2-97E8-43F6-A42A-71EC65E09D1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldDesigner", "..\WorldDesigner\WorldDesigner.csproj", "{0CB2052A-263B-43FF-9CFF-9C272E199FE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82BFB808-F7E4-47B6-B453-E6A16D06D1BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82BFB808-F7E4-47B6-B453-E6A16D06D1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82BFB808-F7E4-47B6-B453-E6A16D06D1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82BFB808-F7E4-47B6-B453-E6A16D06D1BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C446E86E-6B66-4E3F-AF79-C8442BFF31CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C446E86E-6B66-4E3F-AF79-C8442BFF31CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C446E86E-6B66-4E3F-AF79-C8442BFF31CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C446E86E-6B66-4E3F-AF79-C8442BFF31CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4213A234-99EC-47D0-A596-BB4EDED8D18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4213A234-99EC-47D0-A596-BB4EDED8D18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4213A234-99EC-47D0-A596-BB4EDED8D18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4213A234-99EC-47D0-A596-BB4EDED8D18A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08334396-5084-4563-BCD4-4B67D9DCD6FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08334396-5084-4563-BCD4-4B67D9DCD6FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08334396-5084-4563-BCD4-4B67D9DCD6FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08334396-5084-4563-BCD4-4B67D9DCD6FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CB2052A-263B-43FF-9CFF-9C272E199FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CB2052A-263B-43FF-9CFF-9C272E199FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CB2052A-263B-43FF-9CFF-9C272E199FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CB2052A-263B-43FF-9CFF-9C272E199FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
