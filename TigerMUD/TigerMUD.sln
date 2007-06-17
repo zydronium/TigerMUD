@@ -14,6 +14,26 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldDesigner", "..\WorldDesigner\WorldDesigner.csproj", "{0CB2052A-263B-43FF-9CFF-9C272E199FE0}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs03.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = TigerMUD\u0020Server.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = ..\\GameLibrary\\GameLibrary.csproj
+		SccProjectName2 = ../GameLibrary
+		SccLocalPath2 = ..\\GameLibrary
+		SccProjectUniqueName3 = ..\\Commands\\Commands.csproj
+		SccProjectName3 = ../Commands
+		SccLocalPath3 = ..\\Commands
+		SccProjectUniqueName4 = ..\\Loader\\RemoteConsole.csproj
+		SccProjectName4 = ../Loader
+		SccLocalPath4 = ..\\Loader
+		SccProjectUniqueName5 = ..\\WorldDesigner\\WorldDesigner.csproj
+		SccProjectName5 = ../WorldDesigner
+		SccLocalPath5 = ..\\WorldDesigner
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

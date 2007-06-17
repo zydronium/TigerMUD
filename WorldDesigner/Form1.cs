@@ -1011,7 +1011,7 @@ namespace WorldDesigner
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
         {
             drawmode = DrawMode.None;
-            panel1.Cursor = System.Windows.Forms.Cursors.Cross;
+            panel1.Cursor = System.Windows.Forms.Cursors.UpArrow;
         }
 
         private void radioButton7_CheckedChanged(object sender, EventArgs e)
