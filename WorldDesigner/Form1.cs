@@ -682,6 +682,13 @@ namespace WorldDesigner
 
 
             comboBox2.SelectedValue = GetMapResource(e.X - scrolloffsetx, e.Y - scrolloffsety).Type.ToString();
+            resource.Type = Convert.ToByte(comboBox2.SelectedValue);
+            comboBox2.BackColor = colors[resource.Type];
+            if (comboBox2.BackColor.R > 150 || comboBox2.BackColor.G > 150 || comboBox2.BackColor.B > 150) comboBox2.ForeColor = Color.Black;
+            else
+                comboBox2.ForeColor = Color.White;
+            
+            //comboBox2.SelectedValue
             textBox2.Text = GetMapResource(e.X - scrolloffsetx, e.Y - scrolloffsety).Concentration.ToString();
             textBox3.Text = GetMapResource(e.X - scrolloffsetx, e.Y - scrolloffsety).Quality.ToString();
             textBox8.Text = GetMapResource(e.X - scrolloffsetx, e.Y - scrolloffsety).Symbol;
@@ -834,7 +841,8 @@ namespace WorldDesigner
             comboBox2.DisplayMember = "displayname";
             comboBox2.ValueMember = "id";
             comboBox2.SelectedValue = 0;
-
+            comboBox2.BackColor = colors[resource.Type];
+            comboBox2.ForeColor = Color.White;
 
         }
 
