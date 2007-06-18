@@ -68,8 +68,19 @@ namespace GameLibrary
 
         public static GameLibrary.Planet LoadPlanetFromFile(string filename)
         {
+            FileStream stream;
             Planet planet = new GameLibrary.Planet();
-            FileStream stream = new FileStream(filename, FileMode.Open);
+            try
+            {
+                stream = new FileStream(filename, FileMode.Open);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Cannot open the file. " + ex.Message);
+                return null;
+
+            }
+          
             BinaryReader reader = new BinaryReader(stream);
 
             try

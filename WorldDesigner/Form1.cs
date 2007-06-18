@@ -81,6 +81,7 @@ namespace WorldDesigner
             if (result.ToString().Equals("Cancel")) return;
 
             planet = GameLibrary.Planet.LoadPlanetFromFile(dialog.FileName);
+            if (null == planet) return;
 
             textBox1.Text = planet.Id;
             textBox6.Text = planet.Width.ToString();
