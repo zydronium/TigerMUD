@@ -251,7 +251,7 @@ namespace TigerMUD
                     // Handle responses to menu prompts
                     if (result == GameLibrary.CommunicationResult.MessageReceived && pc.ConnectionState == GameLibrary.ConnectionState.WaitingAtMenuPrompt )
                     {
-                            pc.Menu.HandleResponse(pc.Message);
+                            pc.Menu.HandleMenuResponse(pc.Message);
                             continue;
                     }
 

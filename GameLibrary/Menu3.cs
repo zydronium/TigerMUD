@@ -106,7 +106,7 @@ namespace GameLibrary
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public virtual void HandleResponse(string key)
+        public virtual void HandleMenuResponse(string key)
         {
             bool found = false;
             if (key==null) return;
