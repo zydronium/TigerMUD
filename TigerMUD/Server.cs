@@ -244,18 +244,7 @@ namespace TigerMUD
                     // Make newly connected clients login
                     if (pc.ConnectionState == GameLibrary.ConnectionState.NewConnection)
                     {
-                        // set stateinfo required for all playerdelegates
-                        GameLibrary.StateInfo stateinfo = new GameLibrary.StateInfo();
-                        stateinfo.Pc = pc;
-                        stateinfo.GameContext = gamecontext;
-
-                        // get welcome instance and queue it
-                        GameLibrary.Command command = gamecontext.GetCommand("welcome");
-                        pc.SetNextCommand(new GameLibrary.PlayerCharacter.PlayerDelegate(command.DoCommand));
-
-                        // Set next command to be the usernameprompt after welcome
-                        pc.SetNextCommand(new GameLibrary.PlayerCharacter.PlayerDelegate(clienthandler.UsernamePrompt));
-                        pc.ConnectionState = GameLibrary.ConnectionState.WaitingforClientResponse;
+                        LoginClient(pc);
 
                     }
 
@@ -286,6 +275,22 @@ namespace TigerMUD
             }
             //Stop();
 
+        }
+
+        private void LoginClient(GameLibrary.PlayerCharacter pc)
+        {
+            // set stateinfo required for all playerdelegates
+            GameLibrary.StateInfo stateinfo = new GameLibrary.StateInfo();
+            stateinfo.Pc = pc;
+            stateinfo.GameContext = gamecontext;
+
+            // get welcome instance and queue it
+            GameLibrary.Command command = gamecontext.GetCommand("welcome");
+            pc.SetNextCommand(new GameLibrary.PlayerCharacter.PlayerDelegate(command.DoCommand));
+
+            // Set next command to be the usernameprompt after welcome
+            pc.SetNextCommand(new GameLibrary.PlayerCharacter.PlayerDelegate(clienthandler.UsernamePrompt));
+            pc.ConnectionState = GameLibrary.ConnectionState.WaitingforClientResponse;
         }
 
         private GameLibrary.ThreadInitializationData HandleNewConnection(GameLibrary.ThreadInitializationData threadstartupin)
