@@ -10,7 +10,7 @@ namespace RemoteConsole
 {
     class Loader : IDisposable
     {
-        ConsoleApplication1.Program program;
+        TigerMUD.Server program;
         GameLibrary.ThreadInitializationData threadstartup;
         //PlayerCharacter pc;
         GameLibrary.GameContext gamecontext;
@@ -21,7 +21,7 @@ namespace RemoteConsole
         public Loader()
         {
             disconnect = false;
-            program = new ConsoleApplication1.Program();
+            program = new TigerMUD.Server();
             gamecontext = GameLibrary.GameContext.GetInstance();
             gamecontext.Database = new GameLibrary.Database();
             gamecontext.Compiler = new GameLibrary.GameCompiler();

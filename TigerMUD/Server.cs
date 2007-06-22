@@ -8,9 +8,9 @@ using System.Collections;
 using System.IO;
 using System.Drawing;
 
-namespace ConsoleApplication1
+namespace TigerMUD
 {
-    public class Program : IDisposable
+    public class Server : IDisposable
     {
 
         List<GameLibrary.PlayerCharacter> connectedclients = new List<GameLibrary.PlayerCharacter>();
@@ -20,7 +20,7 @@ namespace ConsoleApplication1
         private object lockobj;
         GameLibrary.GameContext gamecontext;
 
-        public Program()
+        public Server()
         {
             lockobj = new object();
             Running = false;
@@ -54,8 +54,6 @@ namespace ConsoleApplication1
         }
 
 
-
-
         //Implement IDisposable.
         public void Dispose()
         {
@@ -75,7 +73,7 @@ namespace ConsoleApplication1
         }
 
         // Use C# destructor syntax for finalization code.
-        ~Program()
+        ~Server()
         {
             // Simply call Dispose(false).
             Dispose(false);
@@ -109,8 +107,7 @@ namespace ConsoleApplication1
 
                 LoadPlanets();
                 LoadRooms();
-
-
+                
 
                 StartGameClock();
 
