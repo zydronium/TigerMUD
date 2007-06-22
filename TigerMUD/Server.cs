@@ -212,20 +212,7 @@ namespace TigerMUD
                 // Handle any new inbound clients.
                 if (threadstartupin.TcpListener.Pending())
                 {
-                    threadstartupin.PlayerCharacter = new GameLibrary.PlayerCharacter();
-                    threadstartupin.GameContext = gamecontext;
-                    threadstartupin.PlayerCharacter.Connected = true;
-                    threadstartupin.TcpClient = threadstartupin.TcpListener.AcceptTcpClient();
-                    threadstartupin.PlayerCharacter.NetworkStream = threadstartupin.TcpClient.GetStream();
-                    threadstartupin.PlayerCharacter.Socket = threadstartupin.TcpClient.Client;
-
-                    endpoint = threadstartupin.PlayerCharacter.Socket.RemoteEndPoint;
-                    threadstartupin.PlayerCharacter.IPAddress = ((IPEndPoint)endpoint).Address.ToString();
-
-                    clienthandler = new GameLibrary.ClientHandler();
-
-                    threadstartupin.PlayerCharacter.ConnectionState = GameLibrary.ConnectionState.NewConnection;
-                    gamecontext.AddPlayerCharacter(threadstartupin.PlayerCharacter);
+                    threadstartupin = HandleNewConnection(threadstartupin);
 
                 }
                 Thread.Sleep(25);
@@ -299,6 +286,25 @@ namespace TigerMUD
             }
             //Stop();
 
+        }
+
+        private GameLibrary.ThreadInitializationData HandleNewConnection(GameLibrary.ThreadInitializationData threadstartupin)
+        {
+            threadstartupin.PlayerCharacter = new GameLibrary.PlayerCharacter();
+            threadstartupin.GameContext = gamecontext;
+            threadstartupin.PlayerCharacter.Connected = true;
+            threadstartupin.TcpClient = threadstartupin.TcpListener.AcceptTcpClient();
+            threadstartupin.PlayerCharacter.NetworkStream = threadstartupin.TcpClient.GetStream();
+            threadstartupin.PlayerCharacter.Socket = threadstartupin.TcpClient.Client;
+
+            endpoint = threadstartupin.PlayerCharacter.Socket.RemoteEndPoint;
+            threadstartupin.PlayerCharacter.IPAddress = ((IPEndPoint)endpoint).Address.ToString();
+
+            clienthandler = new GameLibrary.ClientHandler();
+
+            threadstartupin.PlayerCharacter.ConnectionState = GameLibrary.ConnectionState.NewConnection;
+            gamecontext.AddPlayerCharacter(threadstartupin.PlayerCharacter);
+            return threadstartupin;
         }
 
         public void Stop()
