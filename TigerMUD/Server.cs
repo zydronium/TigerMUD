@@ -212,7 +212,7 @@ namespace TigerMUD
                 // Handle any new inbound clients.
                 if (threadstartupin.TcpListener.Pending())
                 {
-                    threadstartupin = HandleNewConnection(threadstartupin);
+                    threadstartupin = AddNewConnection(threadstartupin);
 
                 }
                 Thread.Sleep(25);
@@ -293,7 +293,7 @@ namespace TigerMUD
             pc.ConnectionState = GameLibrary.ConnectionState.WaitingforClientResponse;
         }
 
-        private GameLibrary.ThreadInitializationData HandleNewConnection(GameLibrary.ThreadInitializationData threadstartupin)
+        private GameLibrary.ThreadInitializationData AddNewConnection(GameLibrary.ThreadInitializationData threadstartupin)
         {
             threadstartupin.PlayerCharacter = new GameLibrary.PlayerCharacter();
             threadstartupin.GameContext = gamecontext;
