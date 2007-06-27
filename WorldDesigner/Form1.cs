@@ -89,14 +89,7 @@ namespace WorldDesigner
             textBox4.Text = planet.NameDisplay;
             textBox5.Text = planet.Description;
 
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
-            textBox3.Enabled = true;
-            textBox4.Enabled = true;
-            textBox5.Enabled = true;
-            textBox6.Enabled = true;
-            textBox7.Enabled = true;
-            textBox8.Enabled = true;
+    
 
             button1.Enabled = true;
             button2.Enabled = true;
@@ -112,8 +105,7 @@ namespace WorldDesigner
             radioButton5.Enabled = true;
 
 
-            comboBox2.Enabled = true;
-
+            
             offscreenbitmap = new Bitmap(planet.Width, planet.Height);
             offscreenbuffer = Graphics.FromImage(offscreenbitmap);
             clientdisplay = panel1.CreateGraphics();
@@ -121,6 +113,21 @@ namespace WorldDesigner
             brush.Color = Color.Gray;
             clientdisplay.FillRectangle(brush, 0, 0, panel1.Width - 1, panel1.Height - 1);
             DrawMap(planet, scrolloffsetx, scrolloffsety);
+        }
+
+        private void EnableEditingUI()
+        {
+            comboBox2.Enabled = true;
+            textBox1.Enabled = true;
+            textBox2.Enabled = true;
+            textBox3.Enabled = true;
+            textBox4.Enabled = true;
+            textBox5.Enabled = true;
+            textBox6.Enabled = true;
+            textBox7.Enabled = true;
+            textBox8.Enabled = true;
+            textBox9.Enabled = true;
+            textBox10.Enabled = true;
         }
 
         private void DrawMap(GameLibrary.Planet planet, int scrolloffsetx, int scrolloffsety)
@@ -131,7 +138,7 @@ namespace WorldDesigner
             {
                 for (int widthcounter = 0; widthcounter < planet.Width; widthcounter++)
                 {
-                    if (radioButton1.Checked) color = colors[planet.MapTerrain[widthcounter, heightcounter].Type];
+                    //if (radioButton1.Checked) color = colors[planet.MapTerrain[widthcounter, heightcounter].Type];
 
                     if (radioButton1.Checked)
                     {
@@ -280,6 +287,12 @@ namespace WorldDesigner
 
                         if (planet.MapTerrain[h, i].Symbol == null) writer.Write(" ");
                         else writer.Write(planet.MapTerrain[h, i].Symbol);
+
+                        if (planet.MapTerrain[h, i].LocationMessage == null) writer.Write(" ");
+                        else writer.Write(planet.MapTerrain[h, i].LocationMessage);
+
+                        if (planet.MapTerrain[h, i].PortalLink == null) writer.Write(" ");
+                        else writer.Write(planet.MapTerrain[h, i].PortalLink);
                     }
 
                 }
@@ -693,6 +706,9 @@ namespace WorldDesigner
             textBox2.Text = GetMapResource(e.X - scrolloffsetx, e.Y - scrolloffsety).Concentration.ToString();
             textBox3.Text = GetMapResource(e.X - scrolloffsetx, e.Y - scrolloffsety).Quality.ToString();
             textBox8.Text = GetMapResource(e.X - scrolloffsetx, e.Y - scrolloffsety).Symbol;
+            textBox9.Text = GetMapResource(e.X - scrolloffsetx, e.Y - scrolloffsety).LocationMessage;
+
+            textBox10.Text = GetMapResource(e.X - scrolloffsetx, e.Y - scrolloffsety).PortalLink;
 
         }
 
@@ -743,6 +759,8 @@ namespace WorldDesigner
                 resource.Concentration = Convert.ToByte(textBox2.Text);
                 resource.Quality = Convert.ToByte(textBox3.Text);
                 resource.Symbol = textBox8.Text;
+                resource.LocationMessage = textBox9.Text;
+                resource.PortalLink = textBox10.Text;
 
                 color = colors[resource.Type];
 
@@ -765,6 +783,8 @@ namespace WorldDesigner
             resource.Concentration = Convert.ToByte(textBox2.Text);
             resource.Quality = Convert.ToByte(textBox3.Text);
             resource.Symbol = textBox8.Text;
+            resource.LocationMessage = textBox9.Text;
+            resource.PortalLink = textBox10.Text;
             color = colors[resource.Type];
             brush.Color = color;
             offscreenbuffer.FillRectangle(brush, e.X, e.Y, 1, 1);
@@ -862,6 +882,8 @@ namespace WorldDesigner
             resource.Concentration = Convert.ToByte(textBox2.Text);
             resource.Quality = Convert.ToByte(textBox3.Text);
             resource.Symbol = textBox8.Text;
+            resource.LocationMessage = textBox9.Text;
+            resource.PortalLink = textBox10.Text;
             color = colors[resource.Type];
             brush.Color = color;
             offscreenbuffer.FillRectangle(brush, Math.Max(0, e.X - 2), Math.Max(0, e.Y - 2), 5, 5);
@@ -884,6 +906,8 @@ namespace WorldDesigner
             resource.Concentration = Convert.ToByte(textBox2.Text);
             resource.Quality = Convert.ToByte(textBox3.Text);
             resource.Symbol = textBox8.Text;
+            resource.LocationMessage = textBox9.Text;
+            resource.PortalLink = textBox10.Text;
             color = colors[resource.Type];
             brush.Color = color;
 
@@ -1025,6 +1049,8 @@ namespace WorldDesigner
 
         private void radioButton7_CheckedChanged(object sender, EventArgs e)
         {
+            EnableEditingUI();
+            
             drawmode = DrawMode.Point;
             Bitmap b = new Bitmap(1, 1);
             Graphics g = Graphics.FromImage(b);
@@ -1038,6 +1064,8 @@ namespace WorldDesigner
 
         private void radioButton8_CheckedChanged(object sender, EventArgs e)
         {
+            EnableEditingUI();
+
             drawmode = DrawMode.FatPoint;
 
             Bitmap b = new Bitmap(5, 5);
@@ -1056,6 +1084,7 @@ namespace WorldDesigner
 
         private void radioButton10_CheckedChanged(object sender, EventArgs e)
         {
+            EnableEditingUI();
             drawmode = DrawMode.GiantBlock;
 
             Bitmap b = new Bitmap(11, 11);
@@ -1071,12 +1100,10 @@ namespace WorldDesigner
 
         private void radioButton9_CheckedChanged(object sender, EventArgs e)
         {
+            EnableEditingUI();
             drawmode = DrawMode.Rectangle;
             panel1.Cursor = System.Windows.Forms.Cursors.Cross;
         }
-
-      
-      
 
        
 

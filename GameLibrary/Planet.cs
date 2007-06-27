@@ -123,6 +123,11 @@ namespace GameLibrary
 
                         planet.MapTerrain[widthcounter, heightcounter].Symbol = reader.ReadString();
 
+                        planet.MapTerrain[widthcounter, heightcounter].LocationMessage = reader.ReadString();
+                        planet.MapTerrain[widthcounter, heightcounter].PortalLink = reader.ReadString();
+
+
+
                     }
 
                 }

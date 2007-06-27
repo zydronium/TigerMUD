@@ -417,6 +417,7 @@ namespace WorldDesigner
             // 
             // textBox9
             // 
+            this.textBox9.Enabled = false;
             this.textBox9.Location = new System.Drawing.Point(9, 195);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(213, 20);
@@ -442,6 +443,7 @@ namespace WorldDesigner
             // 
             // textBox10
             // 
+            this.textBox10.Enabled = false;
             this.textBox10.Location = new System.Drawing.Point(9, 236);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(213, 20);

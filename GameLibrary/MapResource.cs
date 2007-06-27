@@ -44,12 +44,12 @@ namespace GameLibrary
             set { locationmessage = value; }
         }
 
-        private string locationlink;
+        private string portallink;
 
-        public string LocationLink
+        public string PortalLink
         {
-            get { return locationlink; }
-            set { locationlink = value; }
+            get { return portallink; }
+            set { portallink = value; }
         }
 	
 
