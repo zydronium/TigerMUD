@@ -1,0 +1,2 @@
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "GameLibrary.Database.SendMail(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String[]):System.Boolean")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "GameLibrary.Database..ctor()")]
