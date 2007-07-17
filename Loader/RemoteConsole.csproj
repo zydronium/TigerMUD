@@ -47,7 +47,7 @@
       <Project>{C446E86E-6B66-4E3F-AF79-C8442BFF31CF}</Project>
       <Name>GameLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\tigermud\TigerMUD Server.csproj">
+    <ProjectReference Include="..\ConsoleApplication1\TigerMUD Server.csproj">
       <Project>{82BFB808-F7E4-47B6-B453-E6A16D06D1BB}</Project>
       <Name>TigerMUD Server</Name>
     </ProjectReference>
