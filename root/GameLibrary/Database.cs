@@ -272,6 +272,7 @@ namespace GameLibrary
                     pc.CharacterClass = Convert.ToString(row["class"]);
                     pc.AccountId = Convert.ToString(row["accountid"]);
                     pc.PlanetID = Convert.ToString(row["planetid"]);
+                    pc.InWilderness = Convert.ToBoolean(row["inwilderness"]);
 
                 }
             }

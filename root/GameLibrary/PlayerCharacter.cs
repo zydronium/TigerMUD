@@ -43,6 +43,14 @@ namespace GameLibrary
         }
 
 
+        private bool inwilderness;
+
+        public bool InWilderness
+        {
+            get { return inwilderness; }
+            set { inwilderness = value; }
+        }
+	
 
 
         public PlayerDelegate GetNextCommand()
@@ -72,6 +80,14 @@ namespace GameLibrary
         }
 
 
+        public bool MoveToRoom(string destinationroomid, GameContext gc)
+        {
+            Room room=gc.GetRoom(destinationroomid);
+            this.Room = room;
+            this.SendLine("You just entered {0}", room.NameDisplay);
+            if (this.InWilderness) this.InWilderness = false;
+            return false;
+        }
 
 
 
@@ -644,9 +660,9 @@ namespace GameLibrary
             }
         }
 
-        private string room;
+        private GameLibrary.Room room;
 
-        public string Room
+        public GameLibrary.Room Room
         {
             get { return room; }
             set

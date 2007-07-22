@@ -42,6 +42,7 @@
     <Compile Include="again.cs" />
     <Compile Include="commandlist.cs" />
     <Compile Include="compile.cs" />
+    <Compile Include="enter.cs" />
     <Compile Include="examplecommand.cs" />
     <Compile Include="exampleparsing.cs" />
     <Compile Include="map.cs" />

@@ -113,6 +113,19 @@ namespace GameLibrary
             return planet;
         }
 
+        public Room GetRoom(string id)
+        {
+            Room room;
+            lock (lockobj)
+            {
+                room = rooms[id];
+
+            }
+            return room;
+
+        }
+
+
         public Planet GetPlanetByName(string name)
         {
             lock (lockobj)

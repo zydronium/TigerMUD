@@ -43,8 +43,26 @@ public class Movement : GameLibrary.Command
     public override bool DoCommand(PlayerCharacter pc, GameContext gamecontext, string command, string arguments)
     {
 
+        if (pc.InWilderness)
+        {
+            MoveInWilderness(pc, command);
+        }
+        else
+        {
+
+
+
+        }
+
+        return false;
+    }
+
+    private static void MoveInWilderness(PlayerCharacter pc, string command)
+    {
         switch (command)
         {
+
+                // TODO check terrain to ensure that target coords are available for movement
             case "n":
                 pc.Y -= 1;
                 break;
@@ -102,14 +120,21 @@ public class Movement : GameLibrary.Command
                 pc.X -= 1;
                 break;
         }
-        Coordinates coordinates=new Coordinates();
+
+        // TODO Check for portals at these coords and display them
+
+        if (pc.Planet.MapTerrain[pc.X, pc.Y].PortalLink != " ")
+        {
+            pc.SendLine("There is a portal to {0} here. Enter?", pc.Planet.MapTerrain[pc.X,pc.Y].LocationMessage);
+        }
+
+
+        Coordinates coordinates = new Coordinates();
         coordinates.X = pc.X;
         coordinates.Y = pc.Y;
         // wrap player around planet
         coordinates = GameLibrary.Coordinates.Wrap(pc.Planet, coordinates);
         pc.X = coordinates.X;
         pc.Y = coordinates.Y;
-
-        return false;
     }
 }
