@@ -151,7 +151,15 @@ public class Movement : GameLibrary.Command
     {
         if (pc.Planet.MapTerrain[pc.X, pc.Y].PortalLink != " ")
         {
-            pc.MoveToRoom(pc.Planet.MapTerrain[pc.X, pc.Y].PortalLink, gc);
+            try
+            {
+                pc.MoveToRoom(pc.Planet.MapTerrain[pc.X, pc.Y].PortalLink, gc);
+            }
+            catch
+            {
+                pc.SendLine("&RFailed to retrieve new room");
+                return false;
+            }
 
         }
         else
