@@ -61,9 +61,9 @@ namespace WorldDesigner
 
         private void button2_Click(object sender, EventArgs e)
         {
-            planet.Id = textBox1.Text;
-            planet.NameDisplay = textBox4.Text;
-            planet.Description = textBox5.Text;
+            planet.Id = textBox1.Text.Trim();
+            planet.NameDisplay = textBox4.Text.Trim();
+            planet.Description = textBox5.Text.Trim();
             SaveFileDialog savedialog = new SaveFileDialog();
             savedialog.Filter = "Planet Files (*.planet)|*.planet";
             DialogResult result = savedialog.ShowDialog();
@@ -760,9 +760,9 @@ namespace WorldDesigner
                 resource.Type = Convert.ToByte(comboBox2.SelectedValue);
                 resource.Concentration = Convert.ToByte(textBox2.Text);
                 resource.Quality = Convert.ToByte(textBox3.Text);
-                resource.Symbol = textBox8.Text;
-                resource.LocationMessage = textBox9.Text;
-                resource.PortalLink = textBox10.Text;
+                resource.Symbol = textBox8.Text.Trim();
+                resource.LocationMessage = textBox9.Text.Trim();
+                resource.PortalLink = textBox10.Text.Trim();
 
                 color = colors[resource.Type];
 
