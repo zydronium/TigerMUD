@@ -192,6 +192,7 @@ namespace GameLibrary
             lock (lockobj)
             {
                 rooms.Add(room.Id, room);
+                Console.WriteLine("Adding room {0}", room.Id);
             }
             return false;
 

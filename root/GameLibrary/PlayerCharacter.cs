@@ -82,6 +82,9 @@ namespace GameLibrary
 
         public bool MoveToRoom(string destinationroomid, GameContext gc)
         {
+
+            this.SendLine("Seeking room id {0}", destinationroomid);
+
             Room room=gc.GetRoom(destinationroomid);
             this.Room = room;
             this.SendLine("You just entered {0}", room.NameDisplay);

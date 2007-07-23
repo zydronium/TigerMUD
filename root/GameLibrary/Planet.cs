@@ -65,8 +65,71 @@ namespace GameLibrary
             set { mapweather = value; }
         }
 
+        public static void WritePlanetToFile(Planet planet,string filename)
+        {
+            FileStream stream = new FileStream(filename, FileMode.Create);
+            BinaryWriter writer = new BinaryWriter(stream);
 
-        public static GameLibrary.Planet LoadPlanetFromFile(string filename)
+            try
+            {
+                //writer.Write(textBox1.Text);
+                writer.Write(planet.Id);
+                writer.Write(planet.Width);
+                writer.Write(planet.Height);
+                writer.Write(planet.NameDisplay);
+                writer.Write(planet.Description);
+                for (int i = 0; i < planet.Height; i++)
+                {
+                    for (int h = 0; h < planet.Width; h++)
+                    {
+                        writer.Write(planet.MapTerrain[h, i].Type);
+                        writer.Write(planet.MapTerrain[h, i].Concentration);
+                        writer.Write(planet.MapTerrain[h, i].Quality);
+
+                        writer.Write(planet.MapFlora[h, i].Type);
+                        writer.Write(planet.MapFlora[h, i].Concentration);
+                        writer.Write(planet.MapFlora[h, i].Quality);
+
+                        writer.Write(planet.MapSpawn[h, i].Type);
+                        writer.Write(planet.MapSpawn[h, i].Concentration);
+                        writer.Write(planet.MapSpawn[h, i].Quality);
+
+                        writer.Write(planet.MapMinerals[h, i].Type);
+                        writer.Write(planet.MapMinerals[h, i].Concentration);
+                        writer.Write(planet.MapMinerals[h, i].Quality);
+
+                        writer.Write(planet.MapWeather[h, i].Type);
+                        writer.Write(planet.MapWeather[h, i].Concentration);
+                        writer.Write(planet.MapWeather[h, i].Quality);
+
+                        // BUG these three strings get an extra space in front for some reason
+                        if (planet.MapTerrain[h, i].Symbol == null) writer.Write(" ");
+                        else writer.Write(planet.MapTerrain[h, i].Symbol);
+
+                        if (planet.MapTerrain[h, i].LocationMessage == null) writer.Write(" ");
+                        else writer.Write(planet.MapTerrain[h, i].LocationMessage);
+
+                        if (planet.MapTerrain[h, i].PortalLink == null) writer.Write(" ");
+                        else writer.Write(planet.MapTerrain[h, i].PortalLink);
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                stream.Close();
+                return;
+            }
+            stream.Close();
+            return;
+
+
+        }
+
+
+        public static GameLibrary.Planet ReadPlanetFromFile(string filename)
         {
             FileStream stream;
             Planet planet = new GameLibrary.Planet();
@@ -78,7 +141,6 @@ namespace GameLibrary
             {
                 System.Windows.Forms.MessageBox.Show("Cannot open the file. " + ex.Message);
                 return null;
-
             }
           
             BinaryReader reader = new BinaryReader(stream);
@@ -121,13 +183,13 @@ namespace GameLibrary
                         planet.MapWeather[widthcounter, heightcounter].Concentration = reader.ReadByte();
                         planet.MapWeather[widthcounter, heightcounter].Quality = reader.ReadByte();
 
+                        
                         planet.MapTerrain[widthcounter, heightcounter].Symbol = reader.ReadString();
-
                         planet.MapTerrain[widthcounter, heightcounter].LocationMessage = reader.ReadString();
                         planet.MapTerrain[widthcounter, heightcounter].PortalLink = reader.ReadString();
 
-
-
+                        if (widthcounter == 10 && heightcounter == 10) Console.WriteLine("'" + planet.MapTerrain[widthcounter, heightcounter].LocationMessage + "'");
+                        if (widthcounter == 10 && heightcounter == 10) Console.WriteLine("'" + planet.MapTerrain[widthcounter, heightcounter].PortalLink + "'");
                     }
 
                 }

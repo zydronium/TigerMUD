@@ -149,7 +149,7 @@ namespace TigerMUD
 
             foreach (string planetpath in planetpaths)
             {
-                planet = GameLibrary.Planet.LoadPlanetFromFile(planetpath);
+                planet = GameLibrary.Planet.ReadPlanetFromFile(planetpath);
 
                 threadstartup.GameContext.AddPlanet(planet);
                 Console.WriteLine("Done.");

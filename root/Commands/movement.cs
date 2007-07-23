@@ -45,10 +45,13 @@ public class Movement : GameLibrary.Command
 
         if (pc.InWilderness)
         {
-            MoveInWilderness(pc, command);
+            MoveInWilderness(pc, command, gamecontext);
         }
         else
         {
+
+            // TODO scan exits to find target room
+
 
 
 
@@ -57,7 +60,7 @@ public class Movement : GameLibrary.Command
         return false;
     }
 
-    private static void MoveInWilderness(PlayerCharacter pc, string command)
+    private void MoveInWilderness(PlayerCharacter pc, string command, GameContext gamecontext)
     {
         switch (command)
         {
@@ -119,13 +122,19 @@ public class Movement : GameLibrary.Command
                 pc.Y -= 1;
                 pc.X -= 1;
                 break;
+            case "enter":
+                HandlePortal(pc, gamecontext);
+                break;
+            case "in":
+                HandlePortal(pc,gamecontext);
+                break;
         }
 
         // TODO Check for portals at these coords and display them
 
         if (pc.Planet.MapTerrain[pc.X, pc.Y].PortalLink != " ")
         {
-            pc.SendLine("There is a portal to {0} here. Enter?", pc.Planet.MapTerrain[pc.X,pc.Y].LocationMessage);
+            pc.SendLine("There is a portal to {0} here.", pc.Planet.MapTerrain[pc.X,pc.Y].LocationMessage);
         }
 
 
@@ -137,4 +146,22 @@ public class Movement : GameLibrary.Command
         pc.X = coordinates.X;
         pc.Y = coordinates.Y;
     }
+
+    public bool HandlePortal(PlayerCharacter pc, GameContext gc)
+    {
+        if (pc.Planet.MapTerrain[pc.X, pc.Y].PortalLink != " ")
+        {
+            pc.MoveToRoom(pc.Planet.MapTerrain[pc.X, pc.Y].PortalLink, gc);
+
+        }
+        else
+        {
+            pc.SendLine("&RError, nothing to enter.");
+
+        }
+
+        return false;
+
+    }
+
 }

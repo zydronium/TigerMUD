@@ -61,13 +61,14 @@ namespace WorldDesigner
 
         private void button2_Click(object sender, EventArgs e)
         {
+            planet.Id = textBox1.Text;
             planet.NameDisplay = textBox4.Text;
             planet.Description = textBox5.Text;
             SaveFileDialog savedialog = new SaveFileDialog();
             savedialog.Filter = "Planet Files (*.planet)|*.planet";
             DialogResult result = savedialog.ShowDialog();
             if (result.ToString().Equals("Cancel")) return;
-            WriteFile(savedialog.FileName);
+            GameLibrary.Planet.WritePlanetToFile(planet,savedialog.FileName);
 
         }
 
@@ -80,7 +81,7 @@ namespace WorldDesigner
             DialogResult result = dialog.ShowDialog();
             if (result.ToString().Equals("Cancel")) return;
 
-            planet = GameLibrary.Planet.LoadPlanetFromFile(dialog.FileName);
+            planet = GameLibrary.Planet.ReadPlanetFromFile(dialog.FileName);
             if (null == planet) return;
 
             textBox1.Text = planet.Id;
@@ -249,66 +250,67 @@ namespace WorldDesigner
 
 
 
-        private void WriteFile(string filename)
-        {
-            FileStream stream = new FileStream(filename, FileMode.Create);
-            BinaryWriter writer = new BinaryWriter(stream);
+        //private void WritePlanetToFile(string filename)
+        //{
+        //    FileStream stream = new FileStream(filename, FileMode.Create);
+        //    BinaryWriter writer = new BinaryWriter(stream);
 
-            try
-            {
-                writer.Write(textBox1.Text);
-                writer.Write(planet.Width);
-                writer.Write(planet.Height);
-                writer.Write(planet.NameDisplay);
-                writer.Write(planet.Description);
-                for (int i = 0; i < planet.Height; i++)
-                {
-                    for (int h = 0; h < planet.Width; h++)
-                    {
-                        writer.Write(planet.MapTerrain[h, i].Type);
-                        writer.Write(planet.MapTerrain[h, i].Concentration);
-                        writer.Write(planet.MapTerrain[h, i].Quality);
+        //    try
+        //    {
+        //        writer.Write(textBox1.Text);
+        //        writer.Write(planet.Width);
+        //        writer.Write(planet.Height);
+        //        writer.Write(planet.NameDisplay);
+        //        writer.Write(planet.Description);
+        //        for (int i = 0; i < planet.Height; i++)
+        //        {
+        //            for (int h = 0; h < planet.Width; h++)
+        //            {
+        //                writer.Write(planet.MapTerrain[h, i].Type);
+        //                writer.Write(planet.MapTerrain[h, i].Concentration);
+        //                writer.Write(planet.MapTerrain[h, i].Quality);
 
-                        writer.Write(planet.MapFlora[h, i].Type);
-                        writer.Write(planet.MapFlora[h, i].Concentration);
-                        writer.Write(planet.MapFlora[h, i].Quality);
+        //                writer.Write(planet.MapFlora[h, i].Type);
+        //                writer.Write(planet.MapFlora[h, i].Concentration);
+        //                writer.Write(planet.MapFlora[h, i].Quality);
 
-                        writer.Write(planet.MapSpawn[h, i].Type);
-                        writer.Write(planet.MapSpawn[h, i].Concentration);
-                        writer.Write(planet.MapSpawn[h, i].Quality);
+        //                writer.Write(planet.MapSpawn[h, i].Type);
+        //                writer.Write(planet.MapSpawn[h, i].Concentration);
+        //                writer.Write(planet.MapSpawn[h, i].Quality);
 
-                        writer.Write(planet.MapMinerals[h, i].Type);
-                        writer.Write(planet.MapMinerals[h, i].Concentration);
-                        writer.Write(planet.MapMinerals[h, i].Quality);
+        //                writer.Write(planet.MapMinerals[h, i].Type);
+        //                writer.Write(planet.MapMinerals[h, i].Concentration);
+        //                writer.Write(planet.MapMinerals[h, i].Quality);
 
-                        writer.Write(planet.MapWeather[h, i].Type);
-                        writer.Write(planet.MapWeather[h, i].Concentration);
-                        writer.Write(planet.MapWeather[h, i].Quality);
+        //                writer.Write(planet.MapWeather[h, i].Type);
+        //                writer.Write(planet.MapWeather[h, i].Concentration);
+        //                writer.Write(planet.MapWeather[h, i].Quality);
 
-                        if (planet.MapTerrain[h, i].Symbol == null) writer.Write(" ");
-                        else writer.Write(planet.MapTerrain[h, i].Symbol);
+        //                // BUG these three strings get an extra space in front for some reason
+        //                if (planet.MapTerrain[h, i].Symbol == null) writer.Write(" ");
+        //                else writer.Write(planet.MapTerrain[h, i].Symbol);
 
-                        if (planet.MapTerrain[h, i].LocationMessage == null) writer.Write(" ");
-                        else writer.Write(planet.MapTerrain[h, i].LocationMessage);
+        //                if (planet.MapTerrain[h, i].LocationMessage == null) writer.Write(" ");
+        //                else writer.Write(planet.MapTerrain[h, i].LocationMessage);
 
-                        if (planet.MapTerrain[h, i].PortalLink == null) writer.Write(" ");
-                        else writer.Write(planet.MapTerrain[h, i].PortalLink);
-                    }
+        //                if (planet.MapTerrain[h, i].PortalLink == null) writer.Write(" ");
+        //                else writer.Write(planet.MapTerrain[h, i].PortalLink);
+        //            }
 
-                }
+        //        }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                stream.Close();
-                return;
-            }
-            stream.Close();
-            return;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        stream.Close();
+        //        return;
+        //    }
+        //    stream.Close();
+        //    return;
 
 
-        }
+        //}
 
 
 
