@@ -29,17 +29,10 @@ namespace TigerMUD
             gamecontext = GameLibrary.GameContext.GetInstance();
 
             threadstartup.GameContext = GameLibrary.GameContext.GetInstance();
-            try
-            {
-                threadstartup.GameContext.Database = new GameLibrary.Database();
-            }
-            catch (Exception ex)
-            {
+            threadstartup.GameContext.Database = new GameLibrary.Database();
+            // failed to connect?
+            if (threadstartup.GameContext.Database == null) return;
 
-                Console.WriteLine("ERROR: Cannot connect to SQL database. Ensure that it is running.");
-                return;
-
-            }
             threadstartup.GameContext.Compiler = new GameLibrary.GameCompiler();
         }
 

@@ -23,18 +23,11 @@ namespace RemoteConsole
             disconnect = false;
             program = new TigerMUD.Server();
             gamecontext = GameLibrary.GameContext.GetInstance();
-            try
-            {
-                gamecontext.Database = new GameLibrary.Database();
-            }
-            catch (Exception ex)
-            {
 
-                Console.WriteLine("ERROR: Cannot connect to SQL database. Ensure that it is running.");
-                return;
-            
-            }
-
+            gamecontext.Database = new GameLibrary.Database();
+            // failed to connect?
+            if (gamecontext.Database == null) return;
+                        
             gamecontext.Compiler = new GameLibrary.GameCompiler();
             threadstartup = new GameLibrary.ThreadInitializationData();
             gamecontext.ReadConfiguration();

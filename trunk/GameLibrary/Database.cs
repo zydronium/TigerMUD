@@ -100,11 +100,19 @@ namespace GameLibrary
 
         public Database()
         {
-            
+            Console.Write("Attempting to open database...");
+            try
+            {
                 sqlcon = new SqlConnection(ConnectionString);
                 sqlcon.Open();
-            
-            Console.WriteLine("Database connection open");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("FAILED.\r\n" + ex.Message);
+                Console.ReadLine();
+                return;
+            }
+            Console.WriteLine("SUCCESS!");
         }
 
         public string ConnectionString
