@@ -1,0 +1,7 @@
+In SQL Server Management Studio, right click "game" database, click Tasks, and click Generate Scripts...
+"Select a Database" screen, choose game database.
+"Choose Script Options" screen, accept defaults.
+"Choose Object Types" screen, check "Tables".
+"Choose Tables" screen, check all tables.
+"Output Option" screen, choose "Script to File" and choose "database creation script.sql".
+

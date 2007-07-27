@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<mapresources>
+<terrain>
+<type id="0" symbol=" " red="0" green="0" blue="0">void</type>
+<type id="1" symbol="." red="128" green="253" blue="128">grassland</type>
+<type id="2" symbol="f" red="0" green="128" blue="128">light forest</type>
+<type id="3" symbol="F" red="0" green="64" blue="0">heavy forest</type>
+<type id="5" symbol="-" red="140" green="70" blue="0">dirt road</type>
+<type id="6" symbol="=" red="210" green="210" blue="210">paved road</type>
+<type id="7" symbol="n" red="92" green="185" blue="0">grassy hills</type>
+<type id="8" symbol="j" red="134" green="174" blue="45">jungle</type>
+<type id="9" symbol="r" red="128" green="128" blue="128">rock</type>
+<type id="10" symbol="s" red="233" green="204" blue="116">sand</type>
+<type id="11" symbol="s" red="102" green="179" blue="255">fresh water</type>
+<type id="12" symbol="s" red="0" green="87" blue="174">ocean</type>
+<type id="255" symbol="*" red="253" green="253" blue="253">snow</type>
+
+
+</terrain>
+
+
+<flora>
+</flora>
+
+<spawn>
+</spawn>
+
+<minerals>
+</minerals>
+
+<weather>
+</weather>
+
+
+</mapresources>
