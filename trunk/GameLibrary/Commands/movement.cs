@@ -130,12 +130,7 @@ public class Movement : GameLibrary.Command
                 break;
         }
 
-        // TODO Check for portals at these coords and display them
-
-        if (pc.Planet.MapTerrain[pc.X, pc.Y].PortalLink != " ")
-        {
-            pc.SendLine("There is a portal to {0} here.", pc.Planet.MapTerrain[pc.X,pc.Y].LocationMessage);
-        }
+       
 
 
         Coordinates coordinates = new Coordinates();
@@ -145,6 +140,13 @@ public class Movement : GameLibrary.Command
         coordinates = GameLibrary.Coordinates.Wrap(pc.Planet, coordinates);
         pc.X = coordinates.X;
         pc.Y = coordinates.Y;
+
+        // TODO Check for portals at these coords and display them
+
+        if (pc.Planet.MapTerrain[pc.X, pc.Y].PortalLink != " ")
+        {
+            pc.SendLine("There is a portal to {0} here.", pc.Planet.MapTerrain[pc.X, pc.Y].LocationMessage);
+        }
     }
 
     public bool HandlePortal(PlayerCharacter pc, GameContext gc)

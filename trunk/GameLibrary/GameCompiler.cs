@@ -25,23 +25,36 @@ namespace GameLibrary
             string errorstrings = string.Empty;
             ArrayList Objects = new ArrayList();
             ArrayList Commands = new ArrayList();
-            ArrayList files = new ArrayList();
+            ArrayList sourcefiles = new ArrayList();
+            ArrayList assemblyfiles = new ArrayList();
             Console.WriteLine("Compiling and loading commands...");
 
             // Load commands from source files
             if (file == null)
             {
-                files = gamecontext.GetFilesRecursive(gamecontext.CommandsFolder, "*.cs");
+                sourcefiles = gamecontext.GetFilesRecursive(gamecontext.CommandsFolder, "*.cs");
+                assemblyfiles = gamecontext.GetFilesRecursive(gamecontext.AssemblyFolder, "*.dll");
+
             }
             else
-                files.Add(file);
-                
+                sourcefiles.Add(file);
 
-            if (files.Count > 0)
+
+            if (sourcefiles.Count > 0)
             {
                 try
                 {
-                    Objects = GetObjectsFromFiles(ConvertToStringArray(files), out errors);
+                    // Get objects from assemblies
+                    foreach (string assembly in assemblyfiles)
+                    {
+                        if (Objects.Count < 1) Objects = GetObjectsFromAssembly(Assembly.LoadFrom(assembly), out errors);
+                        else Objects.AddRange(GetObjectsFromAssembly(Assembly.LoadFrom(assembly), out errors));
+                    }
+
+                    // Get objects from sourcefiles
+                    if (Objects.Count<1) Objects=(GetObjectsFromFiles(ConvertToStringArray(sourcefiles), out errors));
+                        else Objects.AddRange(GetObjectsFromFiles(ConvertToStringArray(sourcefiles), out errors));
+                   
                     errorstrings += errors;
                 }
                 catch
@@ -51,7 +64,7 @@ namespace GameLibrary
                 if (Objects != null)
                 {
                     // If this comes back equal to it's init length, then nothing was entered into the array
-                    if (Objects.Count>0)
+                    if (Objects.Count > 0)
                     {
                         foreach (Object c in Objects)
                         {
@@ -84,7 +97,7 @@ namespace GameLibrary
             {
                 parameters.ReferencedAssemblies.Add(assembly.Location);
             }
-            CompilerResults results=cdp.CompileAssemblyFromFile(parameters, filenames);
+            CompilerResults results = cdp.CompileAssemblyFromFile(parameters, filenames);
             if (results.Errors.Count > 0)
             {
                 foreach (CompilerError error in results.Errors)
@@ -151,9 +164,9 @@ namespace GameLibrary
                 {
                     try
                     {
-                        if (type.BaseType.ToString()=="GameLibrary.Command")
+                        if (type.BaseType.ToString() == "GameLibrary.Command")
                         {
-                            
+
                             Command Command = (Command)Activator.CreateInstance(type);
                             ScriptArray.Add(Command);
                         }

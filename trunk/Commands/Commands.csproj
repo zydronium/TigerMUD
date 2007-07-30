@@ -40,19 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="again.cs" />
-    <Compile Include="commandlist.cs" />
-    <Compile Include="compile.cs" />
-    <Compile Include="examplecommand.cs" />
-    <Compile Include="exampleparsing.cs" />
-    <Compile Include="map.cs" />
-    <Compile Include="menutest.cs" />
-    <Compile Include="movement.cs" />
-    <Compile Include="prompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="quit.cs" />
-    <Compile Include="tick.cs" />
-    <Compile Include="welcome.cs" />
-    <Compile Include="who.cs" />
+    <Compile Include="testcommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameLibrary\GameLibrary.csproj">

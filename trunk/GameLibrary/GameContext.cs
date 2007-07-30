@@ -334,6 +334,14 @@ namespace GameLibrary
             return (Command)commands[word];
         }
 
+        private string assemblyfolder;
+
+        public string AssemblyFolder
+        {
+            get { return assemblyfolder; }
+            set { assemblyfolder = value; }
+        }
+	
 
         public void ReadConfiguration()
         {
@@ -349,6 +357,7 @@ namespace GameLibrary
             this.DatabaseName = Convert.ToString(appSettings["Database"]);
             this.Security = Convert.ToString(appSettings["Integrated Security"]);
             this.CommandsFolder = Convert.ToString(appSettings["Commands Folder"]);
+            this.AssemblyFolder = Convert.ToString(appSettings["Assembly Folder"]);
             this.PlanetsFolder = Convert.ToString(appSettings["Planets Folder"]);
             this.MaxLoginAttempts = Convert.ToInt32(appSettings["Max Login Attempts"]);
             this.SmtpServer = Convert.ToString(appSettings["SMTP Server"]);
