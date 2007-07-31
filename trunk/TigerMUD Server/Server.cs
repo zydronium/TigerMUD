@@ -110,6 +110,7 @@ namespace TigerMUD
 
                 LoadPlanets();
                 LoadRooms();
+                LoadExits();
                 
 
                 StartGameClock();
@@ -166,7 +167,7 @@ namespace TigerMUD
             Console.WriteLine("Loading Rooms...");
             ArrayList roomids = new ArrayList();
             GameLibrary.Room room = new GameLibrary.Room();
-            roomids = threadstartup.GameContext.Database.GetRooms();
+            roomids = threadstartup.GameContext.Database.GetRoomIds();
             foreach (string roomid in roomids)
             {
                 room = threadstartup.GameContext.Database.LoadRoom(roomid);
@@ -175,6 +176,19 @@ namespace TigerMUD
             Console.WriteLine("Loaded " + roomids.Count + " rooms.");
         }
 
+        public void LoadExits() {
+            Console.WriteLine("Loading Exits...");
+            ArrayList exitids = new ArrayList();
+            GameLibrary.Exit exit = new GameLibrary.Exit();
+            exitids = threadstartup.GameContext.Database.GetExitIds();
+            foreach (string exitid in exitids)
+            {
+                exit = threadstartup.GameContext.Database.LoadExit(exitid, gamecontext);
+                threadstartup.GameContext.AddExit(exit);
+            }
+            Console.WriteLine("Loaded " + exitids.Count + " exits.");
+
+        }
 
         public void StartScheduledCommands()
         {

@@ -47,21 +47,17 @@ namespace GameLibrary
         }
 
 
-        private Room destination;
 
-        public Room Destination
+
+        private Room destinationroom;
+
+        public Room DestinationRoom
         {
-            get { return destination; }
-            set { destination = value; }
+            get { return destinationroom; }
+            set { destinationroom = value; }
         }
 
-        private bool lockable;
-
-        public bool Lockable
-        {
-            get { return lockable; }
-            set { lockable = value; }
-        }
+      
 
         private bool locked;
 
@@ -71,22 +67,7 @@ namespace GameLibrary
             set { locked = value; }
         }
 
-        private string namedirection;
 
-        public string NameDirection
-        {
-            get { return namedirection; }
-            set { namedirection = value; }
-        }
-
-
-        private Room room;
-
-        public Room Room
-        {
-            get { return room; }
-            set { room = value; }
-        }
 
 
         private bool hidden;
@@ -105,16 +86,7 @@ namespace GameLibrary
             set { magic = value; }
         }
 
-        private bool wilderness;
-
-        public bool Wilderness
-        {
-            get { return wilderness; }
-            set { wilderness = value; }
-        }
-	
-
-	
+    	
 
     }
 }

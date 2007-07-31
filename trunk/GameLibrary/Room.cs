@@ -14,8 +14,21 @@ namespace GameLibrary
     /// </summary>
     public class Room : GameLibrary.GameObject, IDisposable
     {
+        /// <summary>
+        /// Exits that lead out of this room.
+        /// </summary>
         Dictionary<string, Exit> exits = new Dictionary<string, Exit>();
+        
+        /// <summary>
+        /// Players in this room.
+        /// </summary>
         List<PlayerCharacter> players = new List<PlayerCharacter>();
+        
+        /// <summary>
+        /// Keys that can open this room.
+        /// </summary>
+        Dictionary<string, Key> keys = new Dictionary<string,Key>();
+
         List<Item> items = new List<Item>();
         object lockobj;
 
@@ -57,7 +70,7 @@ namespace GameLibrary
             Dispose(false);
         }
 
-  
+      
 
 
         /// <summary>
@@ -85,6 +98,19 @@ namespace GameLibrary
         {
             return exits[exitname];
         }
+
+        /// <summary>
+        /// Check if an exit with a certain name exists in the room
+        /// </summary>
+        /// <param name="exitname"></param>
+        /// <returns></returns>
+        public bool DoesExitExist(string exitname)
+        {
+            if (exits.ContainsKey(exitname)) return true;
+            else return false;
+        }
+
+        
 
         /// <summary>
         /// Add an exit to the room.
@@ -133,7 +159,7 @@ namespace GameLibrary
             set { desc = value; }
         }
 
-        
+
 
         private bool indoor;
 
@@ -168,9 +194,9 @@ namespace GameLibrary
             get { return area; }
             set { area = value; }
         }
-	
-	
-     
+
+
+
         /// <summary>
         /// Gets a player that is in the room.
         /// </summary>
@@ -247,41 +273,11 @@ namespace GameLibrary
 
         }
 
-        private Planet planet;
-
-        /// <summary>
-        /// Planet where this room exists.
-        /// </summary>
-        public Planet Planet
-        {
-            get { return planet; }
-            set { planet = value; }
-        }
-
-        private int x;
-
-        /// <summary>
-        /// Planet X coordinate where the room exists.
-        /// </summary>
-        public int X
-        {
-            get { return x; }
-            set { x = value; }
-        }
-
-        private int y;
-
-        /// <summary>
-        /// Planet Y coordinate where the room exists.
-        /// </summary>
-        public int Y
-        {
-            get { return y; }
-            set { y = value; }
-        }
+       
+     
 
         public delegate void EnterRoomEventHandler(object room, RoomEventArgs eventargs);
-        
+
         /// <summary>
         /// Triggered when a player enters a room.
         /// </summary>
@@ -306,7 +302,7 @@ namespace GameLibrary
 
 
 
-        
+
 
 
     }

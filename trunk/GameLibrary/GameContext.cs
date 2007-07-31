@@ -21,6 +21,7 @@ namespace GameLibrary
         Hashtable commands;
         Dictionary<string, Planet> planets;
         Dictionary<string, Room> rooms;
+        Dictionary<string, Exit> exits;
         private Regex emailregex;
         string commandword;
         string[] words;
@@ -32,6 +33,7 @@ namespace GameLibrary
             commands = new Hashtable();
             planets = new Dictionary<string, Planet>();
             rooms = new Dictionary<string, Room>();
+            exits = new Dictionary<string, Exit>();
             emailregex = new Regex("(?<user>[^@]+)@(?<host>.+)");
             
 
@@ -125,6 +127,18 @@ namespace GameLibrary
 
         }
 
+        public Exit GetExit(string id)
+        {
+            Exit exit;
+            lock (lockobj)
+            {
+                exit = exits[id];
+
+            }
+            return exit;
+
+        }
+
 
         public Planet GetPlanetByName(string name)
         {
@@ -198,6 +212,17 @@ namespace GameLibrary
 
         }
 
+        public bool AddExit(Exit exit)
+        {
+            lock (lockobj)
+            {
+                exits.Add(exit.Id, exit);
+                Console.WriteLine("Adding exit {0}", exit.Id);
+            }
+            return false;
+        }
+
+
         public bool ClearPlanets()
         {
             lock (lockobj)
@@ -213,6 +238,16 @@ namespace GameLibrary
             lock (lockobj)
             {
                 rooms.Clear();
+            }
+            return false;
+
+        }
+
+        public bool ClearExits()
+        {
+            lock (lockobj)
+            {
+                exits.Clear();
             }
             return false;
 
@@ -331,7 +366,11 @@ namespace GameLibrary
         {
             if (word == null) return null;
 
-            return (Command)commands[word];
+            string commandword = word.Trim();
+            string[] commandwords = word.Split(' ');
+            commandword = commandwords[0];
+
+            return (Command)commands[commandword];
         }
 
         private string assemblyfolder;

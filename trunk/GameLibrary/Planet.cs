@@ -188,8 +188,8 @@ namespace GameLibrary
                         planet.MapTerrain[widthcounter, heightcounter].LocationMessage = reader.ReadString();
                         planet.MapTerrain[widthcounter, heightcounter].PortalLink = reader.ReadString();
 
-                        if (widthcounter == 10 && heightcounter == 10) Console.WriteLine("'" + planet.MapTerrain[widthcounter, heightcounter].LocationMessage + "'");
-                        if (widthcounter == 10 && heightcounter == 10) Console.WriteLine("'" + planet.MapTerrain[widthcounter, heightcounter].PortalLink + "'");
+                        //if (widthcounter == 10 && heightcounter == 10) Console.WriteLine("'" + planet.MapTerrain[widthcounter, heightcounter].LocationMessage + "'");
+                        //if (widthcounter == 10 && heightcounter == 10) Console.WriteLine("'" + planet.MapTerrain[widthcounter, heightcounter].PortalLink + "'");
                     }
 
                 }

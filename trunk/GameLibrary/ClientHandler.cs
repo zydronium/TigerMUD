@@ -262,15 +262,26 @@ namespace GameLibrary
                 pcin.SendLine("&RInvalid command.");
                 return false;
             }
-            //try
-            //{
+
+            
+#if DEBUG
+            
             disconnect = c.DoCommand(pcin, gamecontext, commandword, arguments);
-            //}
-            //catch (Exception ex)
-            //{
-            //  Console.WriteLine(ex.Message + ":" + ex.StackTrace);
-            // return false;
-            //}
+            
+#endif
+
+#if RELEASE
+            try
+            {
+                disconnect = c.DoCommand(pcin, gamecontext, commandword, arguments);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ":" + ex.StackTrace);
+                return false;
+            }
+
+#endif
 
             if (disconnect)
             {

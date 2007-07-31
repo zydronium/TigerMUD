@@ -222,7 +222,6 @@ namespace GameLibrary
 
             // Allocate the memory for the array.
             String[] output = new String[input.Count];
-            //Then copy to the array, like this.
             // Copy the elements to the array.
             input.CopyTo(output);
             return output;

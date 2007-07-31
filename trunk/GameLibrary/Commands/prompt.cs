@@ -18,7 +18,7 @@ public class Prompt : GameLibrary.Command
 
     public override bool DoCommand(PlayerCharacter pc, GameLibrary.GameContext gamecontext, string command, string arguments)
     {
-        pc.Send("(" + pc.Health + ") (" + gamecontext.Clock.GameTime + ") &yCommand: ");
+        pc.Send("(" + pc.X + "/" + pc.Y + ") (" + pc.Health + ") (" + gamecontext.Clock.GameTime + ") &yCommand: ");
 
         return false;
     }

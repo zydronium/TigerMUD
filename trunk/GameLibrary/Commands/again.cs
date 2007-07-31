@@ -26,7 +26,10 @@ public class Again : GameLibrary.Command
 
         try
         {
-            (gamecontext.GetCommand(pc.MessageLast)).DoCommand(pc, gamecontext, command, arguments);
+            arguments = String.Empty;
+            string commandword = gamecontext.GetCommandAndParams(pc.MessageLast, ref arguments);
+            Command repeatcommand = gamecontext.GetCommand(commandword);
+            repeatcommand.DoCommand(pc, gamecontext, commandword, arguments);
         }
         catch
         {}

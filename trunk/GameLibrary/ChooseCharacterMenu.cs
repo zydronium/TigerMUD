@@ -62,7 +62,9 @@ namespace GameLibrary
                 pc = gamecontext.Database.LoadCharacter(pc, ((GameLibrary.CharacterList)characterids[0]).Id);
                 // Put character on planet
                 pc.Planet = gamecontext.GetPlanet(pc.PlanetID);
+#if DEBUG
                 Console.WriteLine("Put player {0} on planet {1}", pc.NameDisplay, pc.Planet.NameDisplay);
+#endif
             }
 
             // Welcome the character

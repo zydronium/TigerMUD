@@ -282,7 +282,7 @@ namespace GameLibrary
 
         }
 
-        public ArrayList GetRooms()
+        public ArrayList GetRoomIds()
         {
             ArrayList roomids = new ArrayList();
             sqlcomm = new SqlCommand("select id from dbo.rooms", sqlcon);
@@ -298,6 +298,25 @@ namespace GameLibrary
                 }
             }
             return roomids;
+
+        }
+
+        public ArrayList GetExitIds()
+        {
+            ArrayList exitids = new ArrayList();
+            sqlcomm = new SqlCommand("select id from dbo.exits", sqlcon);
+            adapter = new SqlDataAdapter(sqlcomm);
+            dataset = new DataSet();
+            adapter.Fill(dataset);
+            // Repeat for each table in the DataSet collection.
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    exitids.Add(Convert.ToString(row["id"]));
+                }
+            }
+            return exitids;
 
         }
 
@@ -321,8 +340,6 @@ namespace GameLibrary
                     
                     //room.Planet = Planet.GetFromID(Convert.ToString(row["planetid"]));
                     //room.RoomType = (RoomType)Enum.ToObject(typeof(RoomType),Convert.ToInt32(row["roomtype"]));
-                    room.X = Convert.ToInt32(row["x"]);
-                    room.Y = Convert.ToInt32(row["y"]);
                     room.Indoor = Convert.ToBoolean(row["indoor"]);
                     room.SkyVisible = Convert.ToBoolean(row["skyvisible"]);
                     
@@ -330,6 +347,38 @@ namespace GameLibrary
 
             }
             return room;
+        }
+
+        public Exit LoadExit(string exitid, GameContext gc)
+        {
+            Exit exit = new Exit();
+            sqlcomm = new SqlCommand("select * from dbo.exits where id=@exitid", sqlcon);
+            sqlcomm.Parameters.Add(new SqlParameter("@exitid", exitid));
+            adapter = new SqlDataAdapter(sqlcomm);
+            dataset = new DataSet();
+            adapter.Fill(dataset);
+
+            // Repeat for each table in the DataSet collection.
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    exit.Id = Convert.ToString(row["id"]);
+                   
+                    exit.Hidden = Convert.ToBoolean(row["hidden"]);
+                    exit.Magic = Convert.ToBoolean(row["magic"]);
+                    exit.Locked = Convert.ToBoolean(row["locked"]);
+
+
+                }
+
+            }
+            return exit;
+        }
+
+        public void LinkKeysToExits()
+        {
+
         }
 
 
