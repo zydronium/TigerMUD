@@ -320,6 +320,25 @@ namespace GameLibrary
 
         }
 
+        public ArrayList GetKeyIds()
+        {
+            ArrayList keyids = new ArrayList();
+            sqlcomm = new SqlCommand("select id from dbo.keys", sqlcon);
+            adapter = new SqlDataAdapter(sqlcomm);
+            dataset = new DataSet();
+            adapter.Fill(dataset);
+            // Repeat for each table in the DataSet collection.
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    keyids.Add(Convert.ToString(row["id"]));
+                }
+            }
+            return keyids;
+
+        }
+
         public Room LoadRoom(string roomid)
         {
             Room room = new Room();
@@ -376,10 +395,74 @@ namespace GameLibrary
             return exit;
         }
 
-        public void LinkKeysToExits()
+        public Key LoadKey(string keyid, GameContext gc)
         {
+            Key key = new Key();
+            sqlcomm = new SqlCommand("select * from dbo.keys where id=@keyid", sqlcon);
+            sqlcomm.Parameters.Add(new SqlParameter("@keyid", keyid));
+            adapter = new SqlDataAdapter(sqlcomm);
+            dataset = new DataSet();
+            adapter.Fill(dataset);
 
+            // Repeat for each table in the DataSet collection.
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    key.Id = Convert.ToString(row["id"]);
+
+                    key.NameDisplay=Convert.ToString(row["namedisplay"]);
+                    key.Description=Convert.ToString(row["description"]);
+                }
+
+            }
+            return key;
         }
+
+        public bool LoadRoomsExitsRelationships(Room room, GameContext gc)
+        {
+            sqlcomm = new SqlCommand("select * from dbo.roomsexits where roomid=@roomid", sqlcon);
+            sqlcomm.Parameters.Add(new SqlParameter("@roomid", room.Id));
+            adapter = new SqlDataAdapter(sqlcomm);
+            dataset = new DataSet();
+            adapter.Fill(dataset);
+
+            // Repeat for each table in the DataSet collection.
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    // Convert exit id to real exit
+                    Exit exit=gc.GetExit(Convert.ToString(row["exitid"]));
+                    room.AddExit(Convert.ToString(row["direction"]), exit);
+                }
+
+            }
+            return false;
+        }
+
+        public bool LoadKeysExitsRelationships(Key key, GameContext gc)
+        {
+            sqlcomm = new SqlCommand("select * from dbo.keysexits where keyid=@keyid", sqlcon);
+            sqlcomm.Parameters.Add(new SqlParameter("@keyid", key.Id));
+            adapter = new SqlDataAdapter(sqlcomm);
+            dataset = new DataSet();
+            adapter.Fill(dataset);
+
+            // Repeat for each table in the DataSet collection.
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    // Convert exit id to real exit
+                    Exit exit = gc.GetExit(Convert.ToString(row["exitid"]));
+                    exit.AddKey(gc.GetKey(Convert.ToString(row["keyid"])));
+                }
+
+            }
+            return false;
+        }
+
 
 
         public PlayerAccount LoadAccount(string accountid)

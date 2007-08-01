@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace GameLibrary
 {
@@ -8,6 +9,8 @@ namespace GameLibrary
     {
         private object lockobj;
 
+        List<Key> keys = new List<Key>();
+       
         
         /// <summary>
         /// Represents an exit from a room or area.
@@ -16,6 +19,7 @@ namespace GameLibrary
         {
             Id = Guid.NewGuid().ToString();
             lockobj = new object();
+
 
             //
             // TODO: Add constructor logic here
@@ -46,7 +50,24 @@ namespace GameLibrary
             Dispose(false);
         }
 
+        /// <summary>
+        /// Adds a key that can unlock this exit.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public Exception AddKey(Key key)
+        {
+            try
+            {
+                keys.Add(key);
+                return null;
 
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
 
 
         private Room destinationroom;

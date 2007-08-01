@@ -22,6 +22,7 @@ namespace GameLibrary
         Dictionary<string, Planet> planets;
         Dictionary<string, Room> rooms;
         Dictionary<string, Exit> exits;
+        Dictionary<string, Key> keys;
         private Regex emailregex;
         string commandword;
         string[] words;
@@ -34,8 +35,10 @@ namespace GameLibrary
             planets = new Dictionary<string, Planet>();
             rooms = new Dictionary<string, Room>();
             exits = new Dictionary<string, Exit>();
+            keys = new Dictionary<string, Key>();
+
             emailregex = new Regex("(?<user>[^@]+)@(?<host>.+)");
-            
+
 
         }
 
@@ -47,7 +50,7 @@ namespace GameLibrary
                 if (instance == null)
                 {
                     instance = new GameContext();
-                    
+
                 }
                 return instance;
             }
@@ -62,7 +65,7 @@ namespace GameLibrary
 
         }
 
-   
+
 
         //Implement IDisposable.
         public void Dispose()
@@ -76,7 +79,7 @@ namespace GameLibrary
             if (disposing)
             {
                 // Free other state (managed objects).
-                if (database!=null) database.Dispose();
+                if (database != null) database.Dispose();
             }
             // Free your own state (unmanaged objects).
             // Set large fields to null.
@@ -127,6 +130,28 @@ namespace GameLibrary
 
         }
 
+        public List<Room> GetRooms()
+        {
+            List<Room> temprooms = new List<Room>();
+            foreach (string key in rooms.Keys)
+            {
+                temprooms.Add(rooms[key]);
+            }
+            return temprooms;
+            
+        }
+
+        public List<Key> GetKeys()
+        {
+            List<Key> tempkeys = new List<Key>();
+            foreach (string key in keys.Keys)
+            {
+                tempkeys.Add(keys[key]);
+            }
+            return tempkeys;
+
+        }
+
         public Exit GetExit(string id)
         {
             Exit exit;
@@ -136,6 +161,18 @@ namespace GameLibrary
 
             }
             return exit;
+
+        }
+
+        public Key GetKey(string id)
+        {
+            Key key;
+            lock (lockobj)
+            {
+                key = keys[id];
+
+            }
+            return key;
 
         }
 
@@ -218,6 +255,16 @@ namespace GameLibrary
             {
                 exits.Add(exit.Id, exit);
                 Console.WriteLine("Adding exit {0}", exit.Id);
+            }
+            return false;
+        }
+
+        public bool AddKey(Key key)
+        {
+            lock (lockobj)
+            {
+                keys.Add(key.Id, key);
+                Console.WriteLine("Adding key {0}", key.Id);
             }
             return false;
         }
@@ -380,7 +427,7 @@ namespace GameLibrary
             get { return assemblyfolder; }
             set { assemblyfolder = value; }
         }
-	
+
 
         public void ReadConfiguration()
         {
@@ -423,7 +470,7 @@ namespace GameLibrary
             get { return autostart; }
             set { autostart = value; }
         }
-	
+
         private int loaderport;
 
         public int LoaderPort
@@ -447,7 +494,7 @@ namespace GameLibrary
             get { return bypassauthentication; }
             set { bypassauthentication = value; }
         }
-	
+
 
         public string ConfigurationString
         {

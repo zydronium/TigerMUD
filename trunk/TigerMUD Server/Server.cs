@@ -7,6 +7,7 @@ using System.Threading;
 using System.Collections;
 using System.IO;
 using System.Drawing;
+using System.Collections.Specialized;
 
 namespace TigerMUD
 {
@@ -111,6 +112,11 @@ namespace TigerMUD
                 LoadPlanets();
                 LoadRooms();
                 LoadExits();
+                LoadKeys();
+
+                LinkRoomsToExits();
+                LinkKeystoExits();
+
                 
 
                 StartGameClock();
@@ -176,7 +182,8 @@ namespace TigerMUD
             Console.WriteLine("Loaded " + roomids.Count + " rooms.");
         }
 
-        public void LoadExits() {
+        public void LoadExits()
+        {
             Console.WriteLine("Loading Exits...");
             ArrayList exitids = new ArrayList();
             GameLibrary.Exit exit = new GameLibrary.Exit();
@@ -187,6 +194,53 @@ namespace TigerMUD
                 threadstartup.GameContext.AddExit(exit);
             }
             Console.WriteLine("Loaded " + exitids.Count + " exits.");
+
+        }
+
+        public void LoadKeys()
+        {
+            Console.WriteLine("Loading Keys...");
+            ArrayList keyids = new ArrayList();
+            GameLibrary.Key key = new GameLibrary.Key();
+            keyids = threadstartup.GameContext.Database.GetKeyIds();
+            foreach (string keyid in keyids)
+            {
+                key = threadstartup.GameContext.Database.LoadKey(keyid, gamecontext);
+                threadstartup.GameContext.AddKey(key);
+            }
+            Console.WriteLine("Loaded " + keyids.Count + " keys.");
+
+        }
+
+        public void LinkRoomsToExits()
+        {
+
+            List<GameLibrary.Room> temprooms = gamecontext.GetRooms();
+
+            Console.WriteLine("Linking Rooms to Exits...");
+            int counter = 0;
+            foreach (GameLibrary.Room temproom in temprooms)
+            {
+                threadstartup.GameContext.Database.LoadRoomsExitsRelationships(temproom, gamecontext);
+                counter++;
+            }
+            Console.WriteLine("Linked {0} rooms to exits.",counter);
+ 
+        }
+
+        public void LinkKeystoExits()
+        {
+
+            List<GameLibrary.Key> tempkeys = gamecontext.GetKeys();
+
+            Console.WriteLine("Linking Keys to Exits...");
+            int counter = 0;
+            foreach (GameLibrary.Key tempkey in tempkeys)
+            {
+                threadstartup.GameContext.Database.LoadKeysExitsRelationships(tempkey, gamecontext);
+                counter++;
+            }
+            Console.WriteLine("Linked {0} keys to exits.", counter);
 
         }
 
@@ -240,7 +294,7 @@ namespace TigerMUD
 
                     // Process keystrokes
                     GameLibrary.CommunicationResult result = pc.HandleKeystrokes();
-                    
+
                     // Skip clients that have no message for the server
                     if (result == GameLibrary.CommunicationResult.NoMessageReceived)
                     {
@@ -256,7 +310,7 @@ namespace TigerMUD
                         clienthandler.Disconnect(pc);
                         continue;
                     }
-                   
+
 
                     // Make newly connected clients login
                     if (pc.ConnectionState == GameLibrary.ConnectionState.NewConnection)
@@ -266,10 +320,10 @@ namespace TigerMUD
                     }
 
                     // Handle responses to menu prompts
-                    if (result == GameLibrary.CommunicationResult.MessageReceived && pc.ConnectionState == GameLibrary.ConnectionState.WaitingAtMenuPrompt )
+                    if (result == GameLibrary.CommunicationResult.MessageReceived && pc.ConnectionState == GameLibrary.ConnectionState.WaitingAtMenuPrompt)
                     {
-                            pc.Menu.HandleMenuResponse(pc.Message);
-                            continue;
+                        pc.Menu.HandleMenuResponse(pc.Message);
+                        continue;
                     }
 
                     // Ensure command prompt is displayed when in doubt
