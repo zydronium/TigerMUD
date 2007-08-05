@@ -34,8 +34,9 @@ public class Movement : GameLibrary.Command
         this.Words.Add("o");
         this.Words.Add("out");
         this.Words.Add("enter");
+        this.Words.Add("en");
         this.Words.Add("exit");
-
+        this.Words.Add("ex");
         this.Syntax = "north";
         this.Category = "movement";
     }
@@ -123,6 +124,9 @@ public class Movement : GameLibrary.Command
                 pc.X -= 1;
                 break;
             case "enter":
+                HandlePortal(pc, gamecontext);
+                break;
+            case "en":
                 HandlePortal(pc, gamecontext);
                 break;
             case "in":
