@@ -52,9 +52,7 @@ public class Movement : GameLibrary.Command
         {
 
             // TODO scan exits to find target room
-
-
-
+            MoveInRooms(pc, command, gamecontext);
 
         }
 
@@ -125,13 +123,13 @@ public class Movement : GameLibrary.Command
                 break;
             case "enter":
                 HandlePortal(pc, gamecontext);
-                break;
+                return;
             case "en":
                 HandlePortal(pc, gamecontext);
-                break;
+                return;
             case "in":
                 HandlePortal(pc,gamecontext);
-                break;
+                return;
         }
 
        
@@ -151,6 +149,8 @@ public class Movement : GameLibrary.Command
         {
             pc.SendLine("There is a portal to {0} here.", pc.Planet.MapTerrain[pc.X, pc.Y].LocationMessage);
         }
+
+
     }
 
     public bool HandlePortal(PlayerCharacter pc, GameContext gc)
@@ -159,6 +159,7 @@ public class Movement : GameLibrary.Command
         {
             try
             {
+                
                 pc.MoveToRoom(pc.Planet.MapTerrain[pc.X, pc.Y].PortalLink, gc);
             }
             catch
@@ -175,6 +176,24 @@ public class Movement : GameLibrary.Command
         }
 
         return false;
+
+    }
+
+    public void MoveInRooms(PlayerCharacter pc, string command, GameContext gamecontext)
+    {
+        Exit exit;
+        try
+        {
+            exit = pc.Room.GetExit(command);
+        }
+        catch 
+        {
+            pc.SendLine("&RNo such exit.");
+            return;
+        }
+        pc.Room = exit.DestinationRoom;
+        Command tempcommand = gamecontext.GetCommand("look");
+        tempcommand.DoCommand(pc, gamecontext, "look", null);
 
     }
 

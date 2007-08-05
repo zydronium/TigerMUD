@@ -20,7 +20,7 @@ public class Tick : GameLibrary.Command
     {
         try
         {
-            Console.Write("Tick");
+            Console.WriteLine("Tick");
         }
         catch
         { }

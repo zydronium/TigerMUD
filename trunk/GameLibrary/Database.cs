@@ -377,13 +377,15 @@ namespace GameLibrary
             dataset = new DataSet();
             adapter.Fill(dataset);
 
+            string destinationroomid = string.Empty;
             // Repeat for each table in the DataSet collection.
             foreach (DataTable table in dataset.Tables)
             {
                 foreach (DataRow row in table.Rows)
                 {
                     exit.Id = Convert.ToString(row["id"]);
-                   
+                    destinationroomid = Convert.ToString(row["destinationroomid"]);
+                    exit.DestinationRoom = gc.GetRoom(destinationroomid);
                     exit.Hidden = Convert.ToBoolean(row["hidden"]);
                     exit.Magic = Convert.ToBoolean(row["magic"]);
                     exit.Locked = Convert.ToBoolean(row["locked"]);
@@ -435,6 +437,8 @@ namespace GameLibrary
                     // Convert exit id to real exit
                     Exit exit=gc.GetExit(Convert.ToString(row["exitid"]));
                     room.AddExit(Convert.ToString(row["direction"]), exit);
+                    room.AddExit(Convert.ToString(row["direction"]).Substring(0,1), exit);
+
                 }
 
             }
