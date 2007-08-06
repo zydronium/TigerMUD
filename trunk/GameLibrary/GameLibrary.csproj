@@ -54,6 +54,7 @@
     <Compile Include="Commands\compile.cs" />
     <Compile Include="Commands\examplecommand.cs" />
     <Compile Include="Commands\exampleparsing.cs" />
+    <Compile Include="Commands\give.cs" />
     <Compile Include="Commands\look.cs" />
     <Compile Include="Commands\map.cs" />
     <Compile Include="Commands\menutest.cs" />

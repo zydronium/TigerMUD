@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Collections.Specialized;
 
 namespace GameLibrary
 {
@@ -10,7 +11,39 @@ namespace GameLibrary
     /// </summary>
     public class GameObject
     {
-       
+        Dictionary<string, Item> inventory = new Dictionary<string, Item>();
+        
+        public bool AddInventory(Item item) 
+        {
+            try
+            {
+                inventory.Add(item.NameShort, item);
+
+            }
+            catch
+            {
+                return true;
+            }
+
+
+            return false;
+
+        }
+
+        public bool RemoveInventory(Item item)
+        {
+            try
+            {
+                inventory.Remove(item.NameShort);
+
+            }
+            catch
+            {
+                return true;
+            }
+            return false;
+
+        }
 
         private bool changed;
 
@@ -33,7 +66,7 @@ namespace GameLibrary
         public string NameShort
         {
             get { return nameshort; }
-            set { nameshort = value; }
+            set { nameshort = value.ToLower(); }
         }
 
         private string namedisplay;

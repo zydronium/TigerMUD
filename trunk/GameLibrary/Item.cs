@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Text;
+using System.Collections.Generic;
 
 namespace GameLibrary
 {
@@ -9,6 +10,9 @@ namespace GameLibrary
     /// </summary>
     public class Item : GameLibrary.GameObject
     {
+        private List<Item> contents = new List<Item>();
+
+        
         private bool movable;
 
         public bool Movable
@@ -33,20 +37,21 @@ namespace GameLibrary
             set { locked = value; }
         }
 
+        private bool hidden;
+
+        public bool Hidden
+        {
+            get { return hidden; }
+            set { hidden = value; }
+        }
+	
+
         private int monetaryvalue;
 
         public int MonetaryValue
         {
             get { return monetaryvalue; }
             set { monetaryvalue = value; }
-        }
-
-        private Object owner;
-
-        public Object Owner
-        {
-            get { return owner; }
-            set { owner = value; }
         }
 
         private int quantity;
@@ -68,14 +73,7 @@ namespace GameLibrary
         ArrayList effects;
 
      
-        private string room;
-
-        public string Room
-        {
-            get { return room; }
-            set { room = value; }
-        }
-
+       
         private int x;
 
         public int X
@@ -91,6 +89,9 @@ namespace GameLibrary
             get { return y; }
             set { y = value; }
         }
+
+
+     
 
 	
     }
