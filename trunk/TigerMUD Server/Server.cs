@@ -111,11 +111,13 @@ namespace TigerMUD
 
                 LoadPlanets();
                 LoadRooms();
+                LoadItems();
                 LoadExits();
                 LoadKeys();
 
                 LinkRoomsToExits();
                 LinkKeystoExits();
+                LinkRoomsToItems();
 
                 
 
@@ -182,6 +184,20 @@ namespace TigerMUD
             Console.WriteLine("Loaded " + roomids.Count + " rooms.");
         }
 
+        public void LoadItems()
+        {
+            Console.WriteLine("Loading Items...");
+            ArrayList itemids = new ArrayList();
+            GameLibrary.Item item = new GameLibrary.Item();
+            itemids = threadstartup.GameContext.Database.GetItemIds();
+            foreach (string itemid in itemids)
+            {
+                item = threadstartup.GameContext.Database.LoadItem(itemid);
+                threadstartup.GameContext.AddItem(item);
+            }
+            Console.WriteLine("Loaded " + itemids.Count + " items.");
+        }
+
         public void LoadExits()
         {
             Console.WriteLine("Loading Exits...");
@@ -226,6 +242,22 @@ namespace TigerMUD
             }
             Console.WriteLine("Linked {0} rooms to exits.",counter);
  
+        }
+
+        public void LinkRoomsToItems()
+        {
+
+            List<GameLibrary.Room> temprooms = gamecontext.GetRooms();
+
+            Console.WriteLine("Linking Rooms to Items...");
+            int counter = 0;
+            foreach (GameLibrary.Room temproom in temprooms)
+            {
+                threadstartup.GameContext.Database.LoadRoomsItemsRelationships(temproom, gamecontext);
+                counter++;
+            }
+            Console.WriteLine("Linked {0} rooms to items.", counter);
+
         }
 
         public void LinkKeystoExits()

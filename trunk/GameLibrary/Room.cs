@@ -29,7 +29,8 @@ namespace GameLibrary
         /// </summary>
         Dictionary<string, Key> keys = new Dictionary<string,Key>();
 
-        List<Item> items = new List<Item>();
+        
+
         object lockobj;
 
         /// <summary>
@@ -89,6 +90,18 @@ namespace GameLibrary
 
         }
 
+        public List<string> GetItemList()
+        {
+            List<string> tempitems = new List<string>();
+
+            foreach (string key in items.Keys)
+            {
+                tempitems.Add(key);
+            }
+            return tempitems;
+
+        }
+
         /// <summary>
         /// Gets an exit based on the name of the exit.
         /// </summary>
@@ -123,6 +136,21 @@ namespace GameLibrary
             try
             {
                 exits.Add(exitname, exit);
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+
+        public Exception AddItem(string itemname, Item item)
+        {
+            try
+            {
+                items.Add(itemname, item);
                 return null;
 
             }

@@ -21,13 +21,7 @@ namespace GameLibrary
             set { movable = value; }
         }
         
-        private bool lockable;
-
-        public bool Lockable
-        {
-            get { return lockable; }
-            set { lockable = value; }
-        }
+       
 
         private bool locked;
 
@@ -72,7 +66,7 @@ namespace GameLibrary
 
         ArrayList effects;
 
-     
+      
        
         private int x;
 

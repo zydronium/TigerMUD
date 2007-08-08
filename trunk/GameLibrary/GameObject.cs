@@ -11,40 +11,9 @@ namespace GameLibrary
     /// </summary>
     public class GameObject
     {
-        Dictionary<string, Item> inventory = new Dictionary<string, Item>();
+        public Dictionary<string, Item> items = new Dictionary<string, Item>();
+
         
-        public bool AddInventory(Item item) 
-        {
-            try
-            {
-                inventory.Add(item.NameShort, item);
-
-            }
-            catch
-            {
-                return true;
-            }
-
-
-            return false;
-
-        }
-
-        public bool RemoveInventory(Item item)
-        {
-            try
-            {
-                inventory.Remove(item.NameShort);
-
-            }
-            catch
-            {
-                return true;
-            }
-            return false;
-
-        }
-
         private bool changed;
 
         public bool Changed
@@ -76,6 +45,16 @@ namespace GameLibrary
             get { return namedisplay; }
             set { namedisplay = value; }
         }
+
+
+        private string description;
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+	
 
        
         

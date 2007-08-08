@@ -21,6 +21,8 @@ namespace GameLibrary
         Hashtable commands;
         Dictionary<string, Planet> planets;
         Dictionary<string, Room> rooms;
+        Dictionary<string, Item> items;
+
         Dictionary<string, Exit> exits;
         Dictionary<string, Key> keys;
         private Regex emailregex;
@@ -34,6 +36,7 @@ namespace GameLibrary
             commands = new Hashtable();
             planets = new Dictionary<string, Planet>();
             rooms = new Dictionary<string, Room>();
+            items = new Dictionary<string, Item>();
             exits = new Dictionary<string, Exit>();
             keys = new Dictionary<string, Key>();
 
@@ -127,6 +130,18 @@ namespace GameLibrary
 
             }
             return room;
+
+        }
+
+        public Item GetItem(string id)
+        {
+            Item item;
+            lock (lockobj)
+            {
+                item = items[id];
+
+            }
+            return item;
 
         }
 
@@ -244,6 +259,17 @@ namespace GameLibrary
             {
                 rooms.Add(room.Id, room);
                 Console.WriteLine("Adding room {0}", room.Id);
+            }
+            return false;
+
+        }
+
+        public bool AddItem(Item item)
+        {
+            lock (lockobj)
+            {
+                items.Add(item.Id, item);
+                Console.WriteLine("Adding room {0}", item.Id);
             }
             return false;
 

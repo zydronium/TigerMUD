@@ -301,6 +301,25 @@ namespace GameLibrary
 
         }
 
+        public ArrayList GetItemIds()
+        {
+            ArrayList itemids = new ArrayList();
+            sqlcomm = new SqlCommand("select id from dbo.items", sqlcon);
+            adapter = new SqlDataAdapter(sqlcomm);
+            dataset = new DataSet();
+            adapter.Fill(dataset);
+            // Repeat for each table in the DataSet collection.
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    itemids.Add(Convert.ToString(row["id"]));
+                }
+            }
+            return itemids;
+
+        }
+
         public ArrayList GetExitIds()
         {
             ArrayList exitids = new ArrayList();
@@ -366,6 +385,40 @@ namespace GameLibrary
 
             }
             return room;
+        }
+
+
+        public Item LoadItem(string itemid)
+        {
+            Item item = new Item();
+            sqlcomm = new SqlCommand("select * from dbo.items where id=@itemid", sqlcon);
+            sqlcomm.Parameters.Add(new SqlParameter("@itemid", itemid));
+            adapter = new SqlDataAdapter(sqlcomm);
+            dataset = new DataSet();
+            adapter.Fill(dataset);
+
+            // Repeat for each table in the DataSet collection.
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    item.Id = Convert.ToString(row["id"]);
+                    item.NameShort = Convert.ToString(row["nameshort"]);
+                    item.NameDisplay = Convert.ToString(row["namedisplay"]);
+                    item.Description = Convert.ToString(row["description"]);
+                    
+                    item.Quantity = Convert.ToInt32(row["quantity"]);
+                    item.Stackable = Convert.ToBoolean(row["stackable"]);
+                    item.X = Convert.ToInt32(row["x"]);
+                    item.Y = Convert.ToInt32(row["y"]);
+                    item.Locked = Convert.ToBoolean(row["locked"]);
+                    item.Movable = Convert.ToBoolean(row["movable"]);
+                    item.MonetaryValue = Convert.ToInt32(row["monetaryvalue"]);
+
+                }
+
+            }
+            return item;
         }
 
         public Exit LoadExit(string exitid, GameContext gc)
@@ -438,6 +491,30 @@ namespace GameLibrary
                     Exit exit=gc.GetExit(Convert.ToString(row["exitid"]));
                     room.AddExit(Convert.ToString(row["direction"]), exit);
                     room.AddExit(Convert.ToString(row["direction"]).Substring(0,1), exit);
+
+                }
+
+            }
+            return false;
+        }
+
+        public bool LoadRoomsItemsRelationships(Room room, GameContext gc)
+        {
+            sqlcomm = new SqlCommand("select * from dbo.roomsitems where roomid=@roomid", sqlcon);
+            sqlcomm.Parameters.Add(new SqlParameter("@roomid", room.Id));
+            adapter = new SqlDataAdapter(sqlcomm);
+            dataset = new DataSet();
+            adapter.Fill(dataset);
+
+            // Repeat for each table in the DataSet collection.
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    // Convert exit id to real exit
+                    Item item = gc.GetItem(Convert.ToString(row["itemid"]));
+                    room.AddItem(item.NameShort, item);
+                    room.AddItem(item.NameDisplay, item);
 
                 }
 

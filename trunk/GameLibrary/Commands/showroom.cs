@@ -30,6 +30,18 @@ public class ShowRoom : GameLibrary.Command
         }
         pc.SendLine("&n");
 
+        pc.Send("\r\nItems:");
+
+        List<string> items = pc.Room.GetItemList();
+
+        foreach (string item in items)
+        {
+            pc.Send(" &B{0}", item);
+
+        }
+        pc.SendLine("&n");
+        
+
         return false;
     }
 

@@ -19,10 +19,11 @@ public class Look : GameLibrary.Command
 
     public override bool DoCommand(PlayerCharacter pc, GameLibrary.GameContext gamecontext, string command, string arguments)
     {
-
-        Command tempcommand = gamecontext.GetCommand("showroom");
-        tempcommand.DoCommand(pc, gamecontext, "showroom", null);
-        
+        if (!pc.InWilderness)
+        {
+            Command tempcommand = gamecontext.GetCommand("showroom");
+            tempcommand.DoCommand(pc, gamecontext, "showroom", null);
+        }
         return false;
     }
 }
