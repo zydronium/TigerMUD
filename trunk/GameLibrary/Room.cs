@@ -5,6 +5,7 @@ using System.Web;
 using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 
 namespace GameLibrary
@@ -80,23 +81,39 @@ namespace GameLibrary
         /// <returns>A list of room exits.</returns>
         public List<string> GetExitList()
         {
-            List<string> tempexits = new List<string>();
+            List<string> exitkeys = new List<string>();
+            // Temp list just to avoid dupe exits shown
+            List<Exit> exitobjects = new List<Exit>();
 
             foreach (string key in exits.Keys)
             {
-                tempexits.Add(key);
+                if (exitobjects.IndexOf(exits[key]) == -1)
+                {
+                    exitobjects.Add(exits[key]);
+                    exitkeys.Add(key);
+                }
+
             }
-            return tempexits;
+            return exitkeys;
 
         }
+
+        
 
         public List<string> GetItemList()
         {
             List<string> tempitems = new List<string>();
+            // Temp list just to avoid dupe items shown
+            List<Item> tempitemobjects = new List<Item>();
 
             foreach (string key in items.Keys)
             {
-                tempitems.Add(key);
+                if (tempitemobjects.IndexOf(items[key]) == -1)
+                {
+                    tempitemobjects.Add(items[key]);
+                    tempitems.Add(key);
+                    
+                }
             }
             return tempitems;
 
