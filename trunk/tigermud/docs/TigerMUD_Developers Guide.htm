@@ -1,0 +1,1060 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>TigerMUD Developer's Guide</title>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+h1
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+h3
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:Arial;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoList, li.MsoList, div.MsoList
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoList2, li.MsoList2, div.MsoList2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoList3, li.MsoList3, div.MsoList3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoListContinue3, li.MsoListContinue3, div.MsoListContinue3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.75in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoBodyTextFirstIndent, li.MsoBodyTextFirstIndent, div.MsoBodyTextFirstIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-indent:10.5pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=Section1>
+
+<p class=MsoNormal><a name="_Toc104868910">TigerMUD Developer’s Guide</a></p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>/-------------------------------------------------------------\</span></p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>|&nbsp;&nbsp;&nbsp;
+_______&nbsp;
+_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+__&nbsp; __&nbsp; _&nbsp;&nbsp;&nbsp; _&nbsp; _____&nbsp;&nbsp;&nbsp;&nbsp; |</span></p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>|&nbsp;&nbsp;
+|__&nbsp;&nbsp;
+__|(_)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp; \/&nbsp; || |&nbsp; | ||&nbsp; __ \&nbsp;&nbsp;&nbsp; |</span></p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| |&nbsp;&nbsp;&nbsp; _&nbsp;&nbsp; __ _&nbsp;&nbsp; ___&nbsp; _ __ | \&nbsp; /
+|| |&nbsp; | || |&nbsp; | |&nbsp;&nbsp; |</span></p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| |&nbsp;&nbsp; | | / _` | / _ \| '__|| |\/| || |&nbsp; | || |&nbsp; |
+|&nbsp;&nbsp; |</span></p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| |&nbsp;&nbsp; | || (_| ||&nbsp; __/| |&nbsp;&nbsp; | |&nbsp; | || |__| ||
+|__| |&nbsp;&nbsp; |</span></p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|_|&nbsp;&nbsp; |_| \__, | \___||_|&nbsp;&nbsp; |_|&nbsp; |_| \____/
+|_____/&nbsp;&nbsp;&nbsp; |</span></p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+__/ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|</span></p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|___/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;Copyright (c) 2004&nbsp;&nbsp;&nbsp; |</span></p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>\-------------------------------------------------------------/</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoBodyText>TigerMUD Contributors: Adam Miller, Aaron Vannatter,
+Andrew Conrad, Andrew Jump, Anna Steverson, Brian Newton, Jeff Boschee, John
+Ingram, William Crawford and Luke Venediger.</p>
+
+<h1><a name="_Toc104868911"></a><a name="_Toc104866960"></a><a
+name="_Toc104868492"></a><a name="_Toc104867341"></a><a name="_Toc104867183"></a>Table
+of Contents</h1>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868910">TigerMUD
+Developer’s Guide<span style='color:windowtext;display:none;text-decoration:
+none'>. 1</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868911">Table of
+Contents<span style='color:windowtext;display:none;text-decoration:none'>. 1</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868912">About
+TigerMUD<span style='color:windowtext;display:none;text-decoration:none'>.. 2</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868913">Who should
+read this guide<span style='color:windowtext;display:none;text-decoration:none'>.
+2</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868914">Default
+TigerMUD installation on Windows with MS Access (PREFERRED METHOD)<span
+style='color:windowtext;display:none;text-decoration:none'> 2</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868915">TigerMUD
+installation and configuration on Windows with MySQL<span style='color:windowtext;
+display:none;text-decoration:none'>. 3</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868916">TortoiseCVS
+Install and Config<span style='color:windowtext;display:none;text-decoration:
+none'>. 3</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868917">The
+TortoiseCVS Checkout Module dialog appears.<span style='color:windowtext;
+display:none;text-decoration:none'> 3</span></a></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><a href="#_Toc104868918">For
+anonymous (read-only) source code access:<span style='color:windowtext;
+display:none;text-decoration:none'> 3</span></a></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><a href="#_Toc104868919">For TigerMUD
+developer team members (read/write access):<span style='color:windowtext;
+display:none;text-decoration:none'> 3</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868920">MySQL
+Install and Config<span style='color:windowtext;display:none;text-decoration:
+none'>. 3</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868921">Install MySQL
+4.1.7 (Windows Essentials (x86))<span style='color:windowtext;display:none;
+text-decoration:none'> 4</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868922">MySQL Server
+Instance Configuration Wizard appears.<span style='color:windowtext;display:
+none;text-decoration:none'> 4</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868923">Install
+MySQL Connector/ODBC 3.5<span style='color:windowtext;display:none;text-decoration:
+none'>. 4</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868924">Install MySQL
+Administrator 1.0.14<span style='color:windowtext;display:none;text-decoration:
+none'>. 4</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868925">Install
+MySQL Query Browser 1.1.1<span style='color:windowtext;display:none;text-decoration:
+none'>. 4</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868926">Run MySQL
+Administrator<span style='color:windowtext;display:none;text-decoration:none'>
+4</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868927">Run MySQL
+Query Browser<span style='color:windowtext;display:none;text-decoration:none'>
+5</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868928">Modify your
+TigerMUD.xml file<span style='color:windowtext;display:none;text-decoration:
+none'>. 5</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868929">Use
+SharpDevelop or Microsoft Visual Studio.NET?<span style='color:windowtext;
+display:none;text-decoration:none'>. 5</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868930">Using
+SharpDevelop<span style='color:windowtext;display:none;text-decoration:none'>.
+5</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868931">Using
+Microsoft Visual Studio .NET<span style='color:windowtext;display:none;
+text-decoration:none'>. 6</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868932">Important
+Note for both SharpDevelop and Visual Studio.NET users<span style='color:windowtext;
+display:none;text-decoration:none'>. 6</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868933">Compile and
+Run TigerMUD with SharpDevelop<span style='color:windowtext;display:none;
+text-decoration:none'>. 6</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868934">Compile and Run
+TigerMUD with Visual Studio.NET<span style='color:windowtext;display:none;
+text-decoration:none'>. 6</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868935">Using the
+Nant Script<span style='color:windowtext;display:none;text-decoration:none'> 6</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868936">Setting up
+Nant for your environment<span style='color:windowtext;display:none;text-decoration:
+none'> 6</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868937">Building
+TigerMUD with Nant (on Windows, using Microsoft’s .Net Framework 1.1)<span
+style='color:windowtext;display:none;text-decoration:none'> 7</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868938">Building
+TigerMUD with Nant and MONO (1.1.7)<span style='color:windowtext;display:none;
+text-decoration:none'> 7</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868939">Running
+TigerMUD on MONO<span style='color:windowtext;display:none;text-decoration:
+none'>.. 7</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc104868940">For Nant
+Users<span style='color:windowtext;display:none;text-decoration:none'>. 8</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868941">Running
+TigerMUD for the first time<span style='color:windowtext;display:none;
+text-decoration:none'>. 8</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868942">Connect to
+TigerMUD<span style='color:windowtext;display:none;text-decoration:none'>.. 8</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868943">Troubleshooting<span
+style='color:windowtext;display:none;text-decoration:none'>. 8</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868944">Contact Us<span
+style='color:windowtext;display:none;text-decoration:none'>. 8</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc104868945">TigerMUD
+Developer Guidelines<span style='color:windowtext;display:none;text-decoration:
+none'>. 8</span></a></span></p>
+
+<h1>&nbsp;</h1>
+
+<h1><a name="_Toc104868912"></a><a name="_Toc104866961"></a><a
+name="_Toc104868493"></a><a name="_Toc104867342"></a><a name="_Toc104867184"></a>About
+TigerMUD</h1>
+
+<p class=MsoBodyText>TigerMUD is an open source Multi User Dungeon (MUD) for
+Microsoft Windows, written in C#.</p>
+
+<p class=MsoBodyText>You can learn more at <a href="http://tigermud.com/">http://tigermud.com</a></p>
+
+<h1><a name="_Toc104868913"></a><a name="_Toc104866962"></a><a
+name="_Toc104868494"></a><a name="_Toc104867343"></a><a name="_Toc104867185"></a>Who
+should read this guide</h1>
+
+<p class=MsoBodyText>This Developer’s Guide is for those who want to configure
+the Tortoise CVS source control client, download the source code from
+SourceForge, compile your own executables, and/or changes the database to MySQL
+or Microsoft SQL.</p>
+
+<p class=MsoBodyText>To avoid this work, download and run the TigerMUD Windows
+install package (MSI file) that installs and configures everything for you,
+including the internal Access database to get running fast. Using this method,
+you don’t get the bleeding edge code, but you get the latest declared “stable”
+build.</p>
+
+<p class=MsoNormal>You can get both the TigerMUD install program and this
+Developer’s Guide under the “Latest File Releases” section at: </p>
+
+<p class=MsoNormal><a href="http://sourceforge.net/projects/tigermud/">http://sourceforge.net/projects/tigermud/</a></p>
+
+<p class=MsoNormal>Report bugs and ask questions in the discussion forum at the
+TigerMUD project Web page:</p>
+
+<p class=MsoNormal><a href="http://sourceforge.net/projects/tigermud/">http://sourceforge.net/projects/tigermud/</a></p>
+
+<h1><a name="_Toc104868914"></a><a name="_Toc104866963"></a><a
+name="_Toc104868495"></a><a name="_Toc104867344"></a><a name="_Toc104867186"></a>Default
+TigerMUD installation on Windows with MS Access (PREFERRED METHOD)</h1>
+
+<p class=MsoBodyText>You can perform the quickest and easiest TigerMUD
+installation if you simply run the <span style='font-size:10.0pt;font-family:
+"Courier New"'>TigerMUD_Setup.msi</span> file. This creates a default
+installation of TigerMUD on your local computer and uses MS Access as its
+back-end database. All options are preconfigured for you. </p>
+
+<p class=MsoBodyText>If you wish to then perform development tasks based on
+this default installation, follow the steps in this document but skip those
+steps for MySQL software and components, and the database import steps. The
+sample Access database available in the source code requires no import steps to
+use it.</p>
+
+<p class=MsoBodyText>Choosing your database type is done by editing the
+tigermud.xml file and setting the &lt;Database&gt;&lt;Type&gt; parameter to
+msaccess, mysql, or mssql.</p>
+
+<h1><a name="_Toc104868915"></a><a name="_Toc104866964"></a><a
+name="_Toc104868496"></a><a name="_Toc104867345"></a><a name="_Toc104867187"></a>TigerMUD
+installation and configuration on Windows with MySQL</h1>
+
+<p class=MsoBodyText>(These steps were tested on November 8, 2004 on Windows
+XP. The product versions are listed to provide a known-good reference platform.
+Other versions may work, too.)</p>
+
+<h1><a name="_Toc104868916"></a><a name="_Toc104866965"></a><a
+name="_Toc104868497"></a><a name="_Toc104867346"></a><a name="_Toc104867188"></a>TortoiseCVS
+Install and Config</h1>
+
+<p class=MsoBodyText>Download and install TortoiseCVS 1.8.12 from:</p>
+
+<p class=MsoBodyText><a href="http://www.tortoisecvs.org/download.shtml">http://www.tortoisecvs.org/download.shtml</a></p>
+
+<p class=MsoBodyText>Create a c:\TigerMUD folder (or wherever you want),
+right-click the new folder, and then click CVS Checkout...</p>
+
+<h2><a name="_Toc104868917"></a><a name="_Toc104866966"></a><a
+name="_Toc104868498"></a><a name="_Toc104867347"></a><a name="_Toc104867189"></a>The
+TortoiseCVS Checkout Module dialog appears.</h2>
+
+<p class=MsoBodyText>Here, you must choose between the next two procedures: </p>
+
+<p class=MsoList style='margin-left:.5in'>1.<span style='font-size:7.0pt'>
+&nbsp;&nbsp;</span>Setting up anonymous read-only source code access.</p>
+
+<p class=MsoList style='margin-left:.5in'>2.<span style='font-size:7.0pt'>
+&nbsp;&nbsp;</span>TigerMUD dev team setup for read/write source code access.</p>
+
+<h3><a name="_Toc104868918"></a><a name="_Toc104866967"></a><a
+name="_Toc104868499"></a><a name="_Toc104867348"></a><a name="_Toc104867190"></a>For
+anonymous (read-only) source code access:</h3>
+
+<p class=MsoBodyText>For CVSROOT string, paste in: </p>
+
+<p class=MsoBodyText><span style='font-size:10.0pt;font-family:"Courier New"'>-d
+:pserver:anonymous@cvs.sourceforge.net:/cvsroot/tigermud </span></p>
+
+<p class=MsoListBullet3 style='margin-left:0in;text-indent:0in'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoListBullet3 style='margin-left:0in;text-indent:0in'>This action
+will populate other fields accordingly.&nbsp;Set your Module=TigerMUD (case
+sensitive). Click OK, then all the latest code will download into your folder.</p>
+
+<h3><a name="_Toc104868919"></a><a name="_Toc104866968"></a><a
+name="_Toc104868500"></a><a name="_Toc104867349"></a><a name="_Toc104867191"></a>For
+TigerMUD developer team members (read/write access):</h3>
+
+<p class=MsoBodyText>For CVSROOT string, paste in: </p>
+
+<p class=MsoBodyText><span style='font-size:10.0pt;font-family:"Courier New"'>:ssh:username@cvs.sourceforge.net:/cvsroot/tigermud
+</span></p>
+
+<p class=MsoBodyText>where &lt;<span style='font-size:10.0pt;font-family:"Courier New"'>username</span>&gt;
+is replaced with your Sourceforge account username. This action will populate
+other fields accordingly.</p>
+
+<p class=MsoBodyText>Module=TigerMUD (case sensitive)</p>
+
+<p class=MsoBodyText>Click OK, then you will be prompted for your Sourceforge
+password, then all the latest code will download into your folder.</p>
+
+<h1><a name="_Toc104868920"></a><a name="_Toc104868501"></a><a
+name="_Toc104867350"></a><a name="_Toc104867192"></a><a name="_Toc104866969"></a>MySQL
+Install and Config </h1>
+
+<p class=MsoBodyText>(Skip these steps if using the Default Installation
+w/Microsoft Access.)</p>
+
+<p class=MsoBodyText>Download the following packages from here:</p>
+
+<p class=MsoBodyText><a href="http://dev.mysql.com/downloads/">http://dev.mysql.com/downloads/</a></p>
+
+<p class=MsoList2>1.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>MySQL 4.1.7 server (Windows Essentials (x86))</p>
+
+<p class=MsoList2>2.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>MySQL Connector/ODBC 3.5</p>
+
+<p class=MsoList2>3.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>MySQL Administrator 1.0.14</p>
+
+<p class=MsoList2>4.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>MySQL Query Browser 1.1.1</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Note that the tigermud.xml file
+controls the database type. For MySQL, your database section should look like
+this:</p>
+
+<p class=MsoBodyText><span style='font-size:10.0pt;font-family:"Courier New"'>&lt;Database&gt;</span></p>
+
+<p class=MsoBodyText><span style='font-size:10.0pt;font-family:"Courier New"'>&lt;Type&gt;mysql&lt;/Type&gt;</span></p>
+
+<h2><a name="_Toc104868921"></a><a name="_Toc104866970"></a><a
+name="_Toc104868502"></a><a name="_Toc104867351"></a><a name="_Toc104867193"></a>Install
+MySQL 4.1.7 (Windows Essentials (x86))</h2>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-indent:-.25in'>1.<span
+style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Choose Custom
+setup</p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-indent:-.25in'>2.<span
+style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Choose MySQL
+Server and Client Programs</p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-indent:-.25in'>3.<span
+style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Check “Configure
+MySQL Now”</p>
+
+<h2><a name="_Toc104868922"></a><a name="_Toc104866971"></a><a
+name="_Toc104868503"></a><a name="_Toc104867352"></a><a name="_Toc104867194"></a>MySQL
+Server Instance Configuration Wizard appears.</h2>
+
+<p class=MsoList3 style='margin-left:.5in'>1.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Choose Detailed Configuration.</p>
+
+<p class=MsoList3 style='margin-left:.5in'>2.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Choose Server Machine.</p>
+
+<p class=MsoList3 style='margin-left:.5in'>3.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Choose Non-Transactional Database Only.</p>
+
+<p class=MsoList3 style='margin-left:.5in'>4.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Choose Manual Setting - set concurrent connections to 500.</p>
+
+<p class=MsoList3 style='margin-left:.5in'>5.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Leave default value of port 3306.</p>
+
+<p class=MsoList3 style='margin-left:.5in'>6.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Choose Standard Character Set</p>
+
+<p class=MsoList3 style='margin-left:.5in'>7.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Choose Install As Windows Service - Service Name=MySQL - check Launch
+MySQL Server automatically </p>
+
+<p class=MsoList3 style='margin-left:.5in'>8.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Choose Modify Security Settings - pick a root password and then confirm
+– </p>
+
+<p class=MsoList3 style='margin-left:.5in'>9.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Check Root may only Connect from localhost.</p>
+
+<p class=MsoList3 style='margin-left:.5in'>10.<span style='font-size:7.0pt'>&nbsp;
+</span>Ensure you get a success message after the setup program completes.</p>
+
+<h2><a name="_Toc104868923"></a><a name="_Toc104866972"></a><a
+name="_Toc104868504"></a><a name="_Toc104867353"></a><a name="_Toc104867195"></a>Install
+MySQL Connector/ODBC 3.5</h2>
+
+<p class=MsoBodyText>No prompts to choose from. Just use the defaults.</p>
+
+<h2><a name="_Toc104868924"></a><a name="_Toc104866973"></a><a
+name="_Toc104868505"></a><a name="_Toc104867354"></a><a name="_Toc104867196"></a>Install
+MySQL Administrator 1.0.14</h2>
+
+<p class=MsoBodyText>Choose Complete Setup.</p>
+
+<h2><a name="_Toc104868925"></a><a name="_Toc104866974"></a><a
+name="_Toc104868506"></a><a name="_Toc104867355"></a><a name="_Toc104867197"></a>Install
+MySQL Query Browser 1.1.1</h2>
+
+<p class=MsoBodyText>Choose Complete Setup.</p>
+
+<h2><a name="_Toc104868926"></a><a name="_Toc104866975"></a><a
+name="_Toc104868507"></a><a name="_Toc104867356"></a><a name="_Toc104867198"></a>Run
+MySQL Administrator</h2>
+
+<p class=MsoList3 style='margin-left:.5in'><span style='font-family:Symbol'>·</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>username=root</p>
+
+<p class=MsoList3 style='margin-left:.5in'><span style='font-family:Symbol'>·</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>password=&lt;the
+root password you chose above&gt;</p>
+
+<p class=MsoList3 style='margin-left:.5in'><span style='font-family:Symbol'>·</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>hostname=localhost</p>
+
+<p class=MsoList3 style='margin-left:.5in'><span style='font-family:Symbol'>·</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>port=3306</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>In the left pane click Restore. On right pane, click Open
+Backup File. Navigate down to mudmysql_import.sql and choose it. Check Create
+database(s) if they don’t exist.</p>
+
+<p class=MsoList3 style='margin-left:.5in'><span style='font-family:Symbol'>·</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Target
+Schema=Original Schema</p>
+
+<p class=MsoList3 style='margin-left:.5in'><span style='font-family:Symbol'>·</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Backup
+type=SQL files</p>
+
+<p class=MsoList3 style='margin-left:.5in'><span style='font-family:Symbol'>·</span><span
+style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>File
+Charset=utf8</p>
+
+<p class=MsoList3 style='margin-left:.25in'>&nbsp;</p>
+
+<p class=MsoList3 style='margin-left:.25in'>Click Start Restore. Ensure that
+you get a success message.</p>
+
+<h2><a name="_Toc104868927"></a><a name="_Toc104866976"></a><a
+name="_Toc104868508"></a><a name="_Toc104867357"></a><a name="_Toc104867199"></a>Run
+MySQL Query Browser</h2>
+
+<p class=MsoBodyText>The Connection information is the same as MySQL
+Administrator.</p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Schema=tigermud</p>
+
+<p class=MsoBodyText>In the right pane, double-click one of the tables under
+the tigermud schema and click Ctrl-Enter.</p>
+
+<p class=MsoNormal>You should get a view of all the data in that table. You can
+edit this data by clicking the Edit button at the bottom of the screen. This
+lets you modify cells, then click Apply Changes when you’re done.</p>
+
+<h2><a name="_Toc104868928"></a><a name="_Toc104866977"></a><a
+name="_Toc104868509"></a><a name="_Toc104867358"></a><a name="_Toc104867200"></a>Modify
+your TigerMUD.xml file</h2>
+
+<p class=MsoBodyText>Open the TigerMUD.xml file in the tigermud source folder
+and specify the database servername, database username (root in this example),
+and the password for that user account. For better security, create a separate
+user for the TigerMUD database and use that. Save the xml file.</p>
+
+<h1><a name="_Toc104868929"></a><a name="_Toc104866978"></a><a
+name="_Toc104868510"></a><a name="_Toc104867359"></a><a name="_Toc104867201"></a>Use
+SharpDevelop or Microsoft Visual Studio.NET?</h1>
+
+<p class=MsoBodyText>Here, you must choose between writing code with Microsoft
+Visual Studio.NET or the free open source version named SharpDevelop. </p>
+
+<h2><a name="_Toc104868930"></a><a name="_Toc104866979"></a><a
+name="_Toc104868511"></a><a name="_Toc104867360"></a><a name="_Toc104867202"></a>Using
+SharpDevelop</h2>
+
+<p class=MsoBodyText>Download SharpDevelop 1.0.1.1649 from here:</p>
+
+<p class=MsoNormal><a href="http://www.icsharpcode.net/OpenSource/SD/Download/">http://www.icsharpcode.net/OpenSource/SD/Download/</a></p>
+
+<p class=MsoNormal>Newer versions of SharpDevelop might work for you, too. Run
+the setup package. There are no special options to select, so just use the
+default setup values. </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<ol style='margin-top:0in' start=1 type=1>
+ <li class=MsoNormal>Choose the “Create new code completion database” option
+     when you run SharpDevelop the first time. </li>
+ <li class=MsoNormal>Choose Use SharpDevelop application directory. </li>
+ <li class=MsoNormal>Click Start database creation. It will take a minute to
+     create the database. </li>
+ <li class=MsoNormal>When SharpDevelop opens, dismiss the Tip of the Day and
+     click ‘Import Project’. </li>
+ <li class=MsoNormal>Choose the TigerMUD.sln file as the project that you want
+     to import. SharpDevelop will do some conversions on it to let you do
+     development with it.</li>
+</ol>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText>The last step is that you must add the steps in the
+vspostbuild.bat file to your SharpDevelop combine project options. These are
+steps that occur upon completion of a compile. In Visual Studio.NET, developers
+have to run this manually, but SharpDevelop lets you add steps to run at
+compile completion.</p>
+
+<h2><a name="_Toc104868931"></a><a name="_Toc104866980"></a><a
+name="_Toc104868512"></a><a name="_Toc104867361"></a><a name="_Toc104867203"></a>Using
+Microsoft Visual Studio .NET</h2>
+
+<p class=MsoBodyText>Install Microsoft Visual Studio.NET and ensure that Visual
+C# is chosen. Once install is complete, then double-click the TigerMUD.sln file
+and the TigerMUD development project will open.</p>
+
+<h2><a name="_Toc104868932"></a><a name="_Toc104866981"></a><a
+name="_Toc104868513"></a><a name="_Toc104867362"></a><a name="_Toc104867204"></a>Important
+Note for both SharpDevelop and Visual Studio.NET users</h2>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'>Ensure you
+have the Microsoft .NET Framework version 1.1 installed, since TigerMUD uses
+the ODBC .NET Data Provider and it is included in the .NET Framework 1.1
+package. TigerMUD is not tested or supported on .NET Framework 1.0. </p>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'>Get
+Microsoft .NET Framework 1.1 here: </p>
+
+<p class=MsoBodyText><a
+href="http://msdn.microsoft.com/netframework/downloads/framework1_1/">http://msdn.microsoft.com/netframework/downloads/framework1_1/</a></p>
+
+<h2><a name="_Toc104868933"></a><a name="_Toc104866982"></a><a
+name="_Toc104868514"></a><a name="_Toc104867363"></a><a name="_Toc104867205"></a>Compile
+and Run TigerMUD with SharpDevelop</h2>
+
+<p class=MsoBodyText style='margin-bottom:0in;margin-bottom:.0001pt'>In the
+SharpDevelop window with the TigerMUD combine file open, click Build, then
+click Rebuild Combine (Alt-F8). Then run the MUD by clicking Debug, then click
+Run (F5). This compiles and runs TigerMUD. Watch the server console to ensure
+TigerMUD successfully finds the tigermud.xml file and Connects to the database.
+If all succeeds, then tigermud will indicate that it is waiting for
+connections.</p>
+
+<h2><a name="_Toc104868934"></a><a name="_Toc104866983"></a><a
+name="_Toc104868515"></a><a name="_Toc104867364"></a><a name="_Toc104867206"></a>Compile
+and Run TigerMUD with Visual Studio.NET</h2>
+
+<p class=MsoBodyText>With the TigerMUD project open, click Build-&gt;Build
+Solution (Ctrl-Shift-B). IMPORTANT: Before clicking Start, make sure you run
+the vspostbuild.bat file in your TigerMUD folder. Run this batch file after
+every compile before you start the server. The batch file solves file locking
+problem we encountered with Visual Studio.NET.</p>
+
+<p class=MsoBodyText>You can accept all the defaults from the TigerMUD install
+program and only have to edit the tigermud.xml file to specify your SMTP server
+for new player account activation. There is also a setting in the tigermud.xml
+file to turn this feature off if you do not have access to an SMTP server, or
+simply do not want to use this feature. Once you configure the tigermud.xml
+file, you can run the server using the desktop icon provided. </p>
+
+<h1><a name="_Toc104868935"></a><a name="_Toc104866984"></a><a
+name="_Toc104868516"></a><a name="_Toc104867365"></a><a name="_Toc104867207"></a>Using
+the Nant Script</h1>
+
+<p class=MsoBodyText>TigerMUD can be built using Nant 0.85 (rc3). You can
+download Nant here: </p>
+
+<p class=MsoBodyText><a href="http://nant.sourceforge.net/">http://nant.sourceforge.net/</a>.
+</p>
+
+<h2><a name="_Toc104868936"></a><a name="_Toc104866985"></a><a
+name="_Toc104868517"></a><a name="_Toc104867366"></a><a name="_Toc104867208"></a>Setting
+up Nant for your environment</h2>
+
+<p class=MsoBodyText>Download Nant and unzip it to a directory on your
+computer. The Nant executable resides in &lt;nant root directory&gt;\bin. Add
+this path to your Path environment variable. On Windows, you will add this by:</p>
+
+<p class=MsoList3 style='margin-left:.5in'>1.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Right click on My Computer</p>
+
+<p class=MsoList3 style='margin-left:.5in'>2.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Select Properties</p>
+
+<p class=MsoList3 style='margin-left:.5in'>3.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Click on the Advanced tab</p>
+
+<p class=MsoList3 style='margin-left:.5in'>4.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Click on Environment Variables</p>
+
+<p class=MsoList3 style='margin-left:.5in'>5.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>In System Variables, look for the PATH variable</p>
+
+<p class=MsoList3 style='margin-left:.5in'>6.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Click Edit</p>
+
+<p class=MsoList3 style='margin-left:.5in'>7.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Add your path to the END of the string, make sure you have a semicolon
+“;” separating your entry from the previous one</p>
+
+<p class=MsoList3 style='margin-left:.5in'>8.<span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Click OK twice</p>
+
+<p class=MsoNormal>&nbsp;You are now ready to use Nant.</p>
+
+<h2><a name="_Toc104868937"></a><a name="_Toc104866986"></a><a
+name="_Toc104868518"></a><a name="_Toc104867367"></a><a name="_Toc104867209"></a>Building
+TigerMUD with Nant (on Windows, using Microsoft’s .Net Framework 1.1)</h2>
+
+<p class=MsoBodyText>Open up a command prompt and change to the TigerMUD root
+directory. Type the following to start the build:</p>
+
+<p class=MsoBodyText><span style='font-size:10.0pt;font-family:"Courier New"'>nant</span></p>
+
+<p class=MsoBodyText>The Nant executable will detect the “tigermud.build” file
+and start building TigerMUD using Microsoft’s .Net compiler. The output will be
+stored in:</p>
+
+<p class=MsoBodyText>&lt;TigerMUD Root Directory&gt;\build\net-1.1\</p>
+
+<p class=MsoBodyText>It will be ready to run. Simply change to this directory
+and run TigerMUD.exe.</p>
+
+<h2><a name="_Toc104868938"></a><a name="_Toc104866987"></a><a
+name="_Toc104868519"></a><a name="_Toc104867368"></a><a name="_Toc104867210"></a>Building
+TigerMUD with Nant and MONO (1.1.7)</h2>
+
+<p class=MsoBodyText>This step requires you to have Mono 1.1.7 or greater
+installed on your computer. You can download</p>
+
+<p class=MsoBodyText>Mono from here: </p>
+
+<p class=MsoBodyText><a href="http://www.mono-project.com/Downloads">http://www.mono-project.com/Downloads</a></p>
+
+<p class=MsoBodyText>To compile TigerMUD with Mono, you will change to the
+TigerMUD root directory and type the following:</p>
+
+<p class=MsoBodyText><span style='font-size:10.0pt;font-family:"Courier New"'>nant
+-t:mono-1.0</span></p>
+
+<p class=MsoBodyText>The -t flag tells Nant to use the Mono compiler (msc)
+instead of the .Net compiler. </p>
+
+<p class=MsoBodyText>The output will be stored in:</p>
+
+<p class=MsoBodyText>&lt;TigerMUD Root Directory&gt;\build\mono-1.0\</p>
+
+<h1><a name="_Toc104868939"></a><a name="_Toc104866988"></a><a
+name="_Toc104868520"></a><a name="_Toc104867369"></a><a name="_Toc104867211"></a>Running
+TigerMUD on MONO</h1>
+
+<p class=MsoBodyText>This step requires you to have Mono 1.1.7 or greater
+installed on your computer. You can download</p>
+
+<p class=MsoBodyText>Mono from here: </p>
+
+<p class=MsoBodyText><a href="http://www.mono-project.com/Downloads">http://www.mono-project.com/Downloads</a></p>
+
+<p class=MsoBodyText>For Windows users: once you have installed Mono on your
+machine, you will need to open the Mono command prompt, so that the correct
+path settings are in place. You can access it by going Start -&gt; Programs
+-&gt; Mono 1.1.7 For Windows -&gt; Mono 1.1.7 Command Prompt.</p>
+
+<p class=MsoBodyText>Change to: </p>
+
+<p class=MsoBodyText>&lt;TigerMUD Root Directory&gt;\bin\debug</p>
+
+<p class=MsoBodyText>and run the following command:</p>
+
+<p class=MsoBodyText><span style='font-size:10.0pt;font-family:"Courier New"'>mono
+tigermud.exe</span></p>
+
+<p class=MsoBodyText>You will see the TigerMUD engine starting up.</p>
+
+<h2><a name="_Toc104868940"></a><a name="_Toc104866989"></a><a
+name="_Toc104868521"></a><a name="_Toc104867370"></a><a name="_Toc104867212"></a>For
+Nant Users</h2>
+
+<p class=MsoBodyText>If you have compiled TigerMUD using Nant, using either
+Mono’s compiler or Microsoft’s compiler, then change to the appropriate
+directory:</p>
+
+<p class=MsoBodyText>Either &lt;TigerMUD Root Directory&gt;\build\mono-1.0 or
+&lt;TigerMUD Root Directory&gt;\build\net-1.1\</p>
+
+<p class=MsoBodyText>In this directory, you will run the following command:</p>
+
+<p class=MsoBodyText><span style='font-size:10.0pt;font-family:"Courier New"'>mono
+tigermud.exe</span></p>
+
+<h1><a name="_Toc104868941"></a><a name="_Toc104866990"></a><a
+name="_Toc104868522"></a><a name="_Toc104867371"></a><a name="_Toc104867213"></a>Running
+TigerMUD for the first time</h1>
+
+<p class=MsoBodyText>Any time you run TigerMUD through either the desktop icon
+or from Visual Studio/SharpDevelop, TigerMUD displays all its startup values on
+the server console, so if you encounter errors, check those values first to
+ensure they are what you require in your environment.</p>
+
+<h1><a name="_Toc104868942"></a><a name="_Toc104866991"></a><a
+name="_Toc104868523"></a><a name="_Toc104867372"></a><a name="_Toc104867214"></a>Connect
+to TigerMUD</h1>
+
+<p class=MsoBodyText>The default TigerMUD port is 8000 (configured with the
+tigermud.xml file). To connect, click Start, Run, and type ‘telnet localhost
+8000’. Check the “mudactors” database table for a few valid usernames and
+passwords that are already configured for you.</p>
+
+<h1><a name="_Toc104868943"></a><a name="_Toc104866992"></a><a
+name="_Toc104868524"></a><a name="_Toc104867373"></a><a name="_Toc104867215"></a>Troubleshooting</h1>
+
+<p class=MsoBodyText>If something goes wrong running TigerMUD, the server
+console will display exceptions and error messages that you can use to
+troubleshoot. We are always on the lookout for bugs and new features and would
+greatly appreciate your feedback. Go to our SourceForge project page and click
+on either Bugs or RFE (Request for Enhancement) to log your bug or feature
+request.</p>
+
+<h1><a name="_Toc104868944"></a><a name="_Toc104866993"></a><a
+name="_Toc104868525"></a><a name="_Toc104867374"></a><a name="_Toc104867216"></a>Contact
+Us</h1>
+
+<p class=MsoBodyText>If you questions/comments, please post in the public forum
+at the TigerMUD project Web page. Also, there are links available to file bugs
+and feature requests at this Web page:</p>
+
+<p class=MsoBodyText><a href="http://sourceforge.net/projects/tigermud/">http://sourceforge.net/projects/tigermud/</a></p>
+
+<h1><a name="_Toc104868945"></a><a name="_Toc104866994"></a><a
+name="_Toc104868526"></a><a name="_Toc104867375"></a><a name="_Toc104867217"></a>TigerMUD
+Developer Guidelines</h1>
+
+<p class=MsoBodyText>These are the rules that the TigerMUD developer team
+follows. If you are not a member of the TigerMUD team, then feel free to use
+these guidelines if they are useful to you in your own project.</p>
+
+<p class=MsoBodyText>If you’ve only coded by yourself, then coding with a team
+takes some getting used to. We’re happy to help ease the transition however we
+can, just ask! </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>&nbsp;First rule which is most important: DO NOT add
+other people’s code to TigerMUD. We only have rights to use your code, not
+something you copied from the Internet. However, if we need some functionality
+and there is GPL licensed code out there for it, then I may approve making
+exceptions, but only when we can get clear rights to use the code from the
+author. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>If you have an idea, please scan through the forums to
+see if we’ve already discussed it. If we haven’t, then bring it up in the
+forums. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Check out the info and diagram on tigermud.com and
+absorb the overall architecture, then scan through the code to see how the
+command processor works, review the database tables, and User, Item, Mob, and
+Room classes. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Keep an eye on the RFE link on the SourceForge site
+and look at the features we’re currently interested in. Come up with an
+implementation of it (pick a simple one at first please). </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Always record your code changes in
+TigerMUD_Changes.txt. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Comment your code liberally so others can understand
+your code. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Discuss any major TigerMUD architectural changes in
+the forums first. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Do your best to minimize database schema changes (this
+will be easier the farther along we get in the new database code). Changing the
+schema requires all the other developers to reload the database, so please only
+do it when it counts. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Usability and readability ranks above performance concerns,
+unless the performance issues are major. We can always re-factor code for
+performance later, but it’s really hard for anyone to do that if you don’t
+focus on usability and readability first. ;-) </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Compile your code and do not commit to CVS if you have
+errors. It causes BIG headaches for other developers if you commit broken code
+and can bring slow development. So, if you change existing code, compile and
+test it carefully first. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Check dependencies on code you change. Will it break
+someone else’s code? </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Class names begin in uppercase. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Public class properties and methods begin in
+uppercase. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Objects instantiated from the classes begin in
+lowercase. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Use names like ‘tmpitem’ and ‘chkitem’ for temporary
+objects in loops and such. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Use label counters with useful names where possible,
+rather than just counter1, counter2, etc. instead use things like roomcounter,
+itemsinbag, characternumber, etc. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Do not assume the operating system in your code. We
+strive to support TigerMUD using Mono on Linux in the future, so beware any
+OS-specific code. Most of the things offered in the .Net Framework are pretty
+safe. Ask in the forum if you’re not sure. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>No stored procedures in SQL. That makes it database
+specific, we don’t want that. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Do not write code that has software dependencies
+outside the stated TigerMUD platform. For example, don’t write code that makes
+calls to software or DLLs that are not in the install guide. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Add sparingly to Library.cs by sticking to OO
+programming practices. For example, if you find yourself writing a routine that
+only takes a user instance as a parameter, should that routine become a method
+of the User class itself? Think about the objects that your code interacts
+with, and match it up with the objects themselves when possible. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Strive for code reuse. If you are going to use a block
+of code more than once relatively unchanged, then make that code a method of an
+existing class, or put it in Library.cs. Sometime you have to spend extra time
+tweaking your code blocks to make them usable more than once, but it’s usually
+worth it. </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;</span>Check the Library.cs and the existing classes to make
+sure you don’t try to duplicate code that has been already written. Pre-tested
+and debugged code is like gold when faced with writing something from scratch. </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoList>Happy Mudding!</p>
+
+<p class=MsoList>Sincerely, the TigerMUD Team.</p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,485 @@
+/-------------------------------------------------------------\
+|    _______  _                     __  __  _    _  _____     |
+|   |__   __|(_)                   |  \/  || |  | ||  __ \    |
+|      | |    _   __ _   ___  _ __ | \  / || |  | || |  | |   |
+|      | |   | | / _` | / _ \| '__|| |\/| || |  | || |  | |   |
+|      | |   | || (_| ||  __/| |   | |  | || |__| || |__| |   |
+|      |_|   |_| \__, | \___||_|   |_|  |_| \____/ |_____/    |
+|                 __/ |                                       |
+|                |___/           Copyright (c) 2004 - 2005    |
+\-------------------------------------------------------------/
+
+TigerMUD Contributors: Adam Miller, Aaron Vannatter, Andrew Conrad,
+Andrew Jump, Anna Steverson, Brian Newton, Jeff Boschee, John Ingram, 
+William Crawford and Luke Venediger.
+
+***** NOTE THESE ARE CHANGES FOR THE LATEST VERSION, SEE TIGERMUD_CHANGES_OLD.TXT FOR OLDER VERSIONS
+
+1.9
+9/27/06 - Fixed error reading nulls from the db -adam
+9/27/06 - Fixed moving corpses -adam
+9/27/06 - Fixed double equipping -adam
+6/6/06 - Fixed ShowProperties to handle SortedLists and Arraylists and their contents -adam
+5/27/06 - Fixed crash in GetItemNamePrefixAndQuantity with really long numbers -adam
+5/27/06 - Added exception output to the command log -adam
+5/25/06 - GetWorldItems was getting called dozens of times a second. I changed that behaviour -kender
+5/25/06 - fixed a lot of nullReferenceExceptions - kender
+5/25/06 - fixed a whole lot of small issues with startup & shutdown (it would leave instances of servers lying around and got confused with the logwriters) - kender
+5/25/06 - all exceptions are now logged/shown/outputted with stacktraces identifying the linenumber and file of the error -kender
+3/22/06 - Changed look and push command to use Lib.GetActorFromArguments -adam
+3/22/06 - Added Lib.GetActorFromArguments -adam
+3/14/06 - Added the reset command -adam
+3/14/06 - Mobs are now reporting movement correctly again -adam
+3/12/06 - Mobs can now move in the in and out directions -adam
+3/12/06 - Fixed null exception in timer_movemobs -adam
+3/12/06 - Added quiet movement bool to Actor.MovetoRoom -adam
+3/12/06 - Fixed bug in Lib.SplitItemNameFromNumericPrefix -adam
+3/12/06 - Fixed bug where server would crash when ticks exceeded 1mil -adam
+3/1/06 - Added 'me' and 'self' for targeting and get/drop, etc. -adam
+2/28/06 - Added sql command for uberadmin to run raw sql queries and updates -adam
+2/28/06 - All Command_player and Command_builder commands are now just Command_ -adam
+2/28/06 - fixed a SayinRoom() exclusion failure -adam
+2/28/06 - Added commandlog and systemlog commands to read text log files -adam
+2/28/06 - Fixes to the MSI for dev environments -adam
+2/28/06 - Added wizlist command -adam
+2/28/06 - fixed post-build command path errors -adam
+2/27/06 - Bug fixes for null exceptions during spell casting -adam
+2/27/06 - Bug fixes for null exceptions during ressurection -adam
+2/27/06 - Added starter spells for all new users -adam
+2/27/06 - Implemented Kedearian's whisper command -adam
+2/27/06 - Added strongname.sny key to project
+2/27/06 - fixed idledisconnect bug -adam
+2/26/06 - Added date time stamps to logged exceptions -adam
+2/26/06 - Remote console now has exit option and receives next connection attempt -adam
+2/26/06 - Fixed remote console -adam
+2/26/06 - Re-enabled several try/catch blocks -adam
+2/26/06 - Added reason for all calls to Disco for logging purposes -adam
+2/26/06 - Added more detailed logging to console -adam
+2/26/06 - Added TigerMUD.log and TigerMUDCommand.log -adam
+2/26/06 - Fixed negative current connections bug -adam
+2/26/06 - Made several equip command fixes -adam
+2/26/06 - Updated server version to 1.9 -adam
+
+1.8
+2/26/06 - Updated to 1.9
+2/25/06 - Fixed the MSI yay! -adam
+2/25/06 - Fixed capitalization bug in inventory -adam
+2/25/06 - Removed database sanitize routine from user saves -adam
+2/25/06 - Fixed crashes when saving user -adam
+2/25/06 - Fixed lastloginip -adam
+2/24/06 - fixed bug where user dies and doesn't get properly removed from room -adam
+2/24/06 - fixed several spell casting regressions -adam
+2/23/06 - Removed hardcoded paths -adam
+2/19/06 - Remote console working on port 8001 -adam
+2/19/06 - Fixed bug where DLLs got loaded twice, once for obj folder and bin folder -adam
+2/18/06 - Lib.items is now Lib.actors to be more accurate -adam
+2/18/06 - Save routine skips actors and spells that haven't changed since db load -adam
+2/18/06 - Added actor and spell Version and OldVersion properties -adam
+2/18/06 - Moved LoadAllSpells from Lib to Spell class -adam
+2/18/06 - Moved LoadAll for actors from Lib to Actor class -adam
+2/18/06 - Changed actor states to be implemented as class indexers for convenience -adam
+2/10/06 - Added spell load counts per type to server startup console -adam
+2/10/06 - Spells migrated to hashtable-based db table -adam
+2/7/06 - Added Kender's SplitItemNameFromNumericPrefix() function (Kender rocks!) -adam
+2/7/06 - Added actor.GetNameFullUpper -adam
+2/7/06 - Help command sorts the help list -adam
+2/7/06 - Removed a few redundant Actor methods -adam
+2/7/06 - Fixed bug letting you target and attack users not logged in -adam
+2/7/06 - Fixed exception attacking nonexistent target -adam
+2/7/06 - Fixed exception when getting and dropping partial stacks -adam
+2/7/06 - Made actor.copy() copy all hashtables to the duplicate actor -adam
+2/7/06 - Fixed a bug in wordwrap code -adam
+2/6/06 - Added Kender's wordwrap code -adam
+2/6/06 - Server states being saved correctly at time intervals -adam
+2/6/06 - Modify command sorts state names alphabetically -adam
+2/6/06 - Can see states on objects using the "modify" command -adam
+2/6/06 - Create command works -adam
+2/6/06 - Fixed wordwrap crash bug -adam
+2/6/06 - You can't start combat with yourself -adam
+2/6/06 - Users now properly leave rooms -adam
+2/6/06 - New users create properly -adam
+2/5/06 - Removed the mudactors table and code. Actors run on states exclusively -adam
+2/4/06 - Perf improvements saving actors -adam
+2/4/06 - Perf improvements in Showroom() -adam
+2/4/06 - Fixed bug where boolean values wouldn't save correctly with caps -adam
+2/4/06 - Dumped all the map code (won't work with the new code we're adding anyway) -adam
+2/4/06 - Deleted old actor columns and expanded size of mudactorstates setting column (was 50 char) -adam
+2/4/06 - Command and action compile completes and shows errors at the end (instead of just crashing at first error) -adam
+2/4/06 - Moved most actor properties to state hashtable -adam
+2/2/06 - Moved more actor properties to state hashtable -adam
+1/31/06 - Fixed a crash when loading zero rows of actor states -adam
+1/31/06 - Added code to stop server if we get a fatal error accessing the database at startup -adam
+1/31/06 - Added Lib.FirstToUpper -adam
+1/31/06 - Checks for existing users check the database instead of RAM -adam
+1/31/06 - Fixed infinite loop using commands like 'look 123 club' -adam
+1/31/06 - Moved more actor properties over to states -adam
+1/29/06 - Moved several actor properties into the state hashtable -adam
+1/29/06 - Stopped sending messages and idle disconnects for users not connected -adam
+1/29/06 - Stopped redundant actor save operations when user logs on -adam
+1/23/06 - Fixed a bug where existing commands wouldn't get overwritten with updates -adam
+1/23/06 - Changed ScriptCompiler and PluginLoader to not use a new appdomain for scripts -adam
+1/23/06 - Added testcommand.tmc.cs to test online compiling -adam
+1/23/06 - Added the compile and enablecommand commands -adam
+1/21/06 - Modify command can now set object states or properties with a new syntax -adam
+1/21/06 - Added support for setting more System types in the modify command -adam
+1/21/06 - Modify command now shows states on an object -adam
+1/21/06 - Fixed a bug where actor states not saved during logout and server shutdown -adam
+1/21/06 - Actor states now save and load proper data types (instead of being all strings) -adam
+1/20/06 - converted project to Visuaol Studio 2005 -adam
+1/20/06 - Moved Actor.LibraryWrapper methods back to Library.cs -adam
+1/20/06 - Fixed bug displaying last login date/time -adam
+11/20/05 - Added more .net 20 fixes to ScriptCompiler.cs -adam
+11/20/05 - Added code to catch ReflectionTypeLoadExceptions in PluginLoader and ScriptCompiler's GetObjectsFromAssembly method. -adam
+11/20/05 - Fixed case sensitivity difference between .net 1.1 to .net 2.0 that was causing problems with reading System.Reflection.Assembly.GetCallingAssembly().CodeBase -adam
+11/20/05 - Reversed some code changes -adam
+11/20/05 - You can now put tmc, tma, tmc.cs, and tma.cs files anywhere you want -adam
+11/20/05 - Added Lib.ConvertToStringArray -adam
+11/20/05 - Added Lib.GetFilesRecursive -adam
+11/20/05 - Fixed hardcoded script paths that break Release builds -adam
+11/20/05 - Deleted dupe RemoteLoader.cs file -adam
+11/15/05 - Fixed some menus that crash if you disconnect during input -adam
+11/15/05 - Sending mail works -adam
+11/13/05 - Reading mail works (Can't send yet) -adam
+11/13/05 - World items are now sorted by Id to make room display more predictable -adam
+11/13/05 - Removed many redundant lines that said: 'Actor user=actor;' -adam
+11/13/05 - changepassword command now works -adam
+11/13/05 - merge and split commands now work as expected -adam
+11/13/05 - Remote console now sends one line of text to identify itself on connection -adam
+11/13/05 - Remote console now sees commands terminated by a CR/LF -adam
+11/9/05 - Fixed 2 bugs causing 100% processor usage in the 'Loader' and 'Remote Console' also tidied the 'Remote Console' code and refactored it a bit -Andy
+11/9/05 - Added 'Remote Console' (basic but working) - Andy
+11/9/05 - Added 'TigerLoader' (basic but working) -Andy
+11/8/05 - Server console 'who' command now properly shows logged in users -adam
+11/8/05 - Created Actor.LibraryWrapper to support .NET Remoting across AppDomains -adam
+11/7/05 - Fix for Lib.Getwords returning count=1 when it's really zero -adam
+11/6/05 - Fixed windchime delayed command to use actor.AddDelayedCommand instead of Lib -adam
+11/6/05 - Actions now work correctly -adam
+11/6/05 - Again command now works as expected -adam
+11/6/05 - Removed all references to Lib in Playercommands and Systemcommands -adam
+11/4/05 - Added Destroy and Reload commands for scripts and plugins -William
+11/4/05 - Wrapped many Library static members in Actor for .NET remoting (AppDomains) -adam 
+11/4/05 - Removed all Actor static methods -adam
+11/3/05 - Added PluginLoader class and changed plugins to load into ScriptAppDomain -William
+11/2/05 - Added Actor["colorlast"] so 'more' command can maintain current color -adam
+11/2/05- Fixed two 'drop all item' bugs -adam
+11/2/05 - Schema change, moved quantity column in mudactors -adam
+11/2/05- When users disconnect the room is told that they disappeared -adam
+11/2/05 - Fixed double prompt using the 'again' command -adam
+11/2/05 - Fixed a bug in the get command -adam
+11/2/05 - GetWords routine now uses string.Split instead of custom code -adam
+10/30/05 - Builders can target any world item by typing first few chars of the name -adam
+10/30/05 - Modify command now sorts properties by name -adam
+10/30/05 - Changed target to accept "room" to target current room (there is probably a better way) -doug
+10/30/05 - Fixed issue with new rooms not saving due to blank LastLoginDate -doug
+10/29/05 - Added weather and sky command -adam
+10/29/05 - Replaced Lib.RemovePaddedSpaces with usage of String.Trim() -adam
+10/29/05 - Added SunView() and MoonView() -adam
+10/29/05 - Added sun command to get information about the sun's position -adam
+10/29/05 - Target command fixed and accepts names or ids to target -adam
+10/29/05 - Rooms don't go into the orphaned object container -adam
+10/29/05 - Added the builder 'list' command for displaying objects of certain types -adam
+10/29/05 - Added Lib.PaddedLineItem for helpful list line formatting -adam
+10/29/05 - Fixed exit display bug when exits are null -adam
+10/29/05 - Added dig builder command.  Sets toggle to allow digging new rooms.  - doug
+10/29/05 - Fixed wordwrap bug when user display colors are not set -adam
+10/29/05 - updated copy command to target newly created item if only copying 1 item - doug
+10/29/05 - builder commands copy and destroy added - doug
+10/29/05 - sky events were not being reported in new user spawn rooms -adam
+10/29/05 - actor.destroy now properly removes items from thier container -adam
+10/25/05 - server saves it's own state table every 50 seconds instead of every 1 -adam
+10/25/05 - Fixed bug in idle disconnect timer -adam
+10/25/05 - Fixed wordwrap bug when screenwidth is zero -adam
+10/25/05 - Server console shutdown command tells users that server is coming down -adam
+10/25/05 - create command puts new objects in the current room instead of inventory -adam
+10/25/05 - create command accepts any input for type, not just item, mob, and room -adam
+10/25/05 - create command creates objects of the type specified, not just user. -adam
+10/25/05 - create sets new objects to 1 healmax/health to avoid death/respawn code -adam 
+10/24/05 - Fixed a bug in DeleteActor() -adam
+10/24/05 - drop and put commands are now the same routine -adam
+10/24/05 - Fixed an Index out of range exception in Actor.color* variables -adam
+10/24/05 - Greatly simplified get, drop, put and fixed lots-o-bugs and regressions there -adam
+10/24/05 - Added Actor.PutItem and Actor.TakeItem -adam
+10/24/05 - Changed Actor.Clone to Actor.Copy and fixed bugs there -adam
+10/19/05 - fixed look command bugs -adam
+10/19/05 - Fixed broken method Actor.Sayinroom -adam
+10/18/05 - Fixed a crash bug caused by using commands with only numbers as item names -adam
+10/18/05 - Added code to catch more error conditions in Lib.GetItemByName -adam
+10/18/05 - Equip and Unequip command fixes -adam
+10/18/05 - Look command fixes -adam
+10/17/05 - Modify command now displays readonly versus read/write for properties -adam
+10/17/05 - Fixed exception in Actor.UserIPAddress when userSocket is null -adam
+10/17/05 - Fixed a display bug in the modify command -adam
+10/16/05 - Added Actor.GetContainer() -adam
+10/16/05 - Actor.LastLoginDate and Actor["lastloginip"] are now public -adam
+10/15/05 - Actor.GetGraveyard becomes Actor.GetSpecialLocation -adam
+10/15/05 - Added Lib.GetNewUserSpawnLocation -adam
+10/15/05 - Actor.LoadAll reports the number of items loaded per type dynamically -adam
+10/15/05 - Added Actor.Killable to avoid respawn for inanimate objects -adam
+10/15/05 - Changed Actor.Sayinroom to recognize containers as rooms -adam
+10/15/05 - Added Actor.NameFull -adam
+10/15/05 - Added Actor.MoveStacks -adam
+10/15/05 - Added listall command -adam
+10/15/05 - Getroom is now GetRoom -adam
+10/15/05 - Added Lib.GetAllOfType() -adam
+10/15/05 - Added null check to Nameprefixupper -adam
+10/8/05 - Added the Orphanage room for objects assigned to invalid containers -adam
+10/8/05 - Added Lib.CountReturns and Lib["more"] -adam
+10/8/05 - All users are loaded into memory whether or not they are connected -adam
+10/8/05 - All numeric variables changed from double to float -adam
+10/8/05 - Plants are now just another actor type -adam
+10/2/05 - GameObject class removed. Everything now inherits from Actor class -adam
+9/24/05	- Changed modify command to show Action words and names on that item/mob/player.  -- William
+9/23/05 - Added 'command_addaction' and 'Command_pull' command.  -- William
+9/23/05 - Added 'dummy_pull' action.  -- William
+9/23/05 - Finished ScriptCompiler and DummyActions example.  --William
+9/23/05 - Added ScriptCompiler.cs --William
+9/23/05 - Added code to initialize Script Compiler. –William
+9/23/05 - Updated database schema to add type and subtype properties –adam
+9/23/05 - Rooms now inherit from Actor -adam
+9/23/05 - All Save methods updated to add container, containertype, type and subtype -adam
+9/23/05 - Changed all game object constructors to properly set Type and Subtype -adam
+9/23/05 - Added GameObject["container"].ToString() and GameObject["containertype"].ToString() -adam
+9/23/05 - Additem, RemoveItem, GetContents, GetItemAtIndex, and GetItemByName methods promoted to GameObject class -adam
+9/23/05 - Changed GameObject["type"].ToString() to GameObject["subtype"] -adam
+9/23/05 - Added GameObject["type"].ToString() -adam
+9/23/05 - Added null check in Database.Sanitize method -adam
+9/22/05 - Split old changes.txt into another file: Tigermud_changes_old.txt -adam
+Added the 'delayed' command to show the command stack to debug misbehaving delayed commands -adam
+Fixed duplicates listing all mail -adam
+Fixed typo in M_Received mail property -adam
+Added the ability to read player emails -adam
+Fixed bug for multichoice menus where once you removed a choice you couldn't add it back -adam
+Changed menu class to take (a)ccept, (b)ack, and e(x)it. -adam
+Added the market command -adam
+Added marketer mobs that allow players in their room to access the market -adam
+Added MenuForItems (MenuForItems.cs) class for menuing that handles items rather than just strings -adam
+Added Market class (Market.cs) -adam
+Fixed a bug that wouldn't display more than two mobs in a room -adam
+Added item["askprice"], item["bidprice"], item.buyoutprice, item.saleexpiration, and item.ownerid -adam
+Added user.Give(TargetUser,Item), user.GiveAllOfType(TargetUser,Item), user.GiveAll(TargetUser) -adam
+You now get a confirmation question when try to give items to a mob -adam
+You can now give items to mobs just like players -adam
+Added Mob.GetByName -adam
+Changed User.GetUserByName to User.GetByName because of redundant name -adam
+Added a who command to the server console (same as 'users' command) -adam
+Added username to server console log showing logins -adam
+Fixed look command bug that was not seeing items with multiple words in their name -adam
+Added License acceptance step to installer -Luke
+Added XihSolutions.DotMSN.dll and XihSolutions.DotMSN.xml for MSN connectivity -Luke
+Added MSNSocket implementation -Luke
+Changed license to GPL. Added the GPL license to all source files. -Luke
+All player-run commands that began with the name system_ now begin with Command_ -adam
+Now only system-run commands are in SystemCommands.cs -adam
+Player-run commands are now in Playercommands.cs. -adam
+Changed default behavior of the buglist command to list all bugs rather than new bugs -adam
+Bug text gets sanitized before written to the db -adam
+Added a minimum access level of Accesslevel.UserAdmin for someone to change the accesslevel property on a user -adam
+Who command now tells you the online user count -adam
+The target command now tells you the target type, name, and ID -adam
+Fixed bug being unable to target newly created mobs and items by long name -adam
+Fixed crash bug in shout command -adam
+Added stubs for an MSN implementation of a UserSocket, in TigerMUD.CommsLib.MsnComms. -Luke
+Removed Lib.Getresponse, use IUserSocket.GetResponse() instead –Luke
+Updated Lib.Sendsimple to take in a UserSocket -Luke
+Removed User.Socket and replaced with User.UserSocket (of type IUserSocket) -Luke
+Added TcpSocket and MsnSocket sections to the config file -Luke
+Changed engine to start a TCP Connection Handler -Luke
+Removed ClientListener.cs and ConnectionHandler.cs from TigerMUD project -Luke
+Added a TCP implementation of a UserSocket -Luke
+Added UserSocket interface, for communicating with users in a generic way -Luke
+Added a generic client listener -Luke
+Added TigerMUD.CommsLib folder for storing our socket abstraction code -Luke
+Updated DatabaseLib.DataCleaning class -Luke
+Removed Database.cs and updated Library.cs -Luke
+Added tigermud dev credits to the credits command -adam
+Removed credits from welcome.ans -adam
+Hardcoded tigermud credits with dev and special thanks -adam
+Changed the Item, Mob, and Room constructors to support the create command -adam
+Added the credits command to show the creator/builder credits for each room -adam
+SCHEMA CHANGE - added the Room["credits"].ToString() property to support builder credits -adam
+Fixed a bug in the Lib.GetWords method crashing on arguments that start with a few spaces -adam
+Added listmobs and listitems command -adam
+Implemented Lib.DbClean where strings get saved to the db -adam
+Added Lib.DBClean that cleans strings of problematic characters when saving to the db -adam
+Modify command now works on all game objects -adam
+New method in User: User.GetIdFromName which returns the user ID based on the shortname -Luke
+Updated MySQL script to reflect schema changes -Luke
+User can be locked out and unlocked using the "lockuser" and "unlockuser" commands -Luke
+SCHEMA CHANGE: added 'lastlogindate' and 'lastloginip' fields to database -Luke
+User's ip address and last login time are stored in the Users table -Luke
+Connected users is now recorded in the database -Luke
+"users" command in tigermud console window now lists users with their remote IP addresses -Luke
+SCHEMA CHANGE: added 'connected' field to mudactors to make way for web stats -Luke
+Typing equip by itself now shows your equip slots and what is equipped in them -adam
+Room class now has all the db support for Save, Addtodb, etc. -adam
+Lib.Loaditemsfromdb, Loadspellsfromdb, Loadmobsfromdb, etc. is now Item.LoadAll, Spell.LoadAll, etc. -adam
+Lib.FindUserByName is now User.Getindex -adam
+Room description db field is now 'Descr' to be conisistent with other game objects -adam
+Mob["target"].ToString() structure is now Mob.HateTarget to clarify that it's used by the hate AI -adam
+Added GameObject class that all game entities must inherit from -adam
+User.CombatTarget and User.CombatTargetType are now User["target"].ToString() and User["targettype"].ToString() -adam
+The target command with no options tells you what your current target is -adam
+Updated welcome screen -adam
+Fixed the load path code for tigermud.xml, tigermud.mdb, and welcome.ans -adam
+Removed some unneeded file copies as part of post build events -adam
+Fixed a bug in how the tigermud.xml path was displayed -adam
+Updated the setup program with new files -adam
+Updated MySQL Import script -Luke
+DATABASE SCHEMA CHANGE: Added mudbugs to database -Luke
+Implemented RFE 1058431 - In-game Bug Reports - Luke
+Added a test room state to score command -adam
+Fixed bug preventing room states from being saved to the database -adam
+Changed Developer's Guide to HTML -adam
+Changed mudroomstate table, room id to Text -adam
+Added date/time stamps to events shown on the server console -adam
+DATABASE SCHEMA CHANGE: Changed room id numbers to strings -adam
+Added the createroom command -adam
+Added the listroom command -adam
+Added mudbugs table to database -Luke
+Excluded 3 unused source files from tigermud.build -Luke
+Added MudBugs and IMudBugs to the db service. -Luke
+Fine-tuned TigerLIB reference paths to bin\debug instead of obj\debug -Luke
+Adjusted build script to use direct compilation instead of solutions -Luke
+Fixed a bug with the new 'again' command shortcut being the '.' character -adam
+Removed the static method Item.Getitembyid because it was redundant with Item.GetByID -adam
+Fixed a bug in the 'create' command where items were not correctly added to the Lib.items array -adam
+The 'create' command auto sets your target to the new item -adam
+You can 'target' items in your inventory -adam
+Passwords and now one-way encrypted in the mudactors database table -David
+Updated MySQL installation script -Luke
+Updated documentation: How to run with Mono 1.1.7 -Luke
+Updated documentation: How to use Nant script -Luke
+Added NANT Build Script -Luke
+Changed system again from ! to . (period) -Luke
+Implemented RFE 1199804 (Use ! as emote command) -Luke
+Compacted database, reduced it from 4mb to 500k -Luke
+Fixed a new user creation crash -adam
+Properly initialized some Actor properties variables to let the modify command see them all -adam
+Modify command can now save changes to the database with the 'modify save' command -adam
+Modify command now displays item property values, too -adam
+Modify command now uses .NET Reflection to dynamically display what properties an item has -adam
+Now you can target items, but cannot attack them -adam
+Fixed server crash bug that Biceps kindly pointed out -adam
+Added support for damage over time spells like poisons -adam
+Added actor.ClearStates to remove poisons, buffs, and debuffs upon death -adam
+Removed some unnecessary locks from the code -adam
+Fixed Delete Item from DB bug. -William
+Fixed 'modify' command to accept sentences when it should. -William
+The "exits" command shows you the available exits, and quit, logout, or logoff disconnects your client out -adam
+Looking at corpses now tells you they are dead instead of injured -adam
+Fixed some bugs about when and to whom kills are reported to the user and room -adam
+DATABASE SCHEMA CHANGE Added Actor.spellwindupticks, actor.spellcooldownticks, and actor.spellpending -adam
+Added spell.GetByID and changed spell.getspellbyname to spell.getbyname -adam
+Added spell.windup and spell.cooldown -adam
+Added Spell.CanCast which contains logic to tell if a user can cast a certain spell -adam
+Added actor.Alive -adam
+Cleaned up the ConsoleControl class, added the users command -Luke
+Added the 'spells' and 'skills' commands -adam
+Added a numerical value (skill level) to all known spells -adam
+Added actor.showspells and actor.showskills -adam
+<ServerMode> in tigermud.xml runs tigermud as a Windows service="service" or console app="console" -adam
+Implemented TigerMUD as a Service (RFE 1190884) -Luke
+Fixed file logging (was not writing to correct directory) -Luke
+Added a command line arg to the TigerMUD project "/console" -Luke
+Added a console mode switch: tigermud.exe /console to start the application in console mode. -Luke
+Added a post-build event to TigerMUD project to copy TigerMUD.xml, TigerMUD.mdb, TigerMUD.ldb, Welcome.ans -Luke
+Updated vspostbuild.bat to copy the TigerMUD xml file -Luke
+Updated the MySQL db creation file -Luke
+Added a Service installer -Luke
+Added a Service child class -Luke
+Changed the config file path to AppDomain.CurrentDomain.BaseDirectory -Luke
+Added Console Interaction (RFE 1191478) -Luke
+Added a Shutdown routine (RFE 1063516) -Luke
+Changed the cheat command syntax to add and remove health, mana, and stamina -adam
+Removed spell column named displaycaster -adam
+Added Actor.CycleStates thread to tick down poisons and such -adam
+Added Spell["frequency"] for spells that activate several times over a certain duration (like poisons) -adam
+Added Actor.ExpireStates -adam
+Added Spell["displaytarget"], Spell["displayroom"] -adam
+Added spell casting with the 'cast' command -adam
+Added Lib.GetExpirationTicks -adam
+Added Actor.AddStrength, AddIntellect, AddAgility, AddSpirit -adam
+Added Actor.AddHealth, AddMana, AddStamina, AddHealthMax, AddManaMax, AddStaminaMax -adam
+Added Actor.RemoveStrength, RemoveIntellect, RemoveAgility, RemoveSpirit -adam
+Added Actor.Removehealth, RemoveStamina, RemoveMana, RemoveHealthMax, RemoveManaMax, RemoveStaminaMax -adam
+Added friends feature. (RFE ID 1058681) -Luke.
+DATABASE SCHEMA CHANGE - Added a new table called mobuserfriends - REIMPORT THE DATABASE -Luke
+Added newline to "bob appears from nowhere" message in CommandProcessor.cs (bug) -Luke
+Updated vspostbuild.bat to copy .pdb files over to the bin\debug folder for debugging command plugins -Luke
+Migrated ThreadManager.cs to use the dbService -Luke.
+Migrated Library.cs to use the dbService -Luke.
+DATABASE SCHEMA CHANGE - Added a new table called mobprofanities - REIMPORT THE DATABASE -Luke
+Added option in the tigermud.xml config file to dump SQL statements to console -Luke
+Migrated InternalMail.cs to use the dbService -Luke
+Migrated User.cs to use the dbService -Luke
+Migrated Mob.cs to use the dbService -Luke
+Removed long database initialisation -Luke
+Added property in Library.cs to save the connection string, was not saving password (bug) -Luke
+Changed Database.cs to get connection string from Lib.dbConnectionString insted of Lib.Conn.ConnectionString -Luke
+Added SaveItemState method to DatabaseLib.IItem and DatabaseLib.Odbc.Item -Luke
+Migrated Actor.cs, MudLog.cs, Item.cs, SystemCommands.cs -Luke
+Added feature to show SQL statements on the console window -Luke
+Added Profanity Filter, (RFE ID 1055845) -Luke
+Added ProfanityFilter section to config file -Luke
+Bug fix for the reject command -thanks xeus!
+Removed GenericContainer.cs since it was an old workaround and no longer needed -adam
+Added new folder called DatabaseLib, not yet part of TigerLIB solution -Luke
+Added interfaces IEmailUserActivation, IInternalMail, IItem, ILibrary, IMudLog, IRoom, ISpell, IUser -Luke
+Added Odbc folder under DatabaseLib folder -Luke
+Added implementations of IEmailUserActivation, IInternalMail, IItem, ILibrary, IMudLog, IRoom, ISpell, IUser -Luke
+Added DbService class to DatabaseLib -Luke
+Added DataCleaning class to DatabaseLib -Luke
+Added implementations of IActor, ISystemCommands, IMob -Luke
+Added DbService to Library.cs with initialisation code in ThreadManager.cs -Luke
+Migrated EmailUserActivation.cs, Room.cs, Spell.cs over to use the new DbService -Luke
+Added <EmailActivation> true or false setting to tigermud.xml for controlling that feature -adam
+Added <ServerMode> "service" or "console" setting. Use "service" to run as a Windows service with console output going to tigermud.log -adam
+Added combat. NPCs now attack you on sight if their mob.aggression is set to over one. -adam
+Added graveyard room type. Put one of these in each zone and players will resurrect here when they die in that zone. -adam
+Added mob stats to mudmobs database table -adam
+Added Mob.Save and Mob.Addtodb -adam
+Added Mob["lastattack"] and Mob["aggression"] -adam
+Fixed a bug displaying two items in a room incorrectly -adam
+Added health, stamina, and mana regeneration over time, limited by Actor["healthmax"], StaminaMax, and ManaMax -adam
+All server console output goes through Lib.PrintLine and Lib.Print to support redirection -adam
+Equipped all hostile mobs with weapons for testing purposes -adam
+Added new Mob["aggression"] level 1 meaning mob will defend itself only -adam
+Added new Mob["aggression"] level 0 meaning mob will never fight back -adam
+Added PvP, you can attack and kill other players -adam
+Added a Mob.Respawn() method and Mob["respawntimer"] measured in seconds -adam
+Added Actor.Sayinzone and Actor.Sayinworld -adam
+Added Actor.coloralertgood, coloralertbad, colorsystemmessage, and colorannouncement -adam
+Fixed create new user routines again -adam
+Added announce and sysmessage commands -adam
+Only PvP deaths are announced worldwide, mob kills are only reported in the current room -adam
+Added user.Colorize that let's you use embedded color codes like "Some Text #Cis now colored#n" -Jeff Boschee
+Fixed bug [ 1171262 ] MODIFY command updates incorrect values, typo in examples. -adam
+Added user["combatactive"] flag -adam
+Added target, notarget, and combatstop commands -adam
+Added actor.SendAlertBad,SendAlertGood,SendAnnouncement,SendPrompt,SendCommand,SendError,SendExit -adam
+Added actor.SendItem,SendMobs,SendPeople,SendRoomDescription,SendRoomName,SendSystemMessage -adam
+Implemented actor.SendError where errors were sent to the client the old way -adam
+Added a merge command to combine stacked items of identical types -adam
+Fixed an item dupe bug/regression when putting items into containers -adam
+Added an exits sortedlist which get populated at startup for each room and contains all valid exits for that room - brian
+Added a Sayinradius function which executes a say to everyone within a radius from the user - brian
+Replaced the shout command to call above Sayinradius function - brian
+Added a global variable to the Lib class to define the range of the ShoutRadius - brian
+Added the ability for people to see which direction a shout came from - brian
+Added commands and actions loaded count to startup screen -adam
+Added user stats: Strength, Agility, Intellect, and Spirit -adam
+Fixed a few new user creation bugs -adam
+Fixed dropping things and they stay equipped -adam
+Fixed putting items into non-containers -adam
+Fixed bug where examining non-container items it gives "You see no item" error -adam
+Fixed bug typing "kudos" by itself and errors with "incorrect parameters" -adam
+Rewrote the give, accept, and reject commands -adam
+Replaced Lib.Equipitem and Lib.Unequipitem with actor.Equip and actor.UnEquip -adam
+Fixed a bug unable to find tmc and tma files in development environment -adam
+Fixed some get and look command bugs introduced during code refactoring -adam
+Rewrote the drop command -adam
+Fixed bugs in the get, drop, and look command about numericprefixes on item names -adam
+Rewrote the put command -adam
+Added a defaultsay command to set default speech emote text, like say, shout, or whisper. -adam
+
+

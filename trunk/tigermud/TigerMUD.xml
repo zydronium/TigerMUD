@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<!--TigerMUD Server Configuration File-->
+<TigerMUD>
+  <Database>
+    <Type>msaccess</Type>
+    <DBServer>localhost</DBServer>
+    <UserID>username</UserID>
+    <Password>password</Password>
+    <DatabaseName>tigermud</DatabaseName>
+    <ShowSQLStatements>false</ShowSQLStatements>
+  </Database>
+  <Server>
+    <Port>8000</Port>
+    <Welcomescreen>welcome.ans</Welcomescreen>
+    <Idledisconnect>30</Idledisconnect>
+    <SmtpServer>smtp.comcast.net</SmtpServer>
+    <EmailActivation>false</EmailActivation>
+    <ServerMode>console</ServerMode>
+  </Server>
+  <ClientSockets>
+    <TcpSocket>
+      <Enabled>true</Enabled>
+      <Port>8000</Port>
+    </TcpSocket>
+    <MsnSocket>
+      <Enabled>false</Enabled>
+      <SignonEmail></SignonEmail>
+      <Password></Password>
+    </MsnSocket>
+  </ClientSockets>
+  <ProfanityFilter>
+    <Enabled>false</Enabled>
+    <SendPlayerMessage>true</SendPlayerMessage>
+    <PlayerMessage>Now now, that's no way to talk.</PlayerMessage>
+  </ProfanityFilter>
+</TigerMUD>

@@ -1,0 +1,272 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2368943E-2F34-4E21-81AF-C9AA24FBFB50}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>TigerLIB</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>TigerMUD</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="XihSolutions.DotMSN">
+      <Name>XihSolutions.DotMSN</Name>
+      <HintPath>CommsLib\MsnComms\XihSolutions.DotMSN.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Command.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommandProcessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommsLib\ClientListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommsLib\ConnectionListenerFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommsLib\IConnectionListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommsLib\IUserSocket.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommsLib\MsnComms\MsnClientSocket.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommsLib\MsnComms\MsnConnectionListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommsLib\MsnComms\MsnSocketUtility.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommsLib\TcpComms\TcpClientSocket.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommsLib\TcpComms\TcpConnectionListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommsLib\TcpComms\TcpSocketUtility.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\DataCleaning.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\DbService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\IActor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\IEmailPassword.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\IEmailUserActivation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\IInternalMail.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\ILibrary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\ILogStatements.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\IMudBugs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\IMudLog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\IProfanityFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\ISpell.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\ISystemCommands.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\IThreadManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\Actor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\BaseOdbc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\EmailPassword.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\EmailUserActivation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\InternalMail.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\Library.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\MudBugs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\MudLog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\ProfanityFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\Spell.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\SystemCommands.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseLib\Odbc\ThreadManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DelayedCommands.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EmailPassword.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EmailUserActivation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interfaces.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InternalMail.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Library.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Market.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MenuForItems.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mudlog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProfanityFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RandomNumberGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spell.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Timer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

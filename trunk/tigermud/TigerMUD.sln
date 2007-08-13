@@ -1,0 +1,125 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerMUD", "TigerMUD.csproj", "{A3C7BEB1-7A58-457C-A408-832120D7AB97}"
+	ProjectSection(ProjectDependencies) = postProject
+		{06E4CB53-C0A3-4E2B-8DF4-D41BFC66F822} = {06E4CB53-C0A3-4E2B-8DF4-D41BFC66F822}
+		{5DC90988-3AC4-41D9-A76B-4C6879AE7EED} = {5DC90988-3AC4-41D9-A76B-4C6879AE7EED}
+		{2459AFD0-F65D-464B-B8D1-B6E5435DF3CC} = {2459AFD0-F65D-464B-B8D1-B6E5435DF3CC}
+		{639A4CDF-48BA-4602-868A-2B7AEF5687B2} = {639A4CDF-48BA-4602-868A-2B7AEF5687B2}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerCommands", "PlayerCommands\PlayerCommands.csproj", "{2459AFD0-F65D-464B-B8D1-B6E5435DF3CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2368943E-2F34-4E21-81AF-C9AA24FBFB50} = {2368943E-2F34-4E21-81AF-C9AA24FBFB50}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemCommands", "SystemCommands\SystemCommands.csproj", "{5DC90988-3AC4-41D9-A76B-4C6879AE7EED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerLIB", "TigerLIB\TigerLIB.csproj", "{2368943E-2F34-4E21-81AF-C9AA24FBFB50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindchimeActions", "WindchimeActions\WindchimeActions.csproj", "{06E4CB53-C0A3-4E2B-8DF4-D41BFC66F822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartActions", "CartActions\CartActions.csproj", "{639A4CDF-48BA-4602-868A-2B7AEF5687B2}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TigerMUD_Setup", "Setup\Setup1.vdproj", "{06782937-25DC-42BD-AB7C-62FB5B1FA256}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerLoaderLib", "TigerLoaderLib\TigerLoaderLib.csproj", "{528DDED3-C8D8-4743-B362-93832DAFD791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerLoader", "TigerLoader\TigerLoader.csproj", "{2408AC16-3D5E-4F39-BD63-EAD3F27406DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerRemoteConsole", "TigerRemoteConsole\TigerRemoteConsole.csproj", "{92CE3456-1D45-4593-B5D1-6AC5D8998799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerMUDScriptsAndPlugins", "TigerMUDScriptsAndPlugins\TigerMUDScriptsAndPlugins.csproj", "{592978BB-BDCB-4039-98AF-4520A0BDAD6E}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 12
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs03.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CartActions\\CartActions.csproj
+		SccProjectName1 = CartActions
+		SccLocalPath1 = CartActions
+		SccProjectUniqueName2 = PlayerCommands\\PlayerCommands.csproj
+		SccProjectName2 = PlayerCommands
+		SccLocalPath2 = PlayerCommands
+		SccProjectUniqueName3 = Setup\\Setup1.vdproj
+		SccProjectName3 = Setup
+		SccLocalPath3 = Setup
+		SccProjectUniqueName4 = SystemCommands\\SystemCommands.csproj
+		SccProjectName4 = SystemCommands
+		SccLocalPath4 = SystemCommands
+		SccProjectUniqueName5 = TigerLIB\\TigerLIB.csproj
+		SccProjectName5 = TigerLIB
+		SccLocalPath5 = TigerLIB
+		SccProjectUniqueName6 = TigerLoader\\TigerLoader.csproj
+		SccProjectName6 = TigerLoader
+		SccLocalPath6 = TigerLoader
+		SccProjectUniqueName7 = TigerLoaderLib\\TigerLoaderLib.csproj
+		SccProjectName7 = TigerLoaderLib
+		SccLocalPath7 = TigerLoaderLib
+		SccProjectUniqueName8 = TigerMUD.csproj
+		SccLocalPath8 = .
+		SccProjectUniqueName9 = TigerMUDScriptsAndPlugins\\TigerMUDScriptsAndPlugins.csproj
+		SccProjectName9 = TigerMUDScriptsAndPlugins
+		SccLocalPath9 = TigerMUDScriptsAndPlugins
+		SccProjectUniqueName10 = TigerRemoteConsole\\TigerRemoteConsole.csproj
+		SccProjectName10 = TigerRemoteConsole
+		SccLocalPath10 = TigerRemoteConsole
+		SccProjectUniqueName11 = WindchimeActions\\WindchimeActions.csproj
+		SccProjectName11 = WindchimeActions
+		SccLocalPath11 = WindchimeActions
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3C7BEB1-7A58-457C-A408-832120D7AB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C7BEB1-7A58-457C-A408-832120D7AB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C7BEB1-7A58-457C-A408-832120D7AB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C7BEB1-7A58-457C-A408-832120D7AB97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2459AFD0-F65D-464B-B8D1-B6E5435DF3CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2459AFD0-F65D-464B-B8D1-B6E5435DF3CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2459AFD0-F65D-464B-B8D1-B6E5435DF3CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2459AFD0-F65D-464B-B8D1-B6E5435DF3CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DC90988-3AC4-41D9-A76B-4C6879AE7EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DC90988-3AC4-41D9-A76B-4C6879AE7EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DC90988-3AC4-41D9-A76B-4C6879AE7EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DC90988-3AC4-41D9-A76B-4C6879AE7EED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2368943E-2F34-4E21-81AF-C9AA24FBFB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2368943E-2F34-4E21-81AF-C9AA24FBFB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2368943E-2F34-4E21-81AF-C9AA24FBFB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2368943E-2F34-4E21-81AF-C9AA24FBFB50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06E4CB53-C0A3-4E2B-8DF4-D41BFC66F822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06E4CB53-C0A3-4E2B-8DF4-D41BFC66F822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06E4CB53-C0A3-4E2B-8DF4-D41BFC66F822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06E4CB53-C0A3-4E2B-8DF4-D41BFC66F822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{639A4CDF-48BA-4602-868A-2B7AEF5687B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{639A4CDF-48BA-4602-868A-2B7AEF5687B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{639A4CDF-48BA-4602-868A-2B7AEF5687B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{639A4CDF-48BA-4602-868A-2B7AEF5687B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06782937-25DC-42BD-AB7C-62FB5B1FA256}.Debug|Any CPU.ActiveCfg = Debug
+		{06782937-25DC-42BD-AB7C-62FB5B1FA256}.Release|Any CPU.ActiveCfg = Release
+		{06782937-25DC-42BD-AB7C-62FB5B1FA256}.Release|Any CPU.Build.0 = Release
+		{528DDED3-C8D8-4743-B362-93832DAFD791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{528DDED3-C8D8-4743-B362-93832DAFD791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{528DDED3-C8D8-4743-B362-93832DAFD791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{528DDED3-C8D8-4743-B362-93832DAFD791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2408AC16-3D5E-4F39-BD63-EAD3F27406DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2408AC16-3D5E-4F39-BD63-EAD3F27406DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2408AC16-3D5E-4F39-BD63-EAD3F27406DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2408AC16-3D5E-4F39-BD63-EAD3F27406DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92CE3456-1D45-4593-B5D1-6AC5D8998799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92CE3456-1D45-4593-B5D1-6AC5D8998799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92CE3456-1D45-4593-B5D1-6AC5D8998799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92CE3456-1D45-4593-B5D1-6AC5D8998799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{592978BB-BDCB-4039-98AF-4520A0BDAD6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592978BB-BDCB-4039-98AF-4520A0BDAD6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592978BB-BDCB-4039-98AF-4520A0BDAD6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592978BB-BDCB-4039-98AF-4520A0BDAD6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

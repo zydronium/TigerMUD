@@ -1,0 +1,216 @@
+﻿<?xml version="1.0"?>
+<project name="TigerMUD" default="build" basedir=".">
+ <description>A C#.Net MUD.</description>
+ <property name="debug" value="true" overwrite="false" />
+ <property name="baseDir" value="${project::get-base-directory()}" />
+ <property name="outputDir" value="${baseDir}\build\${framework::get-target-framework()}" />
+ <property name="useProjects" value="false" overwrite="false" />
+
+ <target name="clean" description="remove all generated files">
+   <delete>
+     <fileset>
+       <include name="${outputDir}\*.*" />
+     </fileset>
+   </delete>
+   <delete dir="${outputDir}" failonerror="false"/>
+ </target>
+
+ <target name="PluginRenames" description="Renames the pluggable commands and actions" depends="lib, engine, SystemCommands, PlayerCommands, WindchimeActions, CartActions, copyResourceFiles">
+   <move file="${outputDir}/CartActions.dll" tofile="${outputDir}/CartActions.tmc" />
+   <move file="${outputDir}/PlayerCommands.dll" tofile="${outputDir}/PlayerCommands.tmc" />
+   <move file="${outputDir}/SystemCommands.dll" tofile="${outputDir}/SystemCommands.tmc" />
+   <move file="${outputDir}\WindchimeActions.dll" tofile="${outputDir}/WindchimeActions.tmc" />
+ </target>
+
+ <target name="build" description="builds the entire TigerMUD" depends="PluginRenames">
+   <echo message="Root folder: ${baseDir}"/>
+   <echo message="Build folder: ${outputDir}"/>
+ </target>
+
+ <target name="copyResourceFiles" description="copies the db and other required files" depends="clean">
+   <copy todir="${outputDir}">
+     <fileset basedir="${baseDir}">
+       <include name="*.mdb" />
+       <include name="*.ldb" />
+       <include name="*.xml" />
+     </fileset>
+   </copy>
+ </target>
+
+ <target name="lib" description="compiles the source code" depends="copyResourceFiles">
+   <if test="${useProjects}">
+     <solution configuration="Debug">
+       <projects>
+         <include name="TigerLIB\TigerLIB.csproj" />
+       </projects>
+     </solution>
+     <copy todir="${outputDir}">
+       <fileset basedir="${baseDir}\TigerLIB\bin\debug">
+         <include name="TigerLIB.dll" />
+         <include name="TigerLIB.mdb" />
+         <include name="TigerLIB.pdb" />
+       </fileset>
+     </copy>
+   </if>
+   <ifnot test="${useProjects}">
+     <csc target="library" output="${outputDir}\TigerLIB.dll" debug="${debug}">
+       <sources>
+         <include name="TigerLIB\*.cs" />
+         <include name="TigerLIB\DatabaseLib\*.cs" />
+         <include name="TigerLIB\DatabaseLib\Odbc\*.cs" />
+         <exclude name="TigerLIB\GenericContainer.cs" />
+         <exclude name="TigerLIB\LibTests.cs" />
+         <exclude name="TigerLIB\StatusEffects.cs" />
+       </sources>
+       <references>
+         <include name="System.Data.dll" />
+         <include name="System.Web.dll" />
+       </references>
+     </csc>
+   </ifnot>
+ </target>
+
+ <target name="engine" description="compiles the mud engine" depends="lib">
+   <if test="${useProjects}">
+     <solution configuration="Debug">
+       <projects>
+         <include name="TigerMUD.csproj" />
+       </projects>
+     </solution>
+     <copy todir="${outputDir}">
+       <fileset basedir="${baseDir}\bin\debug">
+         <include name="TigerMUD.exe" />
+         <include name="TigerMUD.pdb" />
+         <include name="TigerMUD.mdb" />
+       </fileset>
+     </copy>
+   </if>
+   <ifnot test="${useProjects}">
+     <csc target="exe" output="${outputDir}\TigerMUD.exe" debug="${debug}">
+       <sources>
+         <include name="*.cs" />
+       </sources>
+       <references>
+         <include name="${outputDir}\TigerLIB.dll" />
+         <include name="System.Configuration.Install.dll" />
+         <include name="System.Data.dll" />
+         <include name="System.Management.dll" />
+         <include name="System.ServiceProcess.dll" />
+       </references>
+     </csc>
+   </ifnot>
+ </target>
+
+ <target name="SystemCommands" description="A library of system commands" verbose="true" depends="lib">
+   <if test="${useProjects}">
+     <solution configuration="Debug">
+       <projects>
+         <include name="SystemCommands\SystemCommands.csproj" />
+       </projects>
+     </solution>
+     <copy todir="${outputDir}">
+       <fileset basedir="${baseDir}\SystemCommands\bin\debug">
+         <include name="SystemCommands.dll" />
+         <include name="SystemCommands.pdb" />
+         <include name="SystemCommands.mdb" />
+       </fileset>
+     </copy>
+   </if>
+   <ifnot test="${useProjects}">
+     <csc target="library" output="${outputDir}\SystemCommands.dll" debug="${debug}">
+       <sources>
+         <include name="SystemCommands\*.cs" />
+       </sources>
+       <references>
+         <include name="${outputDir}\TigerLIB.dll" />
+         <include name="System.Data.dll" />
+       </references>
+     </csc>
+   </ifnot>
+ </target>
+
+ <target name="PlayerCommands" description="A library of player commands" depends="lib">
+   <if test="${useProjects}">
+     <solution configuration="Debug">
+       <projects>
+         <include name="PlayerCommands\PlayerCommands.csproj" />
+       </projects>
+     </solution>
+     <copy todir="${outputDir}">
+       <fileset basedir="${baseDir}\PlayerCommands\bin\debug">
+         <include name="PlayerCommands.dll" />
+         <include name="PlayerCommands.pdb" />
+         <include name="PlayerCommands.mdb" />
+       </fileset>
+     </copy>
+   </if>
+   <ifnot test="${useProjects}">
+     <csc target="library" output="${outputDir}\PlayerCommands.dll" debug="${debug}">
+       <sources>
+         <include name="PlayerCommands\*.cs" />
+       </sources>
+       <references>
+         <include name="${outputDir}\TigerLIB.dll" />
+         <include name="System.Data.dll" />
+       </references>
+     </csc>
+   </ifnot>
+ </target>
+
+ <target name="CartActions" description="A set of cart actions" depends="lib">
+   <if test="${useProjects}">
+     <solution configuration="Debug">
+       <projects>
+         <include name="CartActions\CartActions.csproj" />
+       </projects>
+     </solution>
+     <copy todir="${outputDir}">
+       <fileset basedir="${baseDir}\CartActions\bin\debug">
+         <include name="CartActions.dll" />
+         <include name="CartActions.pdb" />
+         <include name="CartActions.mdb" />
+       </fileset>
+     </copy>
+   </if>
+   <ifnot test="${useProjects}">
+     <csc target="library" output="${outputDir}\CartActions.dll" debug="${debug}">
+       <sources>
+         <include name="CartActions\*.cs" />
+         <include name="System.Data.dll" />
+       </sources>
+       <references>
+         <include name="${outputDir}\TigerLIB.dll" />
+       </references>
+     </csc>
+   </ifnot>
+ </target>
+
+ <target name="WindchimeActions" description="A set of windchimeactions" depends="lib">
+   <if test="${useProjects}">
+     <solution configuration="Debug">
+       <projects>
+         <include name="WindchimeActions\WindchimeActions.csproj" />
+       </projects>
+     </solution>
+     <copy todir="${outputDir}">
+       <fileset basedir="${baseDir}\WindchimeActions\bin\debug">
+         <include name="WindchimeActions.dll" />
+         <include name="WindchimeActions.pdb" />
+         <include name="WindchimeActions.mdb" />
+       </fileset>
+     </copy>
+   </if>
+   <ifnot test="${useProjects}">
+     <csc target="library" output="${outputDir}\WindchimeActions.dll" debug="${debug}">
+       <sources>
+         <include name="WindchimeActions\*.cs" />
+       </sources>
+       <references>
+         <include name="${outputDir}\TigerLIB.dll" />
+         <include name="System.Data.dll" />
+       </references>
+     </csc>
+   </ifnot>
+ </target>
+
+</project>
