@@ -51,6 +51,7 @@ namespace TigerMUD
     /// </summary>
     public class Command_defaultsay : Command
     {
+        
         public Command_defaultsay()
         {
             name = "command_defaultsay";
@@ -519,7 +520,7 @@ namespace TigerMUD
 
             if (targetuser == null)
             {
-                actor.SendError("That is not a valid target.\r\n");
+                actor.SendError("You don't have a target selected.\r\n");
                 // Clear target
                 actor["target"] = "";
                 actor["targettype"] = "";
@@ -529,7 +530,16 @@ namespace TigerMUD
             // Ensure target is in the room
             if (targetuser["container"].ToString() != actor["container"].ToString())
             {
-                actor.SendError("Target is not in the room.\r\n");
+                actor.SendError("Target \"" + targetuser.states["name"].ToString() + "\" is an invalid target. \r\n");
+                return false;
+            }
+
+            //if(targetuser[""])
+
+            // Ensure target is in the room
+            if (targetuser["container"].ToString() != actor["container"].ToString())
+            {
+                actor.SendError("Target \"" + targetuser.states["name"].ToString() + "\" is an invalid target. \r\n");
                 return false;
             }
             spell.BeginCast(actor);
@@ -638,7 +648,7 @@ namespace TigerMUD
             help.Examples[2] = "ta bag";
             help.Examples[3] = "ta 3mushroom";
             help.Examples[3] = "ta 12557331";
-
+            help.Examples[4] = "\"ta clear\" clears target." ;
         }
 
         public override bool DoCommand(Actor actor, string command, string arguments)
@@ -732,13 +742,17 @@ namespace TigerMUD
                 {
                     // Found it
                     // Only builders can target something not in the room or someone not logged in
-                    if (Lib.ConvertToBoolean(item["connected"]) == true || Convert.ToInt32(actor["accesslevel"]) >= (int)AccessLevel.Builder)
-                    {
-                        actor["target"] = item["id"];
-                        actor["targettype"] = item["type"].ToString();
-                        actor.Send("Your target is now a " + item["type"].ToString() + " named '" + item["name"] + "'.\r\n");
-                        return true;
-                    }
+                    //if (Lib.ConvertToBoolean(item["connected"]) == true || Convert.ToInt32(actor["accesslevel"]) >= (int)AccessLevel.Builder)
+                    //{
+                    //    actor["target"] = item["id"];
+                    //    actor["targettype"] = item["type"].ToString();
+                    //    actor.Send("Your target is now a " + item["type"].ToString() + " named '" + item["name"] + "'.\r\n");
+                    //    return true;
+                    //}
+                    actor["target"] = item["id"];
+                    actor["targettype"] = item["type"].ToString();
+                    actor.Send("Your target is now a " + item["type"].ToString() + " named '" + item["name"] + "'.\r\n");
+                    return true;
                 }
                 else
                 {
@@ -3796,6 +3810,7 @@ namespace TigerMUD
                 {
                     Lib.actors.Add(item);
                 }
+
                 Actor room = actor.GetContainer();
                 room.Additem(item);
                 actor.Send("New item '" + item["name"] + "', id: " + item["id"] + " successfully created in the room.\r\n");
@@ -3812,6 +3827,60 @@ namespace TigerMUD
         }
     }
 
+     /// <summary>
+    /// Builder command. Loads a XML with level definitions.
+    /// </summary>
+    public class Command_loadxmlroom : Command
+    {
+        public Command_loadxmlroom()
+        {
+            name = "command_loadxmlroom";
+            words = new string[1] { "loadxmlroom" };
+            help.Command = "loadXMLroom";
+            help.Summary = "Loads an XML file with room definitions.";
+            help.Syntax = "loadxmlroom <filename>";
+            help.Examples = new string[3];
+            help.Examples[0] = "loadxmlroom roomdef.xml";
+            help.Description = "This creates a set of rooms as defined in an XML file ";
+        }
+
+        public override bool DoCommand(Actor actor, string command, string arguments)
+        {
+            ArrayList words = Lib.GetWords(arguments);
+
+            if (words.Count < 1)
+            {
+                actor.SendError("You must specify filename.\r\n");
+                return false;
+                
+            }
+
+            string filename = Lib.PathtoRoot + (string)words[0];
+
+            if (!File.Exists(filename))
+            {
+                actor.SendError("File does not exist.\r\n");
+                return false;
+            }
+
+            // TODO: Add support for filenames longer than one word.
+
+            // Load the file
+            try
+            {
+                // does this make sense? No it doesn't. Fix. 
+                LevelReader reader = new LevelReader(filename);
+                reader.LoadLevel(filename);
+            }
+            catch (Exception ex)
+            {
+                actor.SendError("File load failed with the error: " + ex.Message + ex.StackTrace + "\r\n");
+                return false;
+            }
+            actor.Send("The file was loaded successfully.\r\n");
+            return true;
+        }
+    }
     /// <summary>
     /// Lists a item by id number or all items.
     /// </summary>
@@ -3980,6 +4049,67 @@ namespace TigerMUD
             {
                 actor.SendError("Object destruction failed with the error: " + ex.Message + ex.StackTrace + "\r\n");
                 return false;
+            }
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// Destroys all users.
+    /// </summary>
+    public class Command_destroyallusers : Command
+    {
+        public Command_destroyallusers()
+        {
+            name = "command_destroyallusers";
+            words = new string[2] { "destroyallusers", "purge" };
+            help.Command = "destroy";
+            help.Summary = "Destroys all users.";
+            help.Syntax = "destroyall";
+            help.Examples = new string[1];
+            help.Examples[0] = "destroyall";
+        }
+        public override bool DoCommand(Actor actor, string command, string arguments)
+        {
+
+            Actor item = null;
+
+            for (int itemcount = Lib.GetWorldItems().Count - 1; itemcount >= 0; itemcount--)
+            {
+                if (Lib.GetWorldItems()[itemcount] != null)
+                {
+                    item = (Actor)Lib.GetWorldItems()[itemcount];
+                    if (item["type"].ToString() == "user" || item["subtype"].ToString() == "user")
+                    {
+                        // delete the user
+
+                        if (Convert.ToInt32(actor["accesslevel"]) < (int)AccessLevel.UberAdmin)
+                        {
+                            actor.SendError("You may not destroy users.\r\n");
+                            return false;
+                        }
+
+
+                        try
+                        {
+                            if (Convert.ToInt32(item["accesslevel"]) < (int)AccessLevel.UberAdmin)
+                            {
+                                actor.Send("Object destruction succeeded. User \"" + item["name"] +"\" returns to dust... \r\n");
+                                item.Destroy();
+                                
+                            }
+                            
+                        }
+                        catch (Exception ex)
+                        {
+                            actor.SendError("Object destruction failed with the error: " + ex.Message + ex.StackTrace + "\r\n");
+                            return false;
+                        }
+
+                    }
+
+                }
+                
             }
             return true;
         }

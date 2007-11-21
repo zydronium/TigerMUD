@@ -2467,6 +2467,22 @@ namespace TigerMUD
                 tempuser["lastlogindate"] = DateTime.Now;
                 tempuser["lastloginip"] = "nowhere";
 
+                // Add Equipment Slots
+                tempuser["wearhead"] = "";
+                tempuser["wearneck"] = "";
+                tempuser["wearshoulders"] = "";
+                tempuser["wearback"] = "";
+                tempuser["weararms"] = "";
+                tempuser["wearwrists"] = "";
+                tempuser["wearhands"] = "";
+                tempuser["wearrightring"] = "";
+                tempuser["wearleftring"] = "";
+                tempuser["wearchest"] = "";
+                tempuser["wearwaist"] = "";
+                tempuser["wearlegs"] = "";
+                tempuser["wearfeet"] = "";
+                tempuser["wearweapon1"] = "";
+                tempuser["wearweapon2"] = "";
 
                 tempuser["spellpending"] = "";
                 tempuser["morebuffer"] = "";
@@ -2479,6 +2495,8 @@ namespace TigerMUD
                 tempuser["skillknown_poison"] = 1000;
                 tempuser["skillknown_melee"] = 1000;
                 tempuser["skillknown_swords"] = 1000;
+
+                tempuser["accesslevel"] = 10;
 
                 // Have to dot hsi because just added spells to user
                 tempuser.LoadSpells();

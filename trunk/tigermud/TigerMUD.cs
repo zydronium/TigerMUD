@@ -50,16 +50,24 @@ using System.IO;
 
 namespace TigerMUD
 {
+    public class Dummy
+    { 
+        //remove for release
+        static void Main(string[] args)
+        {
+            Server myServer = new Server();
+            myServer.Start();
+        }
+        //end remove
+    }
+
 
     [Serializable]
-	public class Server : MarshalByRefObject
+    public class Server : MarshalByRefObject
 	{
         Threadmanager threadManager = null;
         public bool exit = false;
-        static void Main(string[] args)
-        {
-     
-        }
+        
 
         public bool Started
         {
@@ -80,12 +88,12 @@ namespace TigerMUD
         public void Start()
         {
             //Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            Lib.PathtoRoot = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\"));
+            Lib.PathtoRoot = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\"));
             Lib.PathtoRootAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"bin" + Lib.PathtoDebugorRelease));
             Lib.PathtoRootRemoteConsole = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"tigerremoteconsole"));
-            Lib.PathtoRootRemoteConsoleAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootRemoteConsole, @"bin\" + Lib.PathtoDebugorRelease));
+            Lib.PathtoRootRemoteConsoleAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootRemoteConsole, @"..\bin\Debug\" + Lib.PathtoDebugorRelease));
             Lib.PathtoRootScriptsandPlugins = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"tigermudscriptsandplugins"));
-            Lib.PathtoRootScriptsandPluginsAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootScriptsandPlugins, @"bin\" + Lib.PathtoDebugorRelease));
+            Lib.PathtoRootScriptsandPluginsAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootScriptsandPlugins, @"bin\Debug" + Lib.PathtoDebugorRelease));
             Lib.PathtoRootTigerLoaderLib = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"tigerloaderlib"));
             Lib.PathtoRootTigerLoaderLibAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootTigerLoaderLib, @"bin\" + Lib.PathtoDebugorRelease));
             

@@ -6,14 +6,16 @@
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9B6E0F62-EE54-4B9D-A1F8-BE57F2BB9862}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XMLLevelEditors</RootNamespace>
+    <RootNamespace>TigerLIB</RootNamespace>
     <AssemblyName>XMLLevelEditors</AssemblyName>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,5 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LevelReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tl.xml" />
   </ItemGroup>
 </Project>

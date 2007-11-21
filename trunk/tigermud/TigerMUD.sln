@@ -31,9 +31,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerRemoteConsole", "Tiger
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerMUDScriptsAndPlugins", "TigerMUDScriptsAndPlugins\TigerMUDScriptsAndPlugins.csproj", "{592978BB-BDCB-4039-98AF-4520A0BDAD6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLLevelEditors", "XMLLevelEditors\XMLLevelEditors.csproj", "{9B6E0F62-EE54-4B9D-A1F8-BE57F2BB9862}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 13
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -69,6 +71,9 @@ Global
 		SccProjectUniqueName11 = WindchimeActions\\WindchimeActions.csproj
 		SccProjectName11 = WindchimeActions
 		SccLocalPath11 = WindchimeActions
+		SccProjectUniqueName12 = XMLLevelEditors\\XMLLevelEditors.csproj
+		SccProjectName12 = XMLLevelEditors
+		SccLocalPath12 = XMLLevelEditors
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +123,10 @@ Global
 		{592978BB-BDCB-4039-98AF-4520A0BDAD6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{592978BB-BDCB-4039-98AF-4520A0BDAD6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{592978BB-BDCB-4039-98AF-4520A0BDAD6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B6E0F62-EE54-4B9D-A1F8-BE57F2BB9862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B6E0F62-EE54-4B9D-A1F8-BE57F2BB9862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B6E0F62-EE54-4B9D-A1F8-BE57F2BB9862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B6E0F62-EE54-4B9D-A1F8-BE57F2BB9862}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

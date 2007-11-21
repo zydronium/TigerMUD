@@ -69,6 +69,7 @@ namespace TigerMUD
         // indexer
         public Hashtable states = new Hashtable();
         // String-based indexer to store states
+
         public object this[string statename]
         {
             get 

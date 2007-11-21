@@ -1,0 +1,11 @@
+<room>
+  <name>My Test Room</name>
+  <data1>data</data1>
+  <data2>data2</data2>
+  
+</room>
+<room>
+  <name>My Test Room2</name>
+  <data1>data</data1>
+  <data2>data2</data2>
+  </room>
