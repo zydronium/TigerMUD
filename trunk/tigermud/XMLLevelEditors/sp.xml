@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <spell>
+    <name>Fireball</name>
+    <shortname>fire1</shortname>
+    <type></type>
+    <!--id></id Remove this to not overwrite the automatically generated ID.-->
+    <description>Tosses a fist-sized fireball to the target.</description>
+    <credits>Ross D.</credits>
+    
+    <biome_requirement></biome_requirement>
+    <biome_resist></biome_resist>
+    <biome_deny></biome_deny>
+        
+    <health></health>
+    <displaytarget>spell tosses a small fireball at you.</displaytarget>
+    <displayroom>pushes his palm, throwing a red projectile across the room.</displayroom>
+    
+    <element>fire</element>
+    <!--Minimum required for the skill-->
+    <skillmin>100</skillmin>
+    <skillname>sorcery</skillname>
+    <duration>0</duration>
+    <manacost>15</manacost>
+    <targeting>target</targeting>
+    <frequency>4</frequency>
+    <windup>20</windup>
+    <cooldown>20</cooldown>
+    
+    
+    <data1>datacontenta</data1>
+    <data2>data2contenta</data2>
+  </spell>
+
+  <spell>
+    <name>Ice Ray</name>
+    <shortname>ice1</shortname>
+    <type></type>
+    <!--id></id Remove this to not overwrite the automatically generated ID.-->
+    <description>Fires a sharp icicle.</description>
+    <credits>Ross D.</credits>
+
+    <biome_requirement></biome_requirement>
+    <biome_resist></biome_resist>
+    <biome_deny></biome_deny>
+
+    <health></health>
+    <displaytarget>spell tosses a sharp projectile aimed at your chest.</displaytarget>
+    <displayroom>points his finger at you, throwing a clear  across the room.</displayroom>
+
+    <element>ice</element>
+    <!--Minimum required for the skill-->
+    <skillmin>100</skillmin>
+    <skillname>sorcery</skillname>
+    <duration>0</duration>
+    <manacost>15</manacost>
+    <targeting>target</targeting>
+    <frequency>4</frequency>
+    <windup>20</windup>
+    <cooldown>20</cooldown>
+
+
+    <data1>datacontenta</data1>
+    <data2>data2contenta</data2>
+  </spell>
+</root>

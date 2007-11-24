@@ -342,6 +342,12 @@ namespace TigerMUD
                 return false;
             }
 
+            //if (this["biome_reqirement"].Equals(Lib.GetByID(user["container"])["biome"]))
+            //{
+            //    user.SendError("The environment is not fit for this spell... \r\n");
+            //    return false;
+            //}
+
             // All checks passed!
             return true;
         }

@@ -1,11 +1,46 @@
-<room>
-  <name>My Test Room</name>
-  <data1>data</data1>
-  <data2>data2</data2>
-  
-</room>
-<room>
-  <name>My Test Room2</name>
-  <data1>data</data1>
-  <data2>data2</data2>
+<?xml version="1.0"?>
+<root>
+  <room>
+    <name>My Test Room</name>
+    <shortname>TestRoom1</shortname>
+    <subtype></subtype>
+    <!--id></id Remove this to not overwrite the automatically generated ID.-->
+    <descr>This is the first test room I created.</descr>
+    <credits>Ross D.</credits>
+    <zone></zone>
+    <biome></biome>
+    <xnorth></xnorth>
+    <xsouth></xsouth>
+    <xeast></xeast>
+    <xwest></xwest>
+    <xnortheast></xnortheast>
+    <xnorthwest></xnorthwest>
+    <xsoutheast></xsoutheast>
+    <xsouthwest></xsouthwest>
+    <accesslevel>0</accesslevel>
+    <data1>datacontenta</data1>
+    <data2>data2contenta</data2>
   </room>
+  <room>
+    <name>My Test Room2</name>
+    <shortname>TestRoom2</shortname>
+    <subtype></subtype>
+    <!--id></id Remove this to not overwrite the automatically generated ID.-->
+    <descr>This is the second test room I created.</descr>
+    <credits>Ross D.</credits>
+    <zone></zone>
+    <biome></biome>
+    <xnorth></xnorth>
+    <xsouth></xsouth>
+    <xeast></xeast>
+    <xwest></xwest>
+    <xnortheast></xnortheast>
+    <xnorthwest></xnorthwest>
+    <xsoutheast></xsoutheast>
+    <xsouthwest></xsouthwest>
+    <biome></biome>
+    <accesslevel>0</accesslevel>
+    <data1>data2contentb</data1>
+    <data2>data2contentb</data2>
+  </room>
+</root>

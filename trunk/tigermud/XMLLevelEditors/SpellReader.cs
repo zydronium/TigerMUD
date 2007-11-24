@@ -1,48 +1,32 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
 namespace TigerMUD
 {
-    public abstract class TigerXMLReader
-    { 
-        protected XmlTextReader mReader; 
-
-        public TigerXMLReader(string Filename)
-        {
-            mReader = new XmlTextReader(Filename);
-        }
-
-        public TigerXMLReader()
-        {
-            mReader = new XmlTextReader("");
-        }
-
-        public abstract Boolean Load(string filename);
-    }
-
-    public class LevelReader: TigerXMLReader
+    public class SpellReader : TigerXMLReader
     {
-        public LevelReader() : base() { }
-        public LevelReader(string Filename) : base(Filename) { }
-        
+        public SpellReader() : base() { }
+        public SpellReader(string Filename) : base(Filename) { }
+
         public override Boolean Load(string filename)
         {
-            Boolean endRoom = false;
-            Actor newRoom = new Actor();
-           
+            Boolean endSpell = false;
+            Spell newSpell= new Spell();
+
             mReader = new XmlTextReader(filename);
+            
             mReader.Read();
             while (!mReader.EOF)
             {
 
                 if (mReader.NodeType == XmlNodeType.Element)
                 {
-                    if (mReader.Name.ToUpper().Equals("ROOM"))
+                    if (mReader.Name.ToUpper().Equals("SPELL"))
                     {
                         mReader.Read();
-                        while (!endRoom)
+                        while (!endSpell)
                         {
                             //read room data
                             switch (mReader.NodeType)
@@ -50,12 +34,12 @@ namespace TigerMUD
                                 case XmlNodeType.Element: // The node is an element.
                                     String stateName = mReader.Name;
                                     mReader.Read(); //read text inside tags
-                                    newRoom[stateName] = mReader.Value;
+                                    newSpell[stateName] = mReader.Value;
                                     break;
                                 case XmlNodeType.EndElement:
 
-                                    if (mReader.Name.ToUpper().Equals("ROOM"))
-                                        endRoom = true;
+                                    if (mReader.Name.ToUpper().Equals("SPELL"))
+                                        endSpell = true;
                                     mReader.Read(); // read elements
                                     break;
 
@@ -67,30 +51,26 @@ namespace TigerMUD
 
                         //TODO: Verify minimum contents
                         // Add default fields if not existing
-                        newRoom["type"] = "room";
-                        newRoom["containertype"] = "room";
-                        newRoom["container"] = "";
-                        newRoom["equippable"] = false;
-                        newRoom["shortnameupper"] = "";
-                        newRoom["combatactive"] = false;
+                        //newRoom["type"] = "room";
+                        //newRoom["equippable"] = false;
+                        //newRoom["shortnameupper"] = "";
+                        //newRoom["combatactive"] = false;
 
 
-                        lock (Lib.actors.SyncRoot)
+                        lock (Lib.spells.SyncRoot)
                         {
-                            Lib.actors.Add(newRoom);
+                            Lib.spells.Add(newSpell);
                         }
 
-
                         //prepare for next room
-                        endRoom = false;
-                        newRoom = new Actor();
+                        endSpell = false;
+                        newSpell = new Spell();
                     }
                     else
                         mReader.Read();
                 }
                 else
                     mReader.Read();
-                
             }
 
             return true;

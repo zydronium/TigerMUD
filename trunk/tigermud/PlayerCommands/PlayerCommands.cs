@@ -3827,7 +3827,7 @@ namespace TigerMUD
         }
     }
 
-     /// <summary>
+    /// <summary>
     /// Builder command. Loads a XML with level definitions.
     /// </summary>
     public class Command_loadxmlroom : Command
@@ -3835,12 +3835,13 @@ namespace TigerMUD
         public Command_loadxmlroom()
         {
             name = "command_loadxmlroom";
-            words = new string[1] { "loadxmlroom" };
+            words = new string[2] { "loadxmlroom", "lxr" };
             help.Command = "loadXMLroom";
             help.Summary = "Loads an XML file with room definitions.";
             help.Syntax = "loadxmlroom <filename>";
             help.Examples = new string[3];
             help.Examples[0] = "loadxmlroom roomdef.xml";
+            help.Examples[0] = "lxr roomdef.xml";
             help.Description = "This creates a set of rooms as defined in an XML file ";
         }
 
@@ -3855,7 +3856,7 @@ namespace TigerMUD
                 
             }
 
-            string filename = Lib.PathtoRoot + (string)words[0];
+            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot , @"XMLLevelEditors\\")) + (string)words[0];
 
             if (!File.Exists(filename))
             {
@@ -3870,7 +3871,7 @@ namespace TigerMUD
             {
                 // does this make sense? No it doesn't. Fix. 
                 LevelReader reader = new LevelReader(filename);
-                reader.LoadLevel(filename);
+                reader.Load(filename);
             }
             catch (Exception ex)
             {
@@ -3881,6 +3882,65 @@ namespace TigerMUD
             return true;
         }
     }
+
+    /// <summary>
+    /// Builder command. Loads a XML with spell definitions.
+    /// </summary>
+    public class Command_loadxmlspell : Command
+    {
+        public Command_loadxmlspell()
+        {
+            name = "command_loadxmlspell";
+            words = new string[2] { "loadxmlspell", "lxs" };
+            help.Command = "loadXMLspell";
+            help.Summary = "Loads an XML file with spell definitions.";
+            help.Syntax = "loadxmlspell <filename>";
+            help.Examples = new string[3];
+            help.Examples[0] = "loadxmlspell spelldef.xml";
+            help.Examples[0] = "lxs spelldef.xml";
+            help.Description = "This creates a set of spells as defined in an XML file ";
+        }
+
+        public override bool DoCommand(Actor actor, string command, string arguments)
+        {
+            ArrayList words = Lib.GetWords(arguments);
+
+            if (words.Count < 1)
+            {
+                actor.SendError("You must specify filename.\r\n");
+                return false;
+
+            }
+
+            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"XMLLevelEditors\\")) + (string)words[0];
+
+            if (!File.Exists(filename))
+            {
+                actor.SendError("File does not exist.\r\n");
+                return false;
+            }
+
+            // TODO: Add support for filenames longer than one word.
+
+            // Load the file
+            try
+            {
+                // does this make sense? No it doesn't. Fix. 
+                SpellReader reader = new SpellReader(filename);
+                reader.Load(filename);
+            }
+            catch (Exception ex)
+            {
+                actor.SendError("File load failed with the error: " + ex.Message + ex.StackTrace + "\r\n");
+                return false;
+            }
+            actor.Send("The file was loaded successfully.\r\n");
+            return true;
+        }
+    }
+
+
+
     /// <summary>
     /// Lists a item by id number or all items.
     /// </summary>

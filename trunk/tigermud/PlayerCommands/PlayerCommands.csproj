@@ -104,9 +104,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XMLLevelEditors\XMLLevelEditors.csproj">
+    <ProjectReference Include="..\XMLLevelEditors\XMLContentEditors.csproj">
       <Project>{9B6E0F62-EE54-4B9D-A1F8-BE57F2BB9862}</Project>
-      <Name>XMLLevelEditors</Name>
+      <Name>XMLContentEditors</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
