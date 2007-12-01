@@ -238,7 +238,7 @@ namespace TigerMUD
 
 
             Hashtable loadstats = new Hashtable();
-            // Load rooms and items from the database and provide hashtable for counting all types loaded
+            // Load all actors
             try
             {
                 Lib.PrintLine("Loading actors...");
@@ -262,7 +262,7 @@ namespace TigerMUD
 
             Lib.PrintLine("Loading spells...");
 
-            // Load rooms and items from the database and provide hashtable for counting all types loaded
+            // Load spells from the database and provide hashtable for counting all types loaded
             try
             {
                 Lib.spells = Spell.LoadAll(ref loadstats);

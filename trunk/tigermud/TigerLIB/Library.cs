@@ -2283,7 +2283,7 @@ namespace TigerMUD
             for (int i = Lib.actors.Count - 1; i >= 0; i--)
             {
                 Actor user = (Actor)Lib.actors[i];
-                if (user["shortname"].ToString() == name.ToLower() || user["name"].ToString() == name.ToLower())
+                if (user["shortname"].ToString() == name.ToLower() || user["name"].ToString() == name.ToLower() || user["name"].ToString().Equals(name) || user["shortname"].ToString().Equals(name))
                 {
                     return user;
                 }

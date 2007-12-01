@@ -3306,7 +3306,20 @@ namespace TigerMUD
                     this["wearweapon2"] = "";
                     break;
             }
+
+            //update status
+            this["healthmax"] = Convert.ToInt16(this["healthmax"].ToString()) - Convert.ToInt16(item["healthmaxup"].ToString());
+            this["manamax"] = Convert.ToInt16(this["manamax"].ToString()) - Convert.ToInt16(item["manamax"].ToString());
+            this["strength"] = Convert.ToInt16(this["strength"].ToString()) - Convert.ToInt16(item["strength"].ToString());
+            this["intellect"] = Convert.ToInt16(this["intellect"].ToString()) - Convert.ToInt16(item["intellect"].ToString());
+            this["agility"] = Convert.ToInt16(this["agility"].ToString()) - Convert.ToInt16(item["agility"].ToString());
+            //this["speed"] = Convert.ToInt16(this["speed"].ToString()) - Convert.ToInt16(item["speed"].ToString());
+            this["spirit"] = Convert.ToInt16(this["spirit"].ToString()) - Convert.ToInt16(item["spirit"].ToString());
+            //this["damagemin"] = Convert.ToInt16(this["damagemin"].ToString()) - Convert.ToInt16(item["damagemin"].ToString());
+            //this["damagemax"] = Convert.ToInt16(this["damagemax"].ToString()) - Convert.ToInt16(item["damagemax"].ToString());
+
             // Persist these equipment changes into the database
+
             item.Save();
             return true;
         }
@@ -3322,16 +3335,17 @@ namespace TigerMUD
             {
                 return false;
             }
+
             // Make sure nothing else is already equipped there
             foreach (Actor scanitem in this.GetContents())
             {
                 if (scanitem["equipslot"] == item["equipslot"])
                 {
-                    
                     // Item cannot already be equipped
                     if (Lib.ConvertToBoolean(scanitem["equipped"])) return false;
                 }
             }
+    
             item["equipped"] = true;
             switch (item["equipslot"].ToString())
             {
@@ -3381,6 +3395,18 @@ namespace TigerMUD
                     this["wearweapon2"] = item["id"];
                     break;
             }
+
+            //update status
+            this["healthmax"] = Convert.ToInt16(this["healthmax"].ToString()) + Convert.ToInt16(item["healthmaxup"].ToString());
+            this["manamax"] = Convert.ToInt16(this["manamax"].ToString()) + Convert.ToInt16(item["manamax"].ToString());
+            this["strength"] = Convert.ToInt16(this["strength"].ToString()) + Convert.ToInt16(item["strength"].ToString());
+            this["intellect"] = Convert.ToInt16(this["intellect"].ToString()) + Convert.ToInt16(item["intellect"].ToString());
+            this["agility"] = Convert.ToInt16(this["agility"].ToString()) + Convert.ToInt16(item["agility"].ToString());
+            //this["speed"] = Convert.ToInt16(this["speed"].ToString()) + Convert.ToInt16(item["speed"].ToString());
+            this["spirit"] = Convert.ToInt16(this["spirit"].ToString()) + Convert.ToInt16(item["spirit"].ToString());
+            //this["damagemin"] = Convert.ToInt16(this["damagemin"].ToString()) + Convert.ToInt16(item["damagemin"].ToString());
+            //this["damagemax"] = Convert.ToInt16(this["damagemax"].ToString()) + Convert.ToInt16(item["damagemax"].ToString());
+
             // Persist these equipment changes into the database
             item.Save();
             return true;

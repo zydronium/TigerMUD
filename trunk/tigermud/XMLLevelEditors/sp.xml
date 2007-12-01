@@ -3,7 +3,7 @@
   <spell>
     <name>Fireball</name>
     <shortname>fire1</shortname>
-    <type></type>
+    <type>attack</type>
     <!--id></id Remove this to not overwrite the automatically generated ID.-->
     <description>Tosses a fist-sized fireball to the target.</description>
     <credits>Ross D.</credits>
@@ -35,7 +35,7 @@
   <spell>
     <name>Ice Ray</name>
     <shortname>ice1</shortname>
-    <type></type>
+    <type>attack</type>
     <!--id></id Remove this to not overwrite the automatically generated ID.-->
     <description>Fires a sharp icicle.</description>
     <credits>Ross D.</credits>

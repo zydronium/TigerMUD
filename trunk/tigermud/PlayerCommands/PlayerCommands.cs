@@ -2492,6 +2492,9 @@ namespace TigerMUD
                                 if (actor.Equip(item))
                                 {
                                     actor.Send("You equipped " + item["nameprefix"] + " " + item["name"] + " on your " + item["equipslot"] + ".\r\n");
+                                    
+                                    //add bonuses
+                                    
                                 }
                                 else
                                 {
@@ -2508,7 +2511,11 @@ namespace TigerMUD
                             }
                         }
                         // Save any user changes to the db
+                        
                         actor.Save();
+
+
+
                     }
                     return true;
                 }
@@ -3939,6 +3946,105 @@ namespace TigerMUD
         }
     }
 
+    /// <summary>
+    /// Builder command. Loads a XML with item definitions.
+    /// </summary>
+    public class Command_loadxmlitem : Command
+    {
+        public Command_loadxmlitem()
+        {
+            name = "command_loadxmlitem";
+            words = new string[2] { "loadxmlitem", "lxi" };
+            help.Command = "loadXMLitem";
+            help.Summary = "Loads an XML file with item definitions.";
+            help.Syntax = "loadxmlitem <filename>";
+            help.Examples = new string[3];
+            help.Examples[0] = "loadxmlitem itemdef.xml";
+            help.Examples[0] = "lxi itemdef.xml";
+            help.Description = "This creates a set of items as defined in an XML file ";
+        }
+
+        public override bool DoCommand(Actor actor, string command, string arguments)
+        {
+            ArrayList words = Lib.GetWords(arguments);
+
+            if (words.Count < 1)
+            {
+                actor.SendError("You must specify filename.\r\n");
+                return false;
+
+            }
+
+            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"XMLLevelEditors\\")) + (string)words[0];
+
+            if (!File.Exists(filename))
+            {
+                actor.SendError("File does not exist.\r\n");
+                return false;
+            }
+
+            // TODO: Add support for filenames longer than one word.
+
+            // Load the file
+            try
+            {
+                // does this make sense? No it doesn't. Fix. 
+                ItemReader reader = new ItemReader(filename);
+                reader.Load(filename);
+            }
+            catch (Exception ex)
+            {
+                actor.SendError("File load failed with the error: " + ex.Message + ex.StackTrace + "\r\n");
+                return false;
+            }
+            actor.Send("The file was loaded successfully.\r\n");
+            return true;
+        }
+    }
+
+
+    /// <summary>
+    /// Lists a the stats of the user.
+    /// </summary>
+    public class Command_stats : Command
+    {
+        // TODO: Add support for viewing other users statistics
+        public Command_stats()
+        {
+            name = "command_stats";
+            words = new string[3] { "stats", "st", "me"};
+            help.Command = "stats or st or me";
+            help.Summary = "Lists your statistics.";
+            help.Syntax = "stats";
+        }
+
+        public override bool DoCommand(Actor actor, string command, string arguments)
+        {
+            actor.Send(Lib.Ansifwhite + "-=Character Status=-\r\n\n");
+            actor.Send(Lib.Ansifwhite + "Name: " + actor["name"].ToString() + "\r\n");
+            actor.Send(Lib.Ansifwhite + "Health: " + actor["health"].ToString() + "/" + actor["healthmax"].ToString() + "\r\n");
+            actor.Send(Lib.Ansifwhite + "Mana: " + actor["mana"].ToString() + "/" + actor["manamax"].ToString() + "\r\n");
+            actor.Send(Lib.Ansifwhite + "Stamina: " + actor["staminamax"].ToString() + "\r\n\n");
+
+            actor.Send(Lib.Ansifwhite + "Strength: " + actor["strength"].ToString() + "\r\n");
+            actor.Send(Lib.Ansifwhite + "Intellect: " + actor["intellect"].ToString() + "\r\n");
+            actor.Send(Lib.Ansifwhite + "Agility: " + actor["agility"].ToString() + "\r\n");
+            actor.Send(Lib.Ansifwhite + "Spirit: " + actor["spirit"].ToString() + "\r\n\n");
+
+
+            Actor weapon1 = Lib.GetByID(actor["wearweapon1"]);
+            
+            //write weapon details
+            if (weapon1 != null)
+            {
+                actor.Send(Lib.Ansifwhite + "Weapon: " + weapon1["name"].ToString() + "\r\n");
+                actor.Send(Lib.Ansifwhite + "Damage: " + weapon1["damagemin"].ToString() + "-" + weapon1["damagemax"].ToString() + "\r\n\n");
+            }
+
+            return true;
+
+        }
+    }
 
 
     /// <summary>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <item>
+    <nameprefix>a</nameprefix>
+    <name>Fake Wand</name>
+    <shortname>fakewand</shortname>
+    <shortnameupper>FakeWand</shortnameupper>
+
+    <combatactive></combatactive>
+    <quantity></quantity>
+    <equippable></equippable>
+    <equipslot></equipslot>
+    <equipped></equipped>
+    <room>0</room>
+    <container></container>
+    <ownerid> 0 </ownerid>
+    <lockedout></lockedout>
+
+    <!--TODO: Write complete list here in this sample Head, shoulders, weapon1, etc. -->
+
+    <health>0</health>
+    <healthmax></healthmax>
+    <mana></mana>
+    <manamax></manamax>
+    <staminamax></staminamax>
+    <strength></strength>
+    <intellect></intellect>
+    <agility></agility>
+    <speed></speed>
+    <spirit></spirit>
+    <aggression></aggression>
+    <damagemin></damagemin>
+    <damagemax></damagemax>
+    <experience></experience>
+
+
+    <defaultsay></defaultsay>
+    <descr>This is the first test room I created.</descr>
+
+    <respawntimer></respawntimer>
+
+    <cash></cash>
+    <worth>10</worth>
+    <!-- Stuff for the auction-->
+    <askprice></askprice>
+    <bidprice></bidprice>
+    <buyoutprice></buyoutprice>
+    <saleexpiration></saleexpiration>
+    <!-- End auction-->
+
+    <wordwrap></wordwrap>
+    <created></created>
+    <credits>Ross D.</credits>
+
+  </item>
+</root>

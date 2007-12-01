@@ -54,10 +54,13 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ItemReader.cs" />
     <Compile Include="LevelReader.cs" />
     <Compile Include="SpellReader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="it.xml" />
+    <Content Include="mob.xml" />
     <Content Include="sp.xml" />
     <Content Include="tl.xml" />
   </ItemGroup>

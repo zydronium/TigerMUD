@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <item>
+    <nameprefix>a</nameprefix>
+    <name>Fake Wand</name>
+    <subtype>wand</subtype>
+    <shortname>fakewand</shortname>
+    <shortnameupper>FakeWand</shortnameupper>
+    
+    <quantity>1</quantity>
+    <equipable>true</equipable>
+    <equipslot>weapon1</equipslot>
+    <!--TODO: Write complete list here in this sample Head, shoulders, weapon1, etc. -->
+    <equipped>false</equipped>
+    <room></room>
+    <container>New Spirit's Garden</container>
+    <ownerid>0</ownerid>
+
+    <healthmaxup>0</healthmaxup>
+    <manamax>0</manamax>
+    <staminamax>0</staminamax>
+    <strength>0</strength>
+    <intellect>0</intellect>
+    <agility>0</agility>
+    <spirit>0</spirit>
+    <damagemin>1</damagemin>
+    <damagemax>5</damagemax>
+    <experience>0</experience> <!--required EXP-->
+
+    <defaultsay></defaultsay>
+    <descr>It is a wand made of plastic.</descr>
+
+    <worth>5</worth>
+    <!-- Stuff for the auction-->
+    <askprice></askprice>
+    <bidprice></bidprice>
+    <buyoutprice></buyoutprice>
+    <saleexpiration></saleexpiration>
+    <!-- End auction-->
+    
+    <wordwrap></wordwrap>
+    <created></created>
+    <credits>Ross D.</credits>
+    
+  </item>
+  <item>
+    <nameprefix>an</nameprefix>
+    <name>Enhancing Cape</name>
+    <subtype>accessory</subtype>
+    <shortname>enhancingcape</shortname>
+    <shortnameupper>Enhancing Cape</shortnameupper>
+
+    <quantity>1</quantity>
+    <equipable>true</equipable>
+    <equipslot>shoulders</equipslot>
+    <!--TODO: Write complete list here in this sample Head, shoulders, weapon1, etc. -->
+    <equipped>false</equipped>
+    <room></room>
+    <container>New Spirit's Garden</container>
+    <ownerid>0</ownerid>
+
+    <!--Bonuses-->
+    <healthmaxup>100</healthmaxup>
+    <manamax></manamax>
+    <staminamax>0</staminamax>
+    <strength>0</strength>
+    <intellect>0</intellect>
+    <agility>0</agility>
+    <spirit>0</spirit>
+    <damagemin>1</damagemin>
+    <damagemax>5</damagemax>
+    <experience>0</experience>
+    <!--required EXP-->
+
+    <defaultsay></defaultsay>
+    <descr>An ornate cape with a woven design of the Royal Family Crest.</descr>
+
+    <worth>1500</worth>
+    <!-- Stuff for the auction-->
+    <askprice></askprice>
+    <bidprice></bidprice>
+    <buyoutprice></buyoutprice>
+    <saleexpiration></saleexpiration>
+    <!-- End auction-->
+
+    <wordwrap></wordwrap>
+    <created></created>
+    <credits>Ross D.</credits>
+
+  </item>
+  
+</root>
