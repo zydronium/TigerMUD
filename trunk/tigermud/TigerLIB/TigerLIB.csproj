@@ -93,6 +93,7 @@
     <Reference Include="XihSolutions.DotMSN">
       <Name>XihSolutions.DotMSN</Name>
       <HintPath>CommsLib\MsnComms\XihSolutions.DotMSN.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

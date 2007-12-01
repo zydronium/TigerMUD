@@ -88,10 +88,10 @@ namespace TigerMUD
         public void Start()
         {
             //Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            Lib.PathtoRoot = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\"));
+            Lib.PathtoRoot = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\"));
             Lib.PathtoRootAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"bin" + Lib.PathtoDebugorRelease));
             Lib.PathtoRootRemoteConsole = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"tigerremoteconsole"));
-            Lib.PathtoRootRemoteConsoleAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootRemoteConsole, @"..\bin\Debug\" + Lib.PathtoDebugorRelease));
+            Lib.PathtoRootRemoteConsoleAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootRemoteConsole, @"..\bin" + Lib.PathtoDebugorRelease));
             Lib.PathtoRootScriptsandPlugins = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"tigermudscriptsandplugins"));
             Lib.PathtoRootScriptsandPluginsAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootScriptsandPlugins, @"bin\Debug" + Lib.PathtoDebugorRelease));
             Lib.PathtoRootTigerLoaderLib = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"tigerloaderlib"));

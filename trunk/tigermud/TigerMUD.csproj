@@ -146,6 +146,7 @@
     </PreBuildEvent>
     <PostBuildEvent>copy "$(ProjectDir)Welcome.ans" "$(TargetDir)Welcome.ans"
 
+
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
