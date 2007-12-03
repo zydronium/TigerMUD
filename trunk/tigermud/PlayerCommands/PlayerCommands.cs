@@ -43,15 +43,16 @@ using System.Web.Mail;
 using System.Text;
 using System.IO;
 
+
 namespace TigerMUD
 {
 
     /// <summary>
     /// Say command for player.
     /// </summary>
-    public class Command_defaultsay : Command
+    public class Command_defaultsay : Command, ICommand
     {
-        
+
         public Command_defaultsay()
         {
             name = "command_defaultsay";
@@ -102,13 +103,19 @@ namespace TigerMUD
             actor.Sayinroom(actor["shortnameupper"] + " " + verb + "s, '" + arguments + "'");
             return true;
         }
+
     }
 
     /// <summary>
     /// Reset all game items.
     /// </summary>
-    public class Command_reset : Command
+    public class Command_reset : Command, ICommand
     {
+
+
+
+
+
         public Command_reset()
         {
             name = "command_reset";
@@ -161,13 +168,16 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// Speechmode command for player.
     /// </summary>
-    public class Command_setdefaultsay : Command
+    public class Command_setdefaultsay : Command, ICommand
     {
+
+
         public Command_setdefaultsay()
         {
             name = "command_setdefaultsay";
@@ -229,14 +239,19 @@ namespace TigerMUD
             actor.Send("Your speech mode is '" + verb + "'." + "\"\r\n");
             return true;
         }
+
     }
 
 
     /// <summary>
     /// Say command for player.
     /// </summary>
-    public class Command_say : Command
+    public class Command_say : Command, ICommand
     {
+
+
+
+
         public Command_say()
         {
             name = "command_say";
@@ -260,13 +275,18 @@ namespace TigerMUD
             actor.Sayinroom(actor["shortnameupper"] + " says, '" + arguments + "'");
             return true;
         }
+
     }
 
     /// <summary>
     /// Say command for player.
     /// </summary>
-    public class Command_compile : Command
+    public class Command_compile : Command, ICommand
     {
+
+
+
+
         public Command_compile()
         {
             name = "command_compile";
@@ -309,7 +329,8 @@ namespace TigerMUD
                 //        }
                 //    }
                 //}
-                ArrayList files = Lib.GetFilesRecursive(Lib.PathtoRoot, "*.tmc.cs");
+                ArrayList files = Lib.GetFilesRecursive(Lib.PathtoRootScriptsandPlugins, "*.tmc.cs");
+
                 if (files.Count > 0)
                 {
                     foreach (string file in files)
@@ -354,14 +375,19 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
 
     /// <summary>
     /// Displays the creator/builder credits for the current room.
     /// </summary>
-    public class Command_credits : Command
+    public class Command_credits : Command, ICommand
     {
+
+
+
+
         public Command_credits()
         {
             name = "command_credits";
@@ -384,14 +410,19 @@ namespace TigerMUD
             actor.Send(Lib.Ansifboldyellow + "Special Thanks: " + Lib.Ansifwhite + Lib.Creditsother + "\r\n");
             return true;
         }
+
     }
 
 
     /// <summary>
     /// Clears the player's target.
     /// </summary>
-    public class Command_notarget : Command
+    public class Command_notarget : Command, ICommand
     {
+
+
+
+
         public Command_notarget()
         {
             name = "command_notarget";
@@ -419,13 +450,18 @@ namespace TigerMUD
                 return true;
             }
         }
+
     }
 
     /// <summary>
     /// Picks a plant.
     /// </summary>
-    public class Command_pick : Command
+    public class Command_pick : Command, ICommand
     {
+
+
+
+
         public Command_pick()
         {
             name = "command_pick";
@@ -453,14 +489,19 @@ namespace TigerMUD
             //get the numbered strawberry that the user wants. 2strawberry
             return true;
         }
+
     }
 
 
     /// <summary>
     /// Casts a spell.
     /// </summary>
-    public class Command_cast : Command
+    public class Command_cast : Command, ICommand
     {
+
+
+
+
         public Command_cast()
         {
             name = "command_cast";
@@ -547,14 +588,19 @@ namespace TigerMUD
             //spell.Cast(user, targetuser);
             return true;
         }
+
     }
 
 
     /// <summary>
     /// Clears the player's target and stops all combat.
     /// </summary>
-    public class Command_combatstop : Command
+    public class Command_combatstop : Command, ICommand
     {
+
+
+
+
         public Command_combatstop()
         {
             name = "command_combatstop";
@@ -576,14 +622,19 @@ namespace TigerMUD
             actor.Send("You clear your target.\r\n");
             return true;
         }
+
     }
 
 
     /// <summary>
     /// Shows all the spells the player knows.
     /// </summary>
-    public class Command_spells : Command
+    public class Command_spells : Command, ICommand
     {
+
+
+
+
         public Command_spells()
         {
             name = "command_spells";
@@ -601,13 +652,18 @@ namespace TigerMUD
             actor.Showspells();
             return true;
         }
+
     }
 
     /// <summary>
     /// Shows all the skills the player knows.
     /// </summary>
-    public class Command_skills : Command
+    public class Command_skills : Command, ICommand
     {
+
+
+
+
         public Command_skills()
         {
             name = "command_skills";
@@ -625,6 +681,7 @@ namespace TigerMUD
             actor.Showskills();
             return true;
         }
+
     }
 
 
@@ -633,8 +690,12 @@ namespace TigerMUD
     /// <summary>
     /// Sets someone as your combat target.
     /// </summary>
-    public class Command_target : Command
+    public class Command_target : Command, ICommand
     {
+
+
+
+
         public Command_target()
         {
             name = "command_target";
@@ -648,7 +709,7 @@ namespace TigerMUD
             help.Examples[2] = "ta bag";
             help.Examples[3] = "ta 3mushroom";
             help.Examples[3] = "ta 12557331";
-            help.Examples[4] = "\"ta clear\" clears target." ;
+            help.Examples[4] = "\"ta clear\" clears target.";
         }
 
         public override bool DoCommand(Actor actor, string command, string arguments)
@@ -826,7 +887,6 @@ namespace TigerMUD
             return false;
         }
 
-
     }
 
 
@@ -834,8 +894,9 @@ namespace TigerMUD
     /// <summary>
     /// yell command for player.
     /// </summary>
-    public class Command_yell : Command
+    public class Command_yell : Command, ICommand
     {
+
         public Command_yell()
         {
             name = "command_yell";
@@ -859,13 +920,18 @@ namespace TigerMUD
             actor.Sayinroom(actor["shortnameupper"] + " yells, '" + arguments + "'");
             return true;
         }
+
     }
 
     /// <summary>
     /// shout command for player.
     /// </summary>
-    public class Command_shout : Command
+    public class Command_shout : Command, ICommand
     {
+
+
+
+
         public Command_shout()
         {
             name = "command_shout";
@@ -892,12 +958,13 @@ namespace TigerMUD
             actor.SayinRadius(actor["shortnameupper"] + " shouts, '" + arguments + "'", Lib.ShoutRadius);
             return true;
         }
+
     }
 
     ///// <summary>
     ///// whisper command for player.
     ///// </summary>
-    //public class Command_whisper : Command
+    //public class Command_whisper : Command,ICommand
     //{
     //    public Command_whisper()
     //    {
@@ -927,8 +994,9 @@ namespace TigerMUD
     /// <summary>
     /// lecture command for player.
     /// </summary>
-    public class Command_lecture : Command
+    public class Command_lecture : Command, ICommand
     {
+
         public Command_lecture()
         {
             name = "command_lecture";
@@ -952,13 +1020,18 @@ namespace TigerMUD
             actor.Sayinroom(actor["shortnameupper"] + " lectures, '" + arguments + "'");
             return true;
         }
+
     }
 
     /// <summary>
     /// Starts combat with the specified target.
     /// </summary>
-    public class Command_kill : Command
+    public class Command_kill : Command, ICommand
     {
+
+
+
+
         public Command_kill()
         {
             name = "command_kill";
@@ -1058,13 +1131,18 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
     /// <summary>
     /// Send a system message to all users of the MUD
     /// </summary>
-    public class Command_sysmessage : Command
+    public class Command_sysmessage : Command, ICommand
     {
+
+
+
+
         public Command_sysmessage()
         {
             name = "command_sysmessage";
@@ -1091,13 +1169,18 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// Send a system message to all users of the MUD
     /// </summary>
-    public class Command_announce : Command
+    public class Command_announce : Command, ICommand
     {
+
+
+
+
         public Command_announce()
         {
             name = "command_announce";
@@ -1124,14 +1207,19 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
 
     /// <summary>
     /// think command for player.
     /// </summary>
-    public class Command_think : Command
+    public class Command_think : Command, ICommand
     {
+
+
+
+
         public Command_think()
         {
             name = "command_think";
@@ -1155,6 +1243,7 @@ namespace TigerMUD
             actor.Sayinroom(actor["shortnameupper"] + " thinks, '" + arguments + "'");
             return true;
         }
+
     }
 
 
@@ -1162,8 +1251,12 @@ namespace TigerMUD
     /// Kudos command to give kudos to others and to check current reputation.
     /// </summary>
     /// 
-    public class Command_kudos : Command
+    public class Command_kudos : Command, ICommand
     {
+
+
+
+
         public Command_kudos()
         {
             name = "command_kudos";
@@ -1243,13 +1336,18 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
     /// <summary>
     /// Emote command for player.
     /// </summary>
-    public class Command_emote : Command
+    public class Command_emote : Command, ICommand
     {
+
+
+
+
         public Command_emote()
         {
             name = "command_emote";
@@ -1276,13 +1374,18 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
     /// <summary>
     /// Tell command for player.
     /// </summary>
-    public class Command_tell : Command
+    public class Command_tell : Command, ICommand
     {
+
+
+
+
         public Command_tell()
         {
             name = "command_tell";
@@ -1340,13 +1443,18 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
     /// <summary>
     /// Whsiper Command starts here - Kedearian
     /// </summary>
-    public class Command_whipser : Command
+    public class Command_whipser : Command, ICommand
     {
+
+
+
+
         public Command_whipser()
         {
             name = "command_whisper";
@@ -1404,6 +1512,7 @@ namespace TigerMUD
             return true;
         }
 
+
     }
 
 
@@ -1411,8 +1520,12 @@ namespace TigerMUD
     /// <summary>
     /// Look command for player.
     /// </summary>
-    public class Command_look : Command
+    public class Command_look : Command, ICommand
     {
+
+
+
+
         public Command_look()
         {
             name = "command_look";
@@ -1481,13 +1594,18 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// Movement command for player.
     /// </summary>
-    public class Command_move : Command
+    public class Command_move : Command, ICommand
     {
+
+
+
+
         public Command_move()
         {
             name = "command_move";
@@ -1885,14 +2003,14 @@ namespace TigerMUD
             room.Save();
             return true;
         }
-
     }
 
     /// <summary>
     /// Inventory command for player.
     /// </summary>
-    public class Command_inventory : Command
+    public class Command_inventory : Command, ICommand
     {
+
         public Command_inventory()
         {
             name = "command_inventory";
@@ -1943,8 +2061,9 @@ namespace TigerMUD
     /// <summary>
     /// Inventory command for player.
     /// </summary>
-    public class Command_market : Command
+    public class Command_market : Command, ICommand
     {
+
         public Command_market()
         {
             name = "command_market";
@@ -1970,13 +2089,18 @@ namespace TigerMUD
             Lib.ShowMarket(actor);
             return true;
         }
+
     }
 
     /// <summary>
     /// Get command for player.
     /// </summary>
-    public class Command_get : Command
+    public class Command_get : Command, ICommand
     {
+
+
+
+
         public Command_get()
         {
             name = "command_get";
@@ -2097,13 +2221,18 @@ namespace TigerMUD
                 return true;
             }
         }
+
     }
 
     /// <summary>
     /// Merges multiple stacked items into one stack.
     /// </summary>
-    public class Command_merge : Command
+    public class Command_merge : Command, ICommand
     {
+
+
+
+
         public Command_merge()
         {
             name = "command_merge";
@@ -2195,13 +2324,18 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// Drop command for player.
     /// </summary>
-    public class Command_drop : Command
+    public class Command_drop : Command, ICommand
     {
+
+
+
+
         public Command_drop()
         {
             name = "command_drop";
@@ -2337,13 +2471,18 @@ namespace TigerMUD
             }
 
         }
+
     }
 
     /// <summary>
     /// Equip command for player.
     /// </summary>
-    public class Command_equip : Command
+    public class Command_equip : Command, ICommand
     {
+
+
+
+
         public Command_equip()
         {
             name = "command_equip";
@@ -2492,9 +2631,9 @@ namespace TigerMUD
                                 if (actor.Equip(item))
                                 {
                                     actor.Send("You equipped " + item["nameprefix"] + " " + item["name"] + " on your " + item["equipslot"] + ".\r\n");
-                                    
+
                                     //add bonuses
-                                    
+
                                 }
                                 else
                                 {
@@ -2511,7 +2650,7 @@ namespace TigerMUD
                             }
                         }
                         // Save any user changes to the db
-                        
+
                         actor.Save();
 
 
@@ -2563,8 +2702,12 @@ namespace TigerMUD
     /// <summary>
     /// Unequip command for player.
     /// </summary>
-    public class Command_unequip : Command
+    public class Command_unequip : Command, ICommand
     {
+
+
+
+
         public Command_unequip()
         {
             name = "command_unequip";
@@ -2650,14 +2793,19 @@ namespace TigerMUD
             actor.SendError("You have no '" + itemtxt + "'." + "\r\n");
             return false;
         }
+
     }
 
 
     /// <summary>
     /// Reject command for player.  Used with accept and give.
     /// </summary>
-    public class Command_reject : Command
+    public class Command_reject : Command, ICommand
     {
+
+
+
+
         public Command_reject()
         {
             name = "command_reject";
@@ -2687,13 +2835,18 @@ namespace TigerMUD
             chkactor.SendError(actor.GetNameUpper() + " cancelled the trade.\r\n");
             return true;
         }
+
     }
 
     /// <summary>
     /// Accept command for player.  Used with reject and give.
     /// </summary>
-    public class Command_accept : Command
+    public class Command_accept : Command, ICommand
     {
+
+
+
+
         public Command_accept()
         {
             name = "command_accept";
@@ -2843,13 +2996,18 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// Give command for player.  Used with accept and reject.
     /// </summary>
-    public class Command_give : Command
+    public class Command_give : Command, ICommand
     {
+
+
+
+
         public Command_give()
         {
             name = "command_give";
@@ -3009,13 +3167,18 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
     /// <summary>
     /// Split command for player.
     /// </summary>
-    public class Command_split : Command
+    public class Command_split : Command, ICommand
     {
+
+
+
+
         public Command_split()
         {
             name = "command_split";
@@ -3083,13 +3246,18 @@ namespace TigerMUD
             tmpitem.Save();
             return true;
         }
+
     }
 
     /// <summary>
     /// Cheat command for player.
     /// </summary>
-    public class Command_cheat : Command
+    public class Command_cheat : Command, ICommand
     {
+
+
+
+
         public Command_cheat()
         {
             name = "command_cheat";
@@ -3140,14 +3308,19 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
 
     /// <summary>
     /// Push command for player.
     /// </summary>
-    public class Command_push : Command
+    public class Command_push : Command, ICommand
     {
+
+
+
+
         public Command_push()
         {
             name = "command_push";
@@ -3172,13 +3345,18 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
     /// <summary>
     /// Pull command for player.
     /// </summary>
-    public class Command_pull : Command
+    public class Command_pull : Command, ICommand
     {
+
+
+
+
         public Command_pull()
         {
             name = "command_pull";
@@ -3219,13 +3397,18 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
     /// <summary>
     /// Report the phase of the moon.
     /// </summary>
-    public class Command_moon : Command
+    public class Command_moon : Command, ICommand
     {
+
+
+
+
         public Command_moon()
         {
             name = "command_moon";
@@ -3253,13 +3436,18 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// Report the state of the sun.
     /// </summary>
-    public class Command_sun : Command
+    public class Command_sun : Command, ICommand
     {
+
+
+
+
         public Command_sun()
         {
             name = "command_sun";
@@ -3287,14 +3475,19 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
 
     /// <summary>
     /// Test command for the menu class
     /// </summary>
-    public class Command_menu : Command
+    public class Command_menu : Command, ICommand
     {
+
+
+
+
         public Command_menu()
         {
             name = "command_menu";
@@ -3349,12 +3542,17 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
     /// <summary>
     /// Test command for the Mail Class
     /// </summary>
-    public class Command_mail : Command
+    public class Command_mail : Command, ICommand
     {
+
+
+
+
         public Command_mail()
         {
             name = "command_mail";
@@ -3373,10 +3571,12 @@ namespace TigerMUD
             o_UserMail.Mail();
             return true;
         }
+
     }
 
-    public class Command_exits : Command
+    public class Command_exits : Command, ICommand
     {
+
         public Command_exits()
         {
             name = "command_exits";
@@ -3432,14 +3632,19 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// This command allows a user to add a bug to the internal MUD
     /// bug list.
     /// </summary>
-    public class Command_bug : Command
+    public class Command_bug : Command, ICommand
     {
+
+
+
+
         private const string SYNTAX_ERROR = "Unknown option. Try 'help <command name>' for usage information.";
 
         public Command_bug()
@@ -3471,6 +3676,7 @@ namespace TigerMUD
                 return true;
             }
         }
+
     }
 
     /// <summary>
@@ -3478,8 +3684,12 @@ namespace TigerMUD
     /// He can add friends, accept add requests, remove friends
     /// and list all friends and see their online status.
     /// </summary>
-    public class Command_friend : Command
+    public class Command_friend : Command, ICommand
     {
+
+
+
+
         public const string SYNTAX_ERROR = "Unknown option. Try 'help friend' for usage information.\r\n";
 
         public Command_friend()
@@ -3732,13 +3942,18 @@ namespace TigerMUD
 
             return outputArguments;
         }
+
     }
 
     /// <summary>
     /// Builder command create.
     /// </summary>
-    public class Command_create : Command
+    public class Command_create : Command, ICommand
     {
+
+
+
+
         public Command_create()
         {
             name = "command_create";
@@ -3832,13 +4047,18 @@ namespace TigerMUD
             actor.Send("Your target is set to this new object.\r\n");
             return true;
         }
+
     }
 
     /// <summary>
     /// Builder command. Loads a XML with level definitions.
     /// </summary>
-    public class Command_loadxmlroom : Command
+    public class Command_loadxmlroom : Command, ICommand
     {
+
+
+
+
         public Command_loadxmlroom()
         {
             name = "command_loadxmlroom";
@@ -3860,10 +4080,10 @@ namespace TigerMUD
             {
                 actor.SendError("You must specify filename.\r\n");
                 return false;
-                
+
             }
 
-            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot , @"XMLLevelEditors\\")) + (string)words[0];
+            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"XMLLevelEditors\\")) + (string)words[0];
 
             if (!File.Exists(filename))
             {
@@ -3888,13 +4108,18 @@ namespace TigerMUD
             actor.Send("The file was loaded successfully.\r\n");
             return true;
         }
+
     }
 
     /// <summary>
     /// Builder command. Loads a XML with spell definitions.
     /// </summary>
-    public class Command_loadxmlspell : Command
+    public class Command_loadxmlspell : Command, ICommand
     {
+
+
+
+
         public Command_loadxmlspell()
         {
             name = "command_loadxmlspell";
@@ -3944,13 +4169,18 @@ namespace TigerMUD
             actor.Send("The file was loaded successfully.\r\n");
             return true;
         }
+
     }
 
     /// <summary>
     /// Builder command. Loads a XML with item definitions.
     /// </summary>
-    public class Command_loadxmlitem : Command
+    public class Command_loadxmlitem : Command, ICommand
     {
+
+
+
+
         public Command_loadxmlitem()
         {
             name = "command_loadxmlitem";
@@ -4000,19 +4230,24 @@ namespace TigerMUD
             actor.Send("The file was loaded successfully.\r\n");
             return true;
         }
+
     }
 
 
     /// <summary>
     /// Lists a the stats of the user.
     /// </summary>
-    public class Command_stats : Command
+    public class Command_stats : Command, ICommand
     {
+
+
+
+
         // TODO: Add support for viewing other users statistics
         public Command_stats()
         {
             name = "command_stats";
-            words = new string[3] { "stats", "st", "me"};
+            words = new string[3] { "stats", "st", "me" };
             help.Command = "stats or st or me";
             help.Summary = "Lists your statistics.";
             help.Syntax = "stats";
@@ -4033,7 +4268,7 @@ namespace TigerMUD
 
 
             Actor weapon1 = Lib.GetByID(actor["wearweapon1"]);
-            
+
             //write weapon details
             if (weapon1 != null)
             {
@@ -4044,14 +4279,19 @@ namespace TigerMUD
             return true;
 
         }
+
     }
 
 
     /// <summary>
     /// Lists a item by id number or all items.
     /// </summary>
-    public class Command_list : Command
+    public class Command_list : Command, ICommand
     {
+
+
+
+
         public Command_list()
         {
             name = "command_list";
@@ -4103,13 +4343,18 @@ namespace TigerMUD
             return true;
 
         }
+
     }
 
     /// <summary>
     /// Lists a item by id number or all items.
     /// </summary>
-    public class Command_wizlist : Command
+    public class Command_wizlist : Command, ICommand
     {
+
+
+
+
         public Command_wizlist()
         {
             name = "command_wizlist";
@@ -4150,13 +4395,18 @@ namespace TigerMUD
             return true;
 
         }
+
     }
 
     /// <summary>
     /// Destroys the target object.
     /// </summary>
-    public class Command_destroy : Command
+    public class Command_destroy : Command, ICommand
     {
+
+
+
+
         public Command_destroy()
         {
             name = "command_destroy";
@@ -4218,13 +4468,18 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// Destroys all users.
     /// </summary>
-    public class Command_destroyallusers : Command
+    public class Command_destroyallusers : Command, ICommand
     {
+
+
+
+
         public Command_destroyallusers()
         {
             name = "command_destroyallusers";
@@ -4260,11 +4515,11 @@ namespace TigerMUD
                         {
                             if (Convert.ToInt32(item["accesslevel"]) < (int)AccessLevel.UberAdmin)
                             {
-                                actor.Send("Object destruction succeeded. User \"" + item["name"] +"\" returns to dust... \r\n");
+                                actor.Send("Object destruction succeeded. User \"" + item["name"] + "\" returns to dust... \r\n");
                                 item.Destroy();
-                                
+
                             }
-                            
+
                         }
                         catch (Exception ex)
                         {
@@ -4275,16 +4530,21 @@ namespace TigerMUD
                     }
 
                 }
-                
+
             }
             return true;
         }
+
     }
 
 
 
-    public class Command_dig : Command
+    public class Command_dig : Command, ICommand
     {
+
+
+
+
         public Command_dig()
         {
             name = "command_dig";
@@ -4318,13 +4578,18 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// Copy command for player.
     /// </summary>
-    public class Command_copy : Command
+    public class Command_copy : Command, ICommand
     {
+
+
+
+
         public Command_copy()
         {
             name = "command_copy";
@@ -4391,6 +4656,7 @@ namespace TigerMUD
             return true;
 
         }
+
         public bool CopyItem(Actor actor, Actor tmpitem, int itemquantity)
         {
             //Actor item = new Actor;
@@ -4440,13 +4706,18 @@ namespace TigerMUD
             actor.Send(msg);
             return true;
         }
+
     }
 
     /// <summary>
     /// Builder command modify.
     /// </summary>
-    public class Command_modify : Command
+    public class Command_modify : Command, ICommand
     {
+
+
+
+
         public Command_modify()
         {
             name = "command_modify";
@@ -4550,7 +4821,7 @@ namespace TigerMUD
                     description += "(" + (pi.CanWrite ? "Read-Write" : "ReadOnly") + ") ";
                     description += pi.PropertyType + " ";
                     description += user["colormobs"] + arrayMemberInfo[i].Name + user["colorexits"] + " = " + user["colormessages"];
-                    
+
                     try
                     {
                         property = pi.GetValue(tmptarget, null);
@@ -4558,7 +4829,7 @@ namespace TigerMUD
                     }
                     catch
                     {
-                        description +="\r\n";
+                        description += "\r\n";
                     }
                     if (property != null)
                     {
@@ -4955,14 +5226,19 @@ namespace TigerMUD
             return true;
         }
 
+
     }
 
 
     /// <summary>
     /// Add an Action to an Actor.
     /// </summary>
-    public class Command_addaction : Command
+    public class Command_addaction : Command, ICommand
     {
+
+
+
+
         public Command_addaction()
         {
             name = "command_addaction";
@@ -5017,6 +5293,7 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
 
@@ -5024,8 +5301,12 @@ namespace TigerMUD
     /// <summary>
     /// Add an Action to an Actor.
     /// </summary>
-    public class Command_enablecommand : Command
+    public class Command_enablecommand : Command, ICommand
     {
+
+
+
+
         public Command_enablecommand()
         {
             name = "command_enablecommand";
@@ -5062,7 +5343,7 @@ namespace TigerMUD
                 actor.SendError("Access level must be a numeric value. Check your syntax.\r\n");
                 return false;
             }
-            Command enablecommand = Lib.GetCommandByName(commandname);
+            ICommand enablecommand = Lib.GetCommandByName(commandname);
             if (enablecommand == null)
             {
                 actor.SendError("No command exists named: " + commandname + ". Use the name of the command as defined in the code, which is different than what players would type as the name of the command.\r\n");
@@ -5097,6 +5378,7 @@ namespace TigerMUD
             actor.Send("Successfully enabled command '" + commandname + "' for players with a minimum access level of '" + accesslevel + "'.\r\n");
             return true;
         }
+
     }
 
     #region SystemCommands
@@ -5104,8 +5386,12 @@ namespace TigerMUD
     /// <summary>
     /// System command log.  Shows the log to the player.
     /// </summary>
-    public class Command_log : Command
+    public class Command_log : Command, ICommand
     {
+
+
+
+
         public Command_log()
         {
             name = "command_log";
@@ -5122,13 +5408,18 @@ namespace TigerMUD
             actor.Send(Lib.log.Read());
             return true;
         }
+
     }
 
     /// <summary>
     /// System command log.  Shows the log to the player.
     /// </summary>
-    public class Command_commandlog : Command
+    public class Command_commandlog : Command, ICommand
     {
+
+
+
+
         public Command_commandlog()
         {
             name = "command_commandlog";
@@ -5151,13 +5442,18 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// System command log.  Shows the log to the player.
     /// </summary>
-    public class Command_systemlog : Command
+    public class Command_systemlog : Command, ICommand
     {
+
+
+
+
         public Command_systemlog()
         {
             name = "command_systemlog";
@@ -5186,8 +5482,12 @@ namespace TigerMUD
     /// <summary>
     /// System command time.  Show the current server date/time.
     /// </summary>
-    public class Command_time : Command
+    public class Command_time : Command, ICommand
     {
+
+
+
+
         public Command_time()
         {
             name = "command_time";
@@ -5205,13 +5505,18 @@ namespace TigerMUD
             actor.Send("The game date and time is " + Lib.Ansifboldwhite + Lib.Gametime.ToLongDateString() + " " + Lib.Gametime.ToShortTimeString() + ".\r\n");
             return true;
         }
+
     }
 
     /// <summary>
     /// Test.
     /// </summary>
-    public class Command_test : Command
+    public class Command_test : Command, ICommand
     {
+
+
+
+
         public Command_test()
         {
             name = "command_test";
@@ -5230,14 +5535,19 @@ namespace TigerMUD
             user.Send("This is a test.\r\n");
             return true;
         }
+
     }
 
 
     /// <summary>
     /// Shows the state of the weather including celestial objects.
     /// </summary>
-    public class Command_weather : Command
+    public class Command_weather : Command, ICommand
     {
+
+
+
+
         public Command_weather()
         {
             name = "command_weather";
@@ -5257,6 +5567,7 @@ namespace TigerMUD
             actor.Send(Lib.MoonView());
             return true;
         }
+
     }
 
 
@@ -5265,8 +5576,12 @@ namespace TigerMUD
     /// <summary>
     /// System command quit.  Quits the mud.
     /// </summary>
-    public class Command_quit : Command
+    public class Command_quit : Command, ICommand
     {
+
+
+
+
         public Command_quit()
         {
             name = "command_quit";
@@ -5286,13 +5601,17 @@ namespace TigerMUD
             actor.Disco(actor, "player used quit command");
             return true;
         }
+
     }
 
     /// <summary>
     /// System command version.  Show the mud version.
     /// </summary>
-    public class Command_version : Command
+    public class Command_version : Command, ICommand
     {
+
+
+
         public Command_version()
         {
             name = "command_version";
@@ -5310,13 +5629,17 @@ namespace TigerMUD
             actor.Send("TigerMUD server version " + Lib.Serverversion + ".\r\n");
             return true;
         }
+
     }
 
     /// <summary>
     /// System command score.  Show the player's score.
     /// </summary>
-    public class Command_score : Command
+    public class Command_score : Command, ICommand
     {
+
+
+
         public Command_score()
         {
             name = "command_score";
@@ -5380,13 +5703,17 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
     /// <summary>
     /// System command who.  Show the players currently online.
     /// </summary>
-    public class Command_who : Command
+    public class Command_who : Command, ICommand
     {
+
+
+
         public Command_who()
         {
             name = "command_who";
@@ -5424,13 +5751,17 @@ namespace TigerMUD
             actor.Send(Lib.Ansifgreen + "\r\n" + counter + " user(s) online.\r\n");
             return true;
         }
+
     }
 
     /// <summary>
     /// System command who.  Show the players currently online.
     /// </summary>
-    public class Command_sql : Command
+    public class Command_sql : Command, ICommand
     {
+
+
+
         public Command_sql()
         {
             name = "command_sql";
@@ -5494,10 +5825,14 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
-    public class Command_delayed : Command
+    public class Command_delayed : Command, ICommand
     {
+
+
+
         public Command_delayed()
         {
             name = "command_delayed";
@@ -5515,6 +5850,7 @@ namespace TigerMUD
             actor.Send(actor.DisplayDelayedCommands());
             return true;
         }
+
     }
 
 
@@ -5522,8 +5858,11 @@ namespace TigerMUD
     /// <summary>
     /// System command more.  Shows the next screen of multiscreen text.
     /// </summary>
-    public class Command_more : Command
+    public class Command_more : Command, ICommand
     {
+
+
+
         public Command_more()
         {
             name = "command_more";
@@ -5569,13 +5908,17 @@ namespace TigerMUD
             actor.Send(actor["colorlast"] + oldbuffer);
             return true;
         }
+
     }
 
     /// <summary>
     /// System command bigtext.  The big text command is just to test the word wrapping by sending lots of words
     /// </summary>
-    public class Command_bigtext : Command
+    public class Command_bigtext : Command, ICommand
     {
+
+
+
         public Command_bigtext()
         {
             name = "command_bigtext";
@@ -5603,13 +5946,17 @@ namespace TigerMUD
             actor.Send(txt);
             return true;
         }
+
     }
 
     /// <summary>
     /// System command colors.  Shows the current color scheme.
     /// </summary>
-    public class Command_colors : Command
+    public class Command_colors : Command, ICommand
     {
+
+
+
         public Command_colors()
         {
             name = "command_colors";
@@ -5642,13 +5989,17 @@ namespace TigerMUD
             actor.Send(txt);
             return true;
         }
+
     }
 
     /// <summary>
     /// System command screen.  Sets the width of the player's screen.
     /// </summary>
-    public class Command_screen : Command
+    public class Command_screen : Command, ICommand
     {
+
+
+
         public Command_screen()
         {
             name = "command_screen";
@@ -5689,13 +6040,17 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// System command wordwrap.  Sets the wordwrap feature on or off.
     /// </summary>
-    public class Command_wordwrap : Command
+    public class Command_wordwrap : Command, ICommand
     {
+
+
+
         public Command_wordwrap()
         {
             name = "command_wordwrap";
@@ -5727,13 +6082,17 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// System command wordwrap.  Sets the moreprompt feature on or off.
     /// </summary>
-    public class Command_moreprompt : Command
+    public class Command_moreprompt : Command, ICommand
     {
+
+
+
         public Command_moreprompt()
         {
             name = "command_moreprompt";
@@ -5765,11 +6124,15 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
 
-    public class Command_changepassword : Command
+    public class Command_changepassword : Command, ICommand
     {
+
+
+
         public Command_changepassword()
         {
             name = "command_changepassword";
@@ -5809,14 +6172,18 @@ namespace TigerMUD
             }
 
         }
+
     }
 
 
     /// <summary>
     /// System command colortest.  Shows the ansi colors.
     /// </summary>
-    public class Command_colortest : Command
+    public class Command_colortest : Command, ICommand
     {
+
+
+
 
         public Command_colortest()
         {
@@ -5891,13 +6258,17 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
     /// <summary>
     /// System command again.  Repeats the last command.
     /// </summary>
-    public class Command_again : Command
+    public class Command_again : Command, ICommand
     {
+
+
+
         public Command_again()
         {
             name = "command_again";
@@ -5935,13 +6306,17 @@ namespace TigerMUD
             actor.Showprompt();
             return true;
         }
+
     }
 
     /// <summary>
     /// Allows admins to view the bug list.
     /// </summary>
-    public class Command_buglist : Command
+    public class Command_buglist : Command, ICommand
     {
+
+
+
         public const string SYNTAX_ERROR = "Unknown option. Try 'help buglist' for usage information.";
         private Actor user;
 
@@ -6128,6 +6503,7 @@ namespace TigerMUD
             message.Body = builder.ToString();
             return message;
         }
+
         #endregion
     }
 
@@ -6139,8 +6515,11 @@ namespace TigerMUD
     /// <summary>
     /// System command dellog.  Deletes the log.
     /// </summary>
-    public class Command_dellog : Command
+    public class Command_dellog : Command, ICommand
     {
+
+
+
         public Command_dellog()
         {
             name = "command_dellog";
@@ -6161,13 +6540,17 @@ namespace TigerMUD
             }
             return true;
         }
+
     }
 
     /// <summary>
     /// System command dellog.  Deletes the log.
     /// </summary>
-    public class Command_command : Command
+    public class Command_command : Command, ICommand
     {
+
+
+
         public Command_command()
         {
             name = "command_command";
@@ -6242,13 +6625,17 @@ namespace TigerMUD
 
             return true;
         }
+
     }
 
     /// <summary>
     /// Locks a player account.
     /// </summary>
-    public class Command_lockuser : Command
+    public class Command_lockuser : Command, ICommand
     {
+
+
+
         private const string SYNTAX_ERROR = "Unknown arguments. Please type 'help lockuser' for more info.";
 
         public Command_lockuser()
@@ -6309,13 +6696,17 @@ namespace TigerMUD
 
             return returnCode;
         }
+
     }
 
     /// <summary>
     /// Locks a player account.
     /// </summary>
-    public class Command_unlockuser : Command
+    public class Command_unlockuser : Command, ICommand
     {
+
+
+
         private const string SYNTAX_ERROR = "Unknown arguments. Please type 'help unlockuser' for more info.";
 
         public Command_unlockuser()
@@ -6361,11 +6752,15 @@ namespace TigerMUD
         }
 
 
+
         /// <summary>
         /// Reloads Scripts and Plugins
         /// </summary>
-        public class Command_reloadscripts : Command
+        public class Command_reloadscripts : Command, ICommand
         {
+
+
+
             private const string SYNTAX_ERROR = "Unknown arguments. Please type 'help lockuser' for more info.";
 
             public Command_reloadscripts()
@@ -6385,6 +6780,7 @@ namespace TigerMUD
 
                 return true;
             }
+
         }
 
     }

@@ -54,14 +54,14 @@ namespace TigerMUD
         private Thread timerthread;
         private string path;
         private IConnectionListener tcpListener;
-        private IConnectionListener msnListener;
+        //private IConnectionListener msnListener;
         string errors = null;
 
         public Threadmanager()
         {
             path = AppDomain.CurrentDomain.BaseDirectory + @"tigermud.xml";
             tcpListener = null;
-            msnListener = null;
+            //msnListener = null;
         }
 
         #region Startup Routine
@@ -339,14 +339,14 @@ namespace TigerMUD
                 anyActiveListeners = true;
             }
 
-            if (Lib.Serverinfo.MsnSocketEnabled)
-            {
-                msnListener = ConnectionListenerFactory.CreateMsnConnectionListener(Lib.Serverinfo.MsnSocketSignonEmail,
-                    Lib.Serverinfo.MsnSocketPassword);
-                msnListener.Start();
-                Lib.PrintLine("Started MsnListener with login " + Lib.Serverinfo.MsnSocketSignonEmail + ".");
-                anyActiveListeners = true;
-            }
+            //if (Lib.Serverinfo.MsnSocketEnabled)
+            //{
+            //    msnListener = ConnectionListenerFactory.CreateMsnConnectionListener(Lib.Serverinfo.MsnSocketSignonEmail,
+            //        Lib.Serverinfo.MsnSocketPassword);
+            //    msnListener.Start();
+            //    Lib.PrintLine("Started MsnListener with login " + Lib.Serverinfo.MsnSocketSignonEmail + ".");
+            //    anyActiveListeners = true;
+            //}
 
             if (!anyActiveListeners)
             {
@@ -395,7 +395,7 @@ namespace TigerMUD
             }
 
             // Load commands from source files that are not yet compiled
-            files = Lib.GetFilesRecursive(Lib.PathtoRoot, "*.tmc.cs");
+            files = Lib.GetFilesRecursive(Lib.PathtoRootScriptsandPlugins, "*.tmc.cs");
             if (files.Count > 0)
             {
                 try
@@ -437,7 +437,7 @@ namespace TigerMUD
             DataTable dt = Lib.dbService.ThreadManager.GetAllCommands(accesslevel);
             foreach (DataRow row in dt.Rows)
             {
-                Command command = Lib.GetCommandByName(row[0].ToString());
+                ICommand command = Lib.GetCommandByName(row[0].ToString());
 
                 if (command != null)
                 {
@@ -481,7 +481,7 @@ namespace TigerMUD
                     Lib.LoadPlugin(file);
                 }
             }
-            files = Lib.GetFilesRecursive(Lib.PathtoRoot, "*.tma.cs");
+            files = Lib.GetFilesRecursive(Lib.PathtoRootScriptsandPlugins, "*.tma.cs");
             if (files.Count > 0)
             {
                 try
@@ -514,14 +514,14 @@ namespace TigerMUD
             try
             {
                 //AJ: Get the right directory
-                string dir = Lib.PathtoRootScriptsandPluginsAssemblies;
+                string dir = Lib.PathtoRoot;
                 //AJ: Create the new AppDomain
                 Lib.ScriptAppDomain = AppDomain.CurrentDomain;
                 //AJ: Create the Remote Loader in the new AppDomain and retrive a proxy copy of it
-                //Console.WriteLine("trying: " + Path.Combine(Lib.PathtoRootRemoteConsoleAssemblies, "TigerLoaderLib.dll"));
-                //Tiger.Loader.Lib.RemoteLoader remoteLoader = (Tiger.Loader.Lib.RemoteLoader)Lib.ScriptAppDomain.CreateInstanceFromAndUnwrap(Path.Combine(Lib.PathtoRootRemoteConsoleAssemblies, "TigerLoaderLib.dll"), "Tiger.Loader.Lib.RemoteLoader");
+                //Console.WriteLine("trying: " + Path.Combine(Lib.PathtoRoot, "TigerLoaderLib.dll"));
+                //Tiger.Loader.Lib.RemoteLoader remoteLoader = (Tiger.Loader.Lib.RemoteLoader)Lib.ScriptAppDomain.CreateInstanceFromAndUnwrap(Path.Combine(Lib.PathtoRoot, "TigerLoaderLib.dll"), "Tiger.Loader.Lib.RemoteLoader");
 
-                Tiger.Loader.Lib.RemoteLoader remoteLoader = (Tiger.Loader.Lib.RemoteLoader)Lib.ScriptAppDomain.CreateInstanceFromAndUnwrap(Path.Combine(Lib.PathtoRootRemoteConsoleAssemblies, "TigerLoaderLib.dll"), "Tiger.Loader.Lib.RemoteLoader");
+                Tiger.Loader.Lib.RemoteLoader remoteLoader = (Tiger.Loader.Lib.RemoteLoader)Lib.ScriptAppDomain.CreateInstanceFromAndUnwrap(Path.Combine(Lib.PathtoRoot, "TigerLoaderLib.dll"), "Tiger.Loader.Lib.RemoteLoader");
 
                 //AJ: Use the Remote Loader to load the SubApp and return a proxy copy of it
                 //this.app							= (ISubApp_V1) this.remoteLoader.StartSubApp(this.directory, this.filename, this.objectName);

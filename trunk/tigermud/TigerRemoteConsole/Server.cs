@@ -8,7 +8,6 @@ using System.IO;
 using TigerMUD;
 using System.ComponentModel;
 
-
 namespace RemoteConsole
 {
 
@@ -159,11 +158,11 @@ namespace RemoteConsole
 
         public static void StartMUD()
         {
-#if DEBUG
-            Lib.PathtoDebugorRelease = @"\debug";
-#else
-            Lib.PathtoDebugorRelease = @"\release";
-#endif
+//#if DEBUG
+//            Lib.PathtoDebugorRelease = @"\debug";
+//#else
+//            Lib.PathtoDebugorRelease = @"\release";
+//#endif
 
             if (server != null)
             {

@@ -11,8 +11,7 @@
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>TigerMUD</AssemblyName>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>output\strongnamekey.snk</AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
@@ -30,9 +29,10 @@
     <SccLocalPath>.</SccLocalPath>
     <SccAuxPath>https://tfs03.codeplex.com</SccAuxPath>
     <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>output\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -96,11 +96,10 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="TigerLIB\TigerLIB.csproj">
-      <Name>TigerLIB</Name>
-      <Project>{2368943E-2F34-4E21-81AF-C9AA24FBFB50}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
+    <Reference Include="TigerLIB, Version=1.0.2892.25317, Culture=neutral, PublicKeyToken=d92de7829e911efd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
     <ProjectReference Include="TigerLoaderLib\TigerLoaderLib.csproj">
       <Name>TigerLoaderLib</Name>
       <Project>{528DDED3-C8D8-4743-B362-93832DAFD791}</Project>
@@ -130,23 +129,22 @@
     <Compile Include="TigerMUDServiceInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
+    <None Include="output\strongnamekey.snk" />
     <None Include="tigermud.build" />
-    <Content Include="TigerMUD.xml" />
     <EmbeddedResource Include="TigerMUDService.resx">
       <DependentUpon>TigerMUDService.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TigerMUDServiceInstaller.resx">
       <DependentUpon>TigerMUDServiceInstaller.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>copy "$(ProjectDir)Welcome.ans" "$(TargetDir)Welcome.ans"
-
-
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

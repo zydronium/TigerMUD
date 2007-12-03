@@ -49,7 +49,7 @@ namespace TigerMUD
     /// <summary>
     /// Timer command to update Gametime
     /// </summary>
-    public class Command_timer_Gametime : Command
+    public class Command_timer_Gametime : Command,ICommand
     {
         public Command_timer_Gametime()
         {
@@ -67,12 +67,43 @@ namespace TigerMUD
             if (timediff > 200) Lib.SaveServerState();
             return true;
         }
+
+       
+        
+        
+        
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public string[] Words
+        {
+            get
+            {
+                return words;
+            }
+        }
+        public HelpInfo Help
+        {
+            get
+            {
+                return help;
+            }
+        }
     }
     /// <summary>
     /// Runs states that do something several times over the course of their duration, like poisons.
     /// </summary>
-    public class Command_timer_cyclestates : Command
+    public class Command_timer_cyclestates : Command,ICommand
     {
+       
+        
+        
+        
+
         public Command_timer_cyclestates()
         {
             name = "timer_cyclestates";
@@ -99,14 +130,41 @@ namespace TigerMUD
                 return false;
             }
         }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public string[] Words
+        {
+            get
+            {
+                return words;
+            }
+        }
+        public HelpInfo Help
+        {
+            get
+            {
+                return help;
+            }
+        }
     }
 
 
     /// <summary>
     /// Increments playtime and regenerates mob and user stats over time.
     /// </summary>
-    public class Command_timer_regencycle : Command
+    public class Command_timer_regencycle : Command,ICommand
     {
+       
+        
+        
+        
+
+
         public Command_timer_regencycle()
         {
             name = "timer_regencycle";
@@ -218,13 +276,39 @@ namespace TigerMUD
 
             return true;
         }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public string[] Words
+        {
+            get
+            {
+                return words;
+            }
+        }
+        public HelpInfo Help
+        {
+            get
+            {
+                return help;
+            }
+        }
     }
 
     /// <summary>
     /// Handle NPC combat
     /// </summary>
-    public class Command_timer_npccombat : Command
+    public class Command_timer_npccombat : Command,ICommand
     {
+       
+        
+        
+        
+
         public Command_timer_npccombat()
         {
             name = "timer_npccombat";
@@ -243,13 +327,39 @@ namespace TigerMUD
             }
             return true;
         }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public string[] Words
+        {
+            get
+            {
+                return words;
+            }
+        }
+        public HelpInfo Help
+        {
+            get
+            {
+                return help;
+            }
+        }
     }
 
     /// <summary>
     /// Handle player auto-combat
     /// </summary>
-    public class Command_timer_playercombat : Command
+    public class Command_timer_playercombat : Command,ICommand
     {
+       
+        
+        
+        
+
         public Command_timer_playercombat()
         {
             name = "timer_playercombat";
@@ -276,13 +386,39 @@ namespace TigerMUD
             }
 
         }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public string[] Words
+        {
+            get
+            {
+                return words;
+            }
+        }
+        public HelpInfo Help
+        {
+            get
+            {
+                return help;
+            }
+        }
     }
 
     /// <summary>
     /// Sweep the online users and disconnect idle ones based on timer.
     /// </summary>
-    public class Command_timer_idledisconnect : Command
+    public class Command_timer_idledisconnect : Command,ICommand
     {
+       
+        
+        
+        
+
         public Command_timer_idledisconnect()
         {
             name = "timer_idledisconnect";
@@ -317,14 +453,40 @@ namespace TigerMUD
             }
             return true;
         }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public string[] Words
+        {
+            get
+            {
+                return words;
+            }
+        }
+        public HelpInfo Help
+        {
+            get
+            {
+                return help;
+            }
+        }
 
     }
 
     /// <summary>
     /// Scheduled command to update the phases of the moon.
     /// </summary>
-    public class Command_timer_movesunmoon : Command
+    public class Command_timer_movesunmoon : Command,ICommand
     {
+       
+        
+        
+        
+
         public Command_timer_movesunmoon()
         {
             name = "timer_movesunmoon";
@@ -457,10 +619,36 @@ namespace TigerMUD
 
             return true;
         }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public string[] Words
+        {
+            get
+            {
+                return words;
+            }
+        }
+        public HelpInfo Help
+        {
+            get
+            {
+                return help;
+            }
+        }
     }
 
-    public class Command_timer_growplants : Command
+    public class Command_timer_growplants : Command,ICommand
     {
+       
+        
+        
+        
+
         public Command_timer_growplants()
         {
             name = "timer_growplants";
@@ -471,13 +659,39 @@ namespace TigerMUD
         {
             return true;
         }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public string[] Words
+        {
+            get
+            {
+                return words;
+            }
+        }
+        public HelpInfo Help
+        {
+            get
+            {
+                return help;
+            }
+        }
     }
 
     /// <summary>
     /// Moves mobs 
     /// </summary>
-    public class Command_timer_movemobs : Command
+    public class Command_timer_movemobs : Command,ICommand
     {
+       
+        
+        
+        
+
         public Command_timer_movemobs()
         {
             name = "timer_movemobs";
@@ -735,6 +949,27 @@ namespace TigerMUD
                 }
             }
             return true;
+        }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public string[] Words
+        {
+            get
+            {
+                return words;
+            }
+        }
+        public HelpInfo Help
+        {
+            get
+            {
+                return help;
+            }
         }
     }
 

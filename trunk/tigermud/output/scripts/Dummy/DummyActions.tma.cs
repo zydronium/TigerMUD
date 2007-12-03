@@ -35,42 +35,34 @@ The full licence can be found in <root>/docs/TigerMUD_license.txt
 */
 #endregion
 
-
-
 using System;
-using TigerMUD.CommsLib.TcpComms;
-//using TigerMUD.CommsLib.MsnComms;
 
-namespace TigerMUD.CommsLib
+namespace TigerMUD
 {
 	/// <summary>
-	/// Creates connection listeners on request.
+	/// Push Action for the Dummy
 	/// </summary>
-	public class ConnectionListenerFactory
+	public class Action_dummy_push : Action
 	{
-    /// <summary>
-    /// Creates a new TcpConnectionListener on the specified port.
-    /// </summary>
-    /// <param name="port">The port to listen for new connections on.</param>
-    /// <returns>An implementation of IConnectionListener.</returns>
-    public static IConnectionListener CreateTcpConnectionListener(int port)
-    {
-      TcpConnectionListener listener = new TcpConnectionListener(port);
-      return listener;
-    }
-
-    /// <summary>
-    /// Creates a new MsnConnectionListener.
-    /// </summary>
-    /// <param name="account">The MSN account email address.</param>
-    /// <param name="password">The MSN account password.</param>
-    /// <returns>An implementation of IConnectionListener.</returns>
-    //public static IConnectionListener CreateMsnConnectionListener(string account,
-    //  string password)
-    //{
-    //  MsnConnectionListener listener = new MsnConnectionListener(account,
-    //    password);
-    //  return listener;
-    //}
+		public Action_dummy_push()
+		{
+			name = "dummy_push";
+			words = new string[1] { "push" };
+		}
+		
+		public override bool DoAction(Actor actor, Actor target, string command, string arguments)
+		{
+			if (actor["type"].ToString()=="user")
+			{
+                actor.Send("The " + target["name"] + " sways back and then snaps back into place.\r\n");
+                actor.Sayinroom(actor.GetNameUpper() + " pushes on the " + target["name"] + " and it leans back and then snaps back into place.");
+			}
+			else // actor is not a user
+			{
+                actor.Sayinroom(actor.GetNameUpper() + " pushes on the " + target["name"] + " and it leans back and then snaps back into place.");
+			}
+			
+			return true;
+		}
 	}
 }

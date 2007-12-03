@@ -214,18 +214,11 @@ namespace TigerMUD
 
         public static string AdminEmail = "admin@tigermud.com";
 
-        public static string PathtoDebugorRelease = null;
+        //public static string PathtoDebugorRelease = null;
 
-        public static string PathtoRoot = null;
-        public static string PathtoRootAssemblies = null;
-        public static string PathtoRootRemoteConsole = null;
-        public static string PathtoRootRemoteConsoleAssemblies = null;
-        public static string PathtoRootScriptsandPlugins = null;
-        public static string PathtoRootScriptsandPluginsAssemblies = null;
-        public static string PathtoRootTigerLoaderLib = null;
-        public static string PathtoRootTigerLoaderLibAssemblies = null;
+        public static string PathtoRoot = string.Empty;
+        public static string PathtoRootScriptsandPlugins = string.Empty;
 
-        //public static string PathtoStartup = null;
 
         public static StreamWriter serverlogwriter = null;
         public static StreamWriter commandlogwriter = null;
@@ -402,10 +395,12 @@ namespace TigerMUD
                 if (type.Namespace == "TigerMUD")
                 {
                     if (type.GetInterface("IAction") != null)
-                        Lib.AddAction((Action)Activator.CreateInstance(type));
+                        //Lib.AddAction((IAction)Activator.CreateInstance(type));
+                    Lib.AddAction((Action)Activator.CreateInstance(type));
 
                     if (type.GetInterface("ICommand") != null)
-                        Lib.AddCommand((Command)Activator.CreateInstance(type));
+                        //Lib.AddCommand((ICommand)Activator.CreateInstance(type));
+                    Lib.AddCommand((Command)Activator.CreateInstance(type));
                     // DEBUG
                     //Console.WriteLine("Adding " + type.Name);
                 }
@@ -425,19 +420,22 @@ namespace TigerMUD
         public static ArrayList GetFilesRecursive(string path, string mask)
         {
             ArrayList list = new ArrayList();
-            foreach (string d in Directory.GetDirectories(path))
+            DirectoryInfo di = new DirectoryInfo(path);
+            foreach (string f in Directory.GetFiles(di.FullName, mask))
             {
-                DirectoryInfo di = new DirectoryInfo(d);
-                foreach (string f in Directory.GetFiles(di.FullName, mask))
+                FileInfo fi = new FileInfo(f);
+                // Skip all DLLs in the obj paths
+                if (!fi.FullName.Contains(@"\obj\"))
                 {
-                    FileInfo fi = new FileInfo(f);
-                    // Skip all DLLs in the obj paths
-                    if (!fi.FullName.Contains(@"\obj\"))
-                    {
-                        list.Add(fi.FullName);
-                    }
+                    list.Add(fi.FullName);
                 }
-                list.AddRange(GetFilesRecursive(di.FullName, mask));
+            }
+
+            string[] directories = Directory.GetDirectories(path);
+            foreach (string d in directories)
+            {
+                DirectoryInfo childdi = new DirectoryInfo(d);
+                list.AddRange(GetFilesRecursive(childdi.FullName, mask));
             }
             return list;
         }
@@ -2563,7 +2561,7 @@ namespace TigerMUD
         /// so this adds them all.
         /// </summary>
         /// <returns>An arraylist with each word cleanly separated</returns>
-        public static void AddCommandWord(Hashtable hashtable, Command command)
+        public static void AddCommandWord(Hashtable hashtable, ICommand command)
         {
             foreach (string word in command.Words)
             {
@@ -2580,7 +2578,7 @@ namespace TigerMUD
         /// Deletes a command word from all the command word hashtables
         /// </summary>
         /// <param name="command"></param>
-        public static void DeleteCommandWord(Command command)
+        public static void DeleteCommandWord(ICommand command)
         {
             DeleteCommandWordFromHashtable(Lib.Commands, command);
             DeleteCommandWordFromHashtable(Lib.PlayerCommandWords, command);
@@ -2594,7 +2592,7 @@ namespace TigerMUD
         /// </summary>
         /// <param name="hashtable"></param>
         /// <param name="command"></param>
-        public static void DeleteCommandWordFromHashtable(Hashtable hashtable, Command command)
+        public static void DeleteCommandWordFromHashtable(Hashtable hashtable, ICommand command)
         {
             foreach (string word in command.Words)
             {
@@ -2611,14 +2609,14 @@ namespace TigerMUD
         /// Adds commands to the global command list.
         /// </summary>
         /// <returns>Returns Command to be able to chain with AddCommandWord</returns>
-        public static Command AddCommand(Command command)
+        public static ICommand AddCommand(ICommand command)
         {
             if (Commands[command.Name] != null)
             {
                 // Delete any old versions
                 //Lib.DeleteCommandWordFromHashtable(Commands,command);
                 //Lib.PrintLine(command["name"] + " already exists.  Not adding.");
-                return (Command)Commands[command.Name];
+                return (ICommand)Commands[command.Name];
             }
             Commands.Add(command.Name, command);
             return command;
@@ -2628,9 +2626,9 @@ namespace TigerMUD
         /// Allows easy retrieval of an Command by name.
         /// </summary>
         /// <returns>Command</returns>
-        public static Command GetCommandByName(string name)
+        public static ICommand GetCommandByName(string name)
         {
-            return (Command)Commands[name];
+            return (ICommand)Commands[name];
         }
 
         public static void AddCommandToDb(AccessLevel accesslevel, string commandname)
@@ -2695,7 +2693,7 @@ namespace TigerMUD
             IEnumerator enumerator = SystemCommandWords.Values.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                Command command = GetCommandByName((string)enumerator.Current);
+                ICommand command = GetCommandByName((string)enumerator.Current);
                 foreach (string word in command.Words)
                 {
                     if (!commandwordlist.Contains(word))
@@ -2707,7 +2705,7 @@ namespace TigerMUD
             enumerator = PlayerCommandWords.Values.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                Command command = GetCommandByName((string)enumerator.Current);
+                ICommand command = GetCommandByName((string)enumerator.Current);
                 foreach (string word in command.Words)
                 {
                     if (!commandwordlist.Contains(word))
@@ -2721,7 +2719,7 @@ namespace TigerMUD
                 enumerator = BuilderCommandWords.Values.GetEnumerator();
                 while (enumerator.MoveNext())
                 {
-                    Command command = GetCommandByName((string)enumerator.Current);
+                    ICommand command = GetCommandByName((string)enumerator.Current);
                     foreach (string word in command.Words)
                     {
                         if (!commandwordlist.Contains(word))
@@ -2736,7 +2734,7 @@ namespace TigerMUD
                 enumerator = AdminCommandWords.Values.GetEnumerator();
                 while (enumerator.MoveNext())
                 {
-                    Command command = GetCommandByName((string)enumerator.Current);
+                    ICommand command = GetCommandByName((string)enumerator.Current);
                     foreach (string word in command.Words)
                     {
                         if (!commandwordlist.Contains(word))
@@ -2751,7 +2749,7 @@ namespace TigerMUD
                 enumerator = UberAdminCommandWords.Values.GetEnumerator();
                 while (enumerator.MoveNext())
                 {
-                    Command command = GetCommandByName((string)enumerator.Current);
+                    ICommand command = GetCommandByName((string)enumerator.Current);
                     foreach (string word in command.Words)
                     {
                         if (!commandwordlist.Contains(word))

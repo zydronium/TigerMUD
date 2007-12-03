@@ -87,18 +87,8 @@ namespace TigerMUD
         }
         public void Start()
         {
-            //Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            Lib.PathtoRoot = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\"));
-            Lib.PathtoRootAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"bin" + Lib.PathtoDebugorRelease));
-            Lib.PathtoRootRemoteConsole = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"tigerremoteconsole"));
-            Lib.PathtoRootRemoteConsoleAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootRemoteConsole, @"..\bin\debug" + Lib.PathtoDebugorRelease));
-            Lib.PathtoRootScriptsandPlugins = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"tigermudscriptsandplugins"));
-            Lib.PathtoRootScriptsandPluginsAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootScriptsandPlugins, @"bin\Debug" + Lib.PathtoDebugorRelease));
-            Lib.PathtoRootTigerLoaderLib = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"tigerloaderlib"));
-            Lib.PathtoRootTigerLoaderLibAssemblies = Path.GetFullPath(Path.Combine(Lib.PathtoRootTigerLoaderLib, @"bin\" + Lib.PathtoDebugorRelease));
-            
-            //Lib.PathtoRootRemoteConsoleAssemblies = Path.GetFullPath(Environment.CurrentDirectory);
-            //Lib.PathtoRootRemoteConsole = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\.."));
+            Lib.PathtoRoot = AppDomain.CurrentDomain.BaseDirectory;
+            Lib.PathtoRootScriptsandPlugins = Lib.PathtoRoot + @"scripts";
             
             // this must come before ANY printing to console
             // logwriters are opened in Start() method and closed in Stop() method
@@ -106,21 +96,6 @@ namespace TigerMUD
             Lib.serverlogwriter.AutoFlush = true;
             Lib.commandlogwriter = new StreamWriter(Path.GetFullPath(Path.Combine(Lib.PathtoRoot, Lib.commandLogFileName)), true);
             Lib.commandlogwriter.AutoFlush = true;
-            //Lib.PrintLine("Environment.CurrentDirectory=" + Environment.CurrentDirectory);
-            
-            //Lib.PrintLine("AppDomain.CurrentDomain.BaseDirectory=" + AppDomain.CurrentDomain.BaseDirectory);
-            //Lib.PrintLine("PathtoRoot=" + Lib.PathtoRoot);
-            //Lib.PrintLine("PathtoRootAssemblies=" + Lib.PathtoRootAssemblies);
-            //Lib.PrintLine("PathtoRootRemoteConsole=" + Lib.PathtoRootRemoteConsole);
-            //Lib.PrintLine("PathtoRootRemoteConsoleAssemblies=" + Lib.PathtoRootRemoteConsoleAssemblies);
-            //Lib.PrintLine("PathtoRootScriptsandPlugins=" + Lib.PathtoRootScriptsandPlugins);
-            //Lib.PrintLine("PathtoRootScriptsandPluginsAssemblies=" + Lib.PathtoRootScriptsandPluginsAssemblies);
-            //Lib.PrintLine("PathtoRootTigerLoaderLib=" + Lib.PathtoRootTigerLoaderLib);
-            //Lib.PrintLine("PathtoRootTigerLoaderLibAssemblies=" + Lib.PathtoRootTigerLoaderLibAssemblies);
-            
-           
-
-            //bool exit = false;
 
 			// This section of code finds and loads the tigermud.xml file.
 			// The code is more complex because it supports the location of tigermud.xml in both 
@@ -128,7 +103,7 @@ namespace TigerMUD
 
 			try
 			{
-                Lib.Serverinfo = Lib.Readxmldoc(Path.GetFullPath(Path.Combine(Lib.PathtoRoot, "tigermud.xml")));
+                Lib.Serverinfo = Lib.Readxmldoc(Path.Combine(Lib.PathtoRoot, "tigermud.xml"));
 			}
 			catch (Exception ex)
 			{

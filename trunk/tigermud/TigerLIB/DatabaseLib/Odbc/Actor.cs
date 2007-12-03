@@ -142,12 +142,22 @@ namespace TigerMUD.DatabaseLib.Odbc
         public void SaveActorState(TigerMUD.Actor actor, string setting)
         {
             string statement;
+            string setvalue=actor[setting].ToString();
             //string cleaned_state = actor[setting].ToString();
             //string cleaned_state = DataCleaning.Sanitize(actor[setting].ToString());
             // Check if state exists
             if (StateExists(actor["id"].ToString(), setting))
             {
-                statement = "UPDATE mudactorstate SET setting = '" + actor[setting].ToString() + "', datatype='" + (actor[setting]).GetType().ToString() + "' WHERE name = '" + setting + "' AND id='" + actor["id"] + "';";
+                if (setting.ToLower() == "lastmessage")
+                {
+                    // Case where user input might get saved direct to DB, so clean it up carefully
+                    // first remove any apostrophies instead of escaping them
+                    setvalue = setvalue.Replace(@"'", "");
+                    // Then do a flat sanitize as well
+                    DatabaseLib.DataCleaning.Sanitize(setvalue);
+                    // Now we can use it
+                }
+                statement = "UPDATE mudactorstate SET setting = '" + setvalue + "', datatype='" + (actor[setting]).GetType().ToString() + "' WHERE name = '" + setting + "' AND id='" + actor["id"] + "';";
             }
             else
             {

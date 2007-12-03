@@ -26,7 +26,7 @@ namespace TigerMUD
     {
         public LevelReader() : base() { }
         public LevelReader(string Filename) : base(Filename) { }
-        
+
         public override Boolean Load(string filename)
         {
             Boolean endRoom = false;

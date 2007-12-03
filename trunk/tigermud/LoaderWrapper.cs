@@ -21,7 +21,7 @@ namespace TigerMUD
 			// This section of code finds and loads the tigermud.xml file.
 			// The code is more complex because it supports the location of tigermud.xml in both 
 			// the dev team environment and normal user runtime environments.
-			string path = AppDomain.CurrentDomain.BaseDirectory + @"..\..\TigerMUD.xml";
+			string path = AppDomain.CurrentDomain.BaseDirectory + @"\TigerMUD.xml";
 
 			try
 			{
@@ -39,7 +39,7 @@ namespace TigerMUD
 		#endregion
 
 		#region Restart
-		public override bool Restart()
+        public override bool Restart()
 		{
 			this.Stop();
 			this.Start();
@@ -48,7 +48,7 @@ namespace TigerMUD
 		#endregion
 
 		#region Stop
-		public override bool Stop()
+        public override bool Stop()
 		{
 			threadManager.Stop();
 			return true;

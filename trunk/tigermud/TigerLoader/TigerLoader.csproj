@@ -31,7 +31,7 @@
     <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\output\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -92,6 +92,7 @@
     <ProjectReference Include="..\TigerLIB\TigerLIB.csproj">
       <Project>{2368943E-2F34-4E21-81AF-C9AA24FBFB50}</Project>
       <Name>TigerLIB</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\TigerLoaderLib\TigerLoaderLib.csproj">
       <Name>TigerLoaderLib</Name>
@@ -113,6 +114,7 @@
     </Compile>
     <EmbeddedResource Include="Service.resx">
       <DependentUpon>Service.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

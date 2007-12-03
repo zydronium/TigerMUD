@@ -50,7 +50,7 @@ namespace TigerMUD
 			words = new string[1] { "push" };
 		}
 		
-		public override bool DoAction(Actor actor, Actor target, string command, string arguments)
+		public bool DoAction(Actor actor, Actor target, string command, string arguments)
 		{
 			if (actor["type"].ToString()=="user")
 			{

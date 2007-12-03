@@ -32,7 +32,7 @@
     <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\output\scripts\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -90,9 +90,10 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <Reference Include="TigerLIB">
-      <Name>TigerLIB</Name>
-      <HintPath>..\TigerLIB\bin\Debug\TigerLIB.dll</HintPath>
+    <Reference Include="TigerLIB, Version=1.0.2892.25317, Culture=neutral, PublicKeyToken=d92de7829e911efd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\TigerLIB.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +108,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>copy "$(TargetDir)$(ProjectName).pdb" "$(SolutionDir)bin\$(ConfigurationName)\" &amp; copy "$(TargetPath)" "$(SolutionDir)bin\$(ConfigurationName)\$(ProjectName).tmc"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

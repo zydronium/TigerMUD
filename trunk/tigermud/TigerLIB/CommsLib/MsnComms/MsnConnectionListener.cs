@@ -39,7 +39,6 @@ using System;
 using System.Collections;
 using System.Threading;
 using TigerMUD.CommsLib;
-using XihSolutions.DotMSN;
 
 namespace TigerMUD.CommsLib.MsnComms
 {
@@ -47,213 +46,213 @@ namespace TigerMUD.CommsLib.MsnComms
 	/// Listens out for MUD connections over the MSN 
 	/// Messenger network.
 	/// </summary>
-	public class MsnConnectionListener : IConnectionListener
-	{
-    private Messenger messenger;
-    private Thread listenerThread;
-    private bool active;
-    private bool acceptNewConnections;
-    private bool enabled;
-    private ArrayList connectedClients;
-    private ReaderWriterLock clientsLock;
+    //public class MsnConnectionListener : IConnectionListener
+    //{
+    //    //private Messenger messenger;
+    //    private Thread listenerThread;
+    //    private bool active;
+    //    private bool acceptNewConnections;
+    //    private bool enabled;
+    //    private ArrayList connectedClients;
+    //    private ReaderWriterLock clientsLock;
 
-		public MsnConnectionListener(string account,
-      string password)
-		{
-      messenger = new Messenger();
-      // Set up MSN credentials (we are emulating a genuine MSN client)
-      messenger.Credentials.ClientID = "msmsgs@msnmsgr.com";
-      messenger.Credentials.ClientCode = "Q1P7W2E4J9R8U3S5";	
-      messenger.Credentials.Account = "tigermud@gmail.com";
-      messenger.Credentials.Password = "mudmud123";
+    //    public MsnConnectionListener(string account,
+    //  string password)
+    //    {
+    //        messenger = new Messenger();
+    //        // Set up MSN credentials (we are emulating a genuine MSN client)
+    //        messenger.Credentials.ClientID = "msmsgs@msnmsgr.com";
+    //        messenger.Credentials.ClientCode = "Q1P7W2E4J9R8U3S5";
+    //        messenger.Credentials.Account = "tigermud@gmail.com";
+    //        messenger.Credentials.Password = "mudmud123";
 
-      // For storing the list of connected clients
-      clientsLock = new ReaderWriterLock();
-      connectedClients = new ArrayList();
+    //        // For storing the list of connected clients
+    //        clientsLock = new ReaderWriterLock();
+    //        connectedClients = new ArrayList();
 
-      active = false;
-      acceptNewConnections = false;
-      enabled = false;
-		}
+    //        active = false;
+    //        acceptNewConnections = false;
+    //        enabled = false;
+    //    }
 
-		#region IConnectionListener Members
-		public bool Active
-		{
-			get
-			{
-				return active;
-			}
-		}
+    //    #region IConnectionListener Members
+    //    public bool Active
+    //    {
+    //        get
+    //        {
+    //            return active;
+    //        }
+    //    }
 
-		public int ClientCount
-		{
-			get
-			{
-        try
-        {
-          clientsLock.AcquireReaderLock(Timeout.Infinite);
-          return connectedClients.Count;
-        } 
-        finally
-        {
-          clientsLock.ReleaseLock();
-        }
-			}
-		}
+    //    public int ClientCount
+    //    {
+    //        get
+    //        {
+    //            try
+    //            {
+    //                clientsLock.AcquireReaderLock(Timeout.Infinite);
+    //                return connectedClients.Count;
+    //            }
+    //            finally
+    //            {
+    //                clientsLock.ReleaseLock();
+    //            }
+    //        }
+    //    }
 
-		public bool AcceptNewConnections
-		{
-			get
-			{
-				return acceptNewConnections;
-			}
-			set
-			{
-        acceptNewConnections = value;
-			}
-		}
+    //    public bool AcceptNewConnections
+    //    {
+    //        get
+    //        {
+    //            return acceptNewConnections;
+    //        }
+    //        set
+    //        {
+    //            acceptNewConnections = value;
+    //        }
+    //    }
 
-		public void Start()
-		{
-      acceptNewConnections = true;
-      active = true;
-      enabled = true;
+    //    public void Start()
+    //    {
+    //        acceptNewConnections = true;
+    //        active = true;
+    //        enabled = true;
 
-      listenerThread = new Thread(new ThreadStart(this.StartMessenger));
-      listenerThread.Start();
-		}
+    //        listenerThread = new Thread(new ThreadStart(this.StartMessenger));
+    //        listenerThread.Start();
+    //    }
 
-    private void StartMessenger()
-    {
-      try 
-      {
-        // Set up messenger events.
-        messenger.NameserverProcessor.ConnectionEstablished += new EventHandler(NameserverProcessor_ConnectionEstablished);
-        messenger.Nameserver.AuthenticationError += new XihSolutions.DotMSN.Core.HandlerExceptionEventHandler(Nameserver_AuthenticationError);
-        messenger.Nameserver.ContactAdded += new ListMutatedAddedEventHandler(Nameserver_ContactAdded);
-        messenger.ConversationCreated += new ConversationCreatedEventHandler(messenger_ConversationCreated);
-        messenger.Nameserver.ExceptionOccurred += new XihSolutions.DotMSN.Core.HandlerExceptionEventHandler(Nameserver_ExceptionOccurred);
-        messenger.Nameserver.SignedIn += new EventHandler(Nameserver_SignedIn);
-        messenger.Nameserver.SignedOff += new SignedOffEventHandler(Nameserver_SignedOff);
-        messenger.Nameserver.SynchronizationCompleted += new EventHandler(Nameserver_SynchronizationCompleted);
+    //    private void StartMessenger()
+    //    {
+    //        try
+    //        {
+    //            // Set up messenger events.
+    //            messenger.NameserverProcessor.ConnectionEstablished += new EventHandler(NameserverProcessor_ConnectionEstablished);
+    //            messenger.Nameserver.AuthenticationError += new XihSolutions.DotMSN.Core.HandlerExceptionEventHandler(Nameserver_AuthenticationError);
+    //            messenger.Nameserver.ContactAdded += new ListMutatedAddedEventHandler(Nameserver_ContactAdded);
+    //            messenger.ConversationCreated += new ConversationCreatedEventHandler(messenger_ConversationCreated);
+    //            messenger.Nameserver.ExceptionOccurred += new XihSolutions.DotMSN.Core.HandlerExceptionEventHandler(Nameserver_ExceptionOccurred);
+    //            messenger.Nameserver.SignedIn += new EventHandler(Nameserver_SignedIn);
+    //            messenger.Nameserver.SignedOff += new SignedOffEventHandler(Nameserver_SignedOff);
+    //            messenger.Nameserver.SynchronizationCompleted += new EventHandler(Nameserver_SynchronizationCompleted);
 
-        // Start connecting to the MSN network
-        messenger.Connect();
+    //            // Start connecting to the MSN network
+    //            messenger.Connect();
 
-        while(enabled)
-        {
-          // Just sleep until this ends
-          System.Threading.Thread.Sleep(250);
-        }
+    //            while (enabled)
+    //            {
+    //                // Just sleep until this ends
+    //                System.Threading.Thread.Sleep(250);
+    //            }
 
-        // Disconnect from the network
-        messenger.Disconnect();
-      }
-      catch (Exception ex)
-      {
-        Lib.log.Add("MSNConnectionListener.StartMessenger", ex.Message + ex.StackTrace);
-      }
-    }
+    //            // Disconnect from the network
+    //            messenger.Disconnect();
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Lib.log.Add("MSNConnectionListener.StartMessenger", ex.Message + ex.StackTrace);
+    //        }
+    //    }
 
-		public void Stop()
-		{
-      enabled = false;
-		}
+    //    public void Stop()
+    //    {
+    //        enabled = false;
+    //    }
 
-    #endregion
+    //    #endregion
 
-    #region Messenger Event Handlers
-    private void NameserverProcessor_ConnectionEstablished(object sender, EventArgs e)
-    {
+    //    #region Messenger Event Handlers
+    //    //private void NameserverProcessor_ConnectionEstablished(object sender, EventArgs e)
+    //    //{
 
-    }
+    //    //}
 
-    private void Nameserver_AuthenticationError(object sender, ExceptionEventArgs e)
-    {
+    //    //private void Nameserver_AuthenticationError(object sender, ExceptionEventArgs e)
+    //    //{
 
-    }
+    //    //}
 
-    private void Nameserver_ContactAdded(object sender, ListMutateEventArgs e)
-    {
-      // Add this contact to our list.
-      messenger.Nameserver.AddContactToList(e.Contact, MSNLists.AllowedList);
-    }
+    //    //private void Nameserver_ContactAdded(object sender, ListMutateEventArgs e)
+    //    //{
+    //    //    // Add this contact to our list.
+    //    //    messenger.Nameserver.AddContactToList(e.Contact, MSNLists.AllowedList);
+    //    //}
 
-    private void messenger_ConversationCreated(object sender, ConversationCreatedEventArgs e)
-    {
-      // Incoming connection.
-      if(e.Initiator == null && enabled)
-      {
-        Lib.PrintLine("Starting new conversation");
-        BeginClientConversation(e.Conversation);
-      }
-    }
+    //    //private void messenger_ConversationCreated(object sender, ConversationCreatedEventArgs e)
+    //    //{
+    //    //    // Incoming connection.
+    //    //    if (e.Initiator == null && enabled)
+    //    //    {
+    //    //        Lib.PrintLine("Starting new conversation");
+    //    //        BeginClientConversation(e.Conversation);
+    //    //    }
+    //    //}
 
-    private void Nameserver_ExceptionOccurred(object sender, ExceptionEventArgs e)
-    {
-    }
+    //    //private void Nameserver_ExceptionOccurred(object sender, ExceptionEventArgs e)
+    //    //{
+    //    //}
 
-    private void Nameserver_SignedIn(object sender, EventArgs e)
-    {
-      Lib.log.Add("MsnConnectionListener", "Signed in to MSN service.");
+    //    //private void Nameserver_SignedIn(object sender, EventArgs e)
+    //    //{
+    //    //    Lib.log.Add("MsnConnectionListener", "Signed in to MSN service.");
 
-      // Syncrhonise the contact list.
-      messenger.Nameserver.SynchronizeContactList();
-    }
+    //    //    // Syncrhonise the contact list.
+    //    //    messenger.Nameserver.SynchronizeContactList();
+    //    //}
 
-    private void Nameserver_SignedOff(object sender, SignedOffEventArgs e)
-    {
-      Lib.log.Add("MsnConnectionListener", "Signed out of MSN service.");
-    }
+    //    //private void Nameserver_SignedOff(object sender, SignedOffEventArgs e)
+    //    //{
+    //    //    Lib.log.Add("MsnConnectionListener", "Signed out of MSN service.");
+    //    //}
 
-    private void Nameserver_SynchronizationCompleted(object sender, EventArgs e)
-    {
-      messenger.Nameserver.SetPresenceStatus(PresenceStatus.Online);
-    }
-    #endregion
+    //    //private void Nameserver_SynchronizationCompleted(object sender, EventArgs e)
+    //    //{
+    //    //    messenger.Nameserver.SetPresenceStatus(PresenceStatus.Online);
+    //    //}
+    //    #endregion
 
-    #region Client Conversations
-    private void BeginClientConversation(Conversation conversation)
-    {
-      // Create a new MsnClientSocket
-      MsnClientSocket socket = null;
+    //    #region Client Conversations
+    //    //private void BeginClientConversation(Conversation conversation)
+    //    //{
+    //    //    // Create a new MsnClientSocket
+    //    //    MsnClientSocket socket = null;
 
-      try 
-      {
-        // Create a new MsnClientSocket
-        socket = new MsnClientSocket(conversation,
-          MsnClientSocket.DEFAULT_TIMEOUT);
+    //    //    try
+    //    //    {
+    //    //        // Create a new MsnClientSocket
+    //    //        socket = new MsnClientSocket(conversation,
+    //    //          MsnClientSocket.DEFAULT_TIMEOUT);
 
-        // Farm this out to a new listener
-        ClientListener listener = new ClientListener(socket,
-          new ClientDisconnectedEventHandler(ClientDisconnected));
+    //    //        // Farm this out to a new listener
+    //    //        ClientListener listener = new ClientListener(socket,
+    //    //          new ClientDisconnectedEventHandler(ClientDisconnected));
 
-        clientsLock.AcquireWriterLock(Timeout.Infinite);
-        try 
-        {
-          connectedClients.Add(listener);
-        }
-        finally
-        {
-          clientsLock.ReleaseLock();
-        }
+    //    //        clientsLock.AcquireWriterLock(Timeout.Infinite);
+    //    //        try
+    //    //        {
+    //    //            connectedClients.Add(listener);
+    //    //        }
+    //    //        finally
+    //    //        {
+    //    //            clientsLock.ReleaseLock();
+    //    //        }
 
-        // Start the listener.
-        listener.StartListening();
-      } 
-      catch (Exception ex)
-      {
-        Lib.log.Add(socket, 
-          "unknown",
-          "Error while trying to start a client listener for this socket: " + ex.Message + ex.StackTrace);
-      }
-    }
+    //    //        // Start the listener.
+    //    //        listener.StartListening();
+    //    //    }
+    //    //    catch (Exception ex)
+    //    //    {
+    //    //        Lib.log.Add(socket,
+    //    //          "unknown",
+    //    //          "Error while trying to start a client listener for this socket: " + ex.Message + ex.StackTrace);
+    //    //    }
+    //    //}
 
-    private void ClientDisconnected(ClientListener sender)
-    {
-      
-    }
-    #endregion
+    //    private void ClientDisconnected(ClientListener sender)
+    //    {
 
-  }
+    //    }
+    //    #endregion
+
+    //}
 }

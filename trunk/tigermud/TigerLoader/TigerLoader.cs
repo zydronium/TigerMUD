@@ -28,7 +28,7 @@ namespace Tiger.Loader
 				//AJ: Directory
 				//Adam's Localtion
 				//subApp[0] = @"C:\TigerMUD\TigerRemoteConsole\bin\Debug";
-                subApp[0] = TigerMUD.Lib.PathtoRootRemoteConsoleAssemblies;
+                subApp[0] = TigerMUD.Lib.PathtoRoot;
                 
                 
 				//Andy'sLocation

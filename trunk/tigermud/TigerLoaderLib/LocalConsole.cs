@@ -40,12 +40,12 @@ namespace Tiger.Loader.Lib
 			return true;
 		}
 
-		public override bool Stop()
+        public override bool Stop()
 		{
 			return true;
 		}
 
-		public override bool Restart()
+        public override bool Restart()
 		{
 			return true;
 		}

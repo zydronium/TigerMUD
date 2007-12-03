@@ -50,7 +50,7 @@ namespace TigerMUD
 			words = new string[1] { "push" };
 		}
 		
-		public override bool DoAction(Actor actor, Actor target, string command, string arguments)
+		public bool DoAction(Actor actor, Actor target, string command, string arguments)
 		{
 			if (actor["type"].ToString()=="user")
 			{
@@ -77,8 +77,13 @@ namespace TigerMUD
 	/// <summary>
 	/// Push command for windchime.
 	/// </summary>
-	public class Command_windchime_push : Command
-	{
+	public class Command_windchime_push : Command,ICommand
+    {
+       
+        
+        
+        
+
 		public Command_windchime_push()
 		{
 			name = "windchime_push";
@@ -90,6 +95,27 @@ namespace TigerMUD
 		{
             actor.Sayinroom("The " + actor["name"] + " tinkles one last time and stops moving.");
 			return true;
-		}
+        }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public string[] Words
+        {
+            get
+            {
+                return words;
+            }
+        }
+        public HelpInfo Help
+        {
+            get
+            {
+                return help;
+            }
+        }
 	}
 }

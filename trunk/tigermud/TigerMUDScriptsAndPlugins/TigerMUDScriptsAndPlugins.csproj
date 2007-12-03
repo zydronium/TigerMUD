@@ -32,7 +32,7 @@
     <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\output\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -87,11 +87,10 @@
     <Reference Include="System.XML">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\TigerLIB\TigerLIB.csproj">
-      <Name>TigerLIB</Name>
-      <Project>{2368943E-2F34-4E21-81AF-C9AA24FBFB50}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
+    <Reference Include="TigerLIB, Version=1.0.2892.25317, Culture=neutral, PublicKeyToken=d92de7829e911efd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs">

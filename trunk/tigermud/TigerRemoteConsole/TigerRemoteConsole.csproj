@@ -32,7 +32,7 @@
     <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\output\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -87,19 +87,11 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\TigerLIB\TigerLIB.csproj">
-      <Project>{2368943E-2F34-4E21-81AF-C9AA24FBFB50}</Project>
-      <Name>TigerLIB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TigerLoaderLib\TigerLoaderLib.csproj">
-      <Project>{528DDED3-C8D8-4743-B362-93832DAFD791}</Project>
-      <Name>TigerLoaderLib</Name>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\TigerMUD.csproj">
-      <Project>{A3C7BEB1-7A58-457C-A408-832120D7AB97}</Project>
-      <Name>TigerMUD</Name>
-    </ProjectReference>
+    <Reference Include="TigerMUD, Version=1.0.2892.32816, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs">

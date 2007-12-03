@@ -147,12 +147,12 @@ namespace TigerMUD
                     {
                         if (type.GetInterface("ICommand") != null)
                         {
-                            Command Command = (Command)Activator.CreateInstance(type);
+                            ICommand Command = (Command)Activator.CreateInstance(type);
                             ScriptArray.Add(Command);
                         }
                         if (type.GetInterface("IAction") != null)
                         {
-                            Action Action = (Action)Activator.CreateInstance(type);
+                            IAction Action = (Action)Activator.CreateInstance(type);
                             ScriptArray.Add(Action);
                         }
                     }

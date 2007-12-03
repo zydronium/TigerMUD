@@ -37,17 +37,17 @@ The full licence can be found in <root>/docs/TigerMUD_license.txt
 
 using System;
 
-namespace TigerMUD.CommsLib.MsnComms
-{
-	/// <summary>
-	/// Summary description for MsnSocketUtility.
-	/// </summary>
-	public class MsnSocketUtility
-	{
-		public MsnSocketUtility()
-		{
-			//
-			//
-		}
-	}
-}
+//namespace TigerMUD.CommsLib.MsnComms
+//{
+//    /// <summary>
+//    /// Summary description for MsnSocketUtility.
+//    /// </summary>
+//    public class MsnSocketUtility
+//    {
+//        public MsnSocketUtility()
+//        {
+//            //
+//            //
+//        }
+//    }
+//}

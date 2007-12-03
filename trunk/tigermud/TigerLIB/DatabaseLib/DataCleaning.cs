@@ -37,6 +37,7 @@ The full licence can be found in <root>/docs/TigerMUD_license.txt
 
 using System;
 using System.Security;
+using System.Collections.Generic;
 
 namespace TigerMUD.DatabaseLib
 {
@@ -106,23 +107,31 @@ namespace TigerMUD.DatabaseLib
 		/// <returns>A sanitized string.</returns>
 		public static string Sanitize(string inputText, bool checkKeywords, bool ignoreBrackets)
 		{
-			if (inputText==null)
+			if (string.IsNullOrEmpty(inputText))
 			{
 				return "";
 			}
 
 			inputText = inputText.Replace("'", "''");
 			inputText = inputText.Replace("\"", "\"\"");
-			
+
+            List<string> badstrings = new List<string>();
+            badstrings.Add("delete");
+            badstrings.Add("update");
+            badstrings.Add("select");
+            badstrings.Add("delete");
+
 			// Look for SQL instructions
-			switch(inputText.ToLower())
-			{
-				case "insert":
-				case "update":
-				case "select":
-				case "delete":
-					throw new SecurityException(MESSAGE_SQL_INJECTION);
-			}
+            foreach (string badstring in badstrings)
+            {
+                int badstringposition = inputText.IndexOf(badstring);
+                if (badstringposition != -1)
+                {
+                    // Found a bad string
+                    inputText = inputText.Remove(badstringposition, badstring.Length);
+                }
+            }
+            
 			return inputText;
 			
 		}

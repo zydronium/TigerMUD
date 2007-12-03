@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\output\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,15 +43,13 @@
   </Target>
   -->
   <ItemGroup>
-    <ProjectReference Include="..\TigerLIB\TigerLIB.csproj">
-      <Project>{2368943E-2F34-4E21-81AF-C9AA24FBFB50}</Project>
-      <Name>TigerLIB</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.XML" />
+    <Reference Include="TigerLIB, Version=1.0.2892.25317, Culture=neutral, PublicKeyToken=d92de7829e911efd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ItemReader.cs" />

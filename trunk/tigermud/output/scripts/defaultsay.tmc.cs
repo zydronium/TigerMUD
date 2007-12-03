@@ -36,68 +36,63 @@ The full licence can be found in <root>/docs/TigerMUD_license.txt
 #endregion
 
 using System;
-using System.Data;
 
-namespace TigerMUD.DatabaseLib.Odbc
+namespace TigerMUD
 {
     /// <summary>
-    /// ODBC Implementation of IMudBugs
+    /// Say command for player.
     /// </summary>
-    public class MudBugs : BaseOdbc, IMudBugs
+    public class Command_defaultsay : Command
     {
-        public MudBugs(string connectionString)
-            : base(connectionString)
+        public Command_defaultsay()
         {
+            name = "command_defaultsay";
+            words = new string[1] { "'" };
+            help.Command = "'";
+            help.Summary = "sends a message to all the awake players in your current room using your default speech mode.";
+            help.Syntax = "' <text>";
+            help.Examples = new string[1];
+            help.Examples[0] = "' Hello, how are you?";
+            //			help.Description = "Long description here.";
         }
 
-        public void AddBug(string userShortName, string bugText)
+        public override bool DoCommand(Actor actor, string command, string arguments)
         {
-            string statement = "INSERT INTO mudbugs (UserShortName, BugText, IsRead) VALUES ('"
-              + userShortName + "','"
-              + bugText + "',"
-              + "0);";
-            base.ExecuteNonQuery(statement);
-        }
-
-        public DataTable GetBugList(bool includeReadBugs)
-        {
-            DataTable outputDt;
-            string statement = "SELECT BugId, UserShortName, BugText, IsRead " +
-              " FROM mudbugs";
-
-            if (includeReadBugs)
+            string verb = "";
+            if (arguments.Length < 1)
             {
-                statement += ";";
-            }
-            else
-            {
-                statement += " WHERE IsRead = 0;";
+                actor.SendError("You must specify text to say.\r\n");
+                return false;
             }
 
-            outputDt = base.ExecuteDataTable(statement);
-            return outputDt;
-        }
-
-        public void MarkBugAsRead(int bugId)
-        {
-            string statement = "UPDATE mudbugs SET IsRead = 1 WHERE BugId = " + bugId + ";";
-            this.ExecuteNonQuery(statement);
-        }
-
-        public void ClearBugs(bool allBugs)
-        {
-            string statement;
-
-            if (allBugs)
+            switch (actor["defaultsay"].ToString())
             {
-                statement = "DELETE * FROM mudbugs;";
-            }
-            else
-            {
-                statement = "DELETE * FROM mudbugs WHERE IsRead = 0;";
+                case "say":
+                    verb = "say";
+                    break;
+                case "yell":
+                    verb = "yell";
+                    break;
+                case "shout":
+                    verb = "shout";
+                    break;
+                case "whisper":
+                    verb = "whisper";
+                    break;
+                case "lecture":
+                    verb = "lecture";
+                    break;
+                case "think":
+                    verb = "think";
+                    break;
+                default:
+                    verb = "say";
+                    break;
             }
 
-            this.ExecuteNonQuery(statement);
+            actor.Send("You " + verb + ", \"" + arguments + "\"\r\n");
+            actor.Sayinroom(actor["shortnameupper"] + " " + verb + "s, '" + arguments + "'");
+            return true;
         }
     }
 }

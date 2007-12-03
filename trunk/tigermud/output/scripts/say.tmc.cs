@@ -35,42 +35,38 @@ The full licence can be found in <root>/docs/TigerMUD_license.txt
 */
 #endregion
 
-
-
 using System;
-using TigerMUD.CommsLib.TcpComms;
-//using TigerMUD.CommsLib.MsnComms;
 
-namespace TigerMUD.CommsLib
+namespace TigerMUD
 {
-	/// <summary>
-	/// Creates connection listeners on request.
-	/// </summary>
-	public class ConnectionListenerFactory
-	{
     /// <summary>
-    /// Creates a new TcpConnectionListener on the specified port.
+    /// Say command for player.
     /// </summary>
-    /// <param name="port">The port to listen for new connections on.</param>
-    /// <returns>An implementation of IConnectionListener.</returns>
-    public static IConnectionListener CreateTcpConnectionListener(int port)
+    public class Command_say : Command
     {
-      TcpConnectionListener listener = new TcpConnectionListener(port);
-      return listener;
+        public Command_say()
+        {
+            name = "command_say";
+            words = new string[1] { "say" };
+            help.Command = "say";
+            help.Summary = "sends a message to all the awake players in your current room.";
+            help.Syntax = "say <text>";
+            help.Examples = new string[1];
+            help.Examples[0] = "say Hello, how are you?";
+            //			help.Description = "Long description here.";
+        }
+
+        public override bool DoCommand(Actor actor, string command, string arguments)
+        {
+            if (arguments.Length < 1)
+            {
+                actor.SendError("You must specify text to say.\r\n");
+                return false;
+            }
+            actor.Send("You say, \"" + arguments + "\"\r\n");
+            actor.Sayinroom(actor["shortnameupper"] + " says, '" + arguments + "'");
+            return true;
+        }
     }
 
-    /// <summary>
-    /// Creates a new MsnConnectionListener.
-    /// </summary>
-    /// <param name="account">The MSN account email address.</param>
-    /// <param name="password">The MSN account password.</param>
-    /// <returns>An implementation of IConnectionListener.</returns>
-    //public static IConnectionListener CreateMsnConnectionListener(string account,
-    //  string password)
-    //{
-    //  MsnConnectionListener listener = new MsnConnectionListener(account,
-    //    password);
-    //  return listener;
-    //}
-	}
 }

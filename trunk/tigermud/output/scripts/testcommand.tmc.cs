@@ -35,42 +35,31 @@ The full licence can be found in <root>/docs/TigerMUD_license.txt
 */
 #endregion
 
-
-
 using System;
-using TigerMUD.CommsLib.TcpComms;
-//using TigerMUD.CommsLib.MsnComms;
 
-namespace TigerMUD.CommsLib
+namespace TigerMUD
 {
 	/// <summary>
-	/// Creates connection listeners on request.
+	/// Test command
 	/// </summary>
-	public class ConnectionListenerFactory
+	public class Command_testcommand : Command
 	{
-    /// <summary>
-    /// Creates a new TcpConnectionListener on the specified port.
-    /// </summary>
-    /// <param name="port">The port to listen for new connections on.</param>
-    /// <returns>An implementation of IConnectionListener.</returns>
-    public static IConnectionListener CreateTcpConnectionListener(int port)
-    {
-      TcpConnectionListener listener = new TcpConnectionListener(port);
-      return listener;
-    }
-
-    /// <summary>
-    /// Creates a new MsnConnectionListener.
-    /// </summary>
-    /// <param name="account">The MSN account email address.</param>
-    /// <param name="password">The MSN account password.</param>
-    /// <returns>An implementation of IConnectionListener.</returns>
-    //public static IConnectionListener CreateMsnConnectionListener(string account,
-    //  string password)
-    //{
-    //  MsnConnectionListener listener = new MsnConnectionListener(account,
-    //    password);
-    //  return listener;
-    //}
+        public Command_testcommand()
+		{
+			name = "command_testcommand";
+			words = new string[1] { "testcommand" };
+			help.Command = "testcommand";
+			help.Summary = "used to test online compilation.";
+			help.Syntax = "testcommand";
+			help.Examples = new string[1];
+			help.Examples[0] = "testcommand";
+			//			help.Description = "Long description here.";
+		}
+		
+		public override bool DoCommand(Actor actor, string command, string arguments)
+		{
+            actor.Send("It workedxxxxx!\r\n");
+			return true;
+		}
 	}
 }

@@ -2569,7 +2569,7 @@ namespace TigerMUD
 
 
         // Add a command word to the user's list
-        public void AddCommandWord(Command command)
+        public void AddCommandWord(ICommand command)
         {
             foreach (string word in command.Words)
             {
@@ -2619,7 +2619,7 @@ namespace TigerMUD
                     return false;
             }
 
-            Command command = Lib.GetCommandByName(words[0]);
+            ICommand command = Lib.GetCommandByName(words[0]);
 
             if (command == null)
             {
@@ -2770,11 +2770,11 @@ namespace TigerMUD
 
         // Will check user-specific commands first, then system commands.
         // Currently only checks system until user-spec commands are implemented.
-        public Command GetCommandByWord(string word)
+        public ICommand GetCommandByWord(string word)
         {
             string commandname = (string)commandwords[word];
             if (commandname != null)
-                return (Command)Lib.Commands[commandname];
+                return (ICommand)Lib.Commands[commandname];
             else
                 return Lib.GetCommandByWord(Convert.ToInt32(this["accesslevel"]), word);
         }
@@ -2788,7 +2788,7 @@ namespace TigerMUD
             IEnumerator enumerator = commandwords.Values.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                Command command = Lib.GetCommandByName((string)enumerator.Current);
+                ICommand command = Lib.GetCommandByName((string)enumerator.Current);
                 foreach (string word in command.Words)
                 {
                     if (!commandwordlist.Contains(word))
@@ -2830,7 +2830,7 @@ namespace TigerMUD
             string commandName = Lib.dbService.Actor.GetCommand(this["id"].ToString(), type);
             if (commandName != null)
             {
-                Command command = Lib.GetCommandByName(commandName);
+                ICommand command = Lib.GetCommandByName(commandName);
                 if (command != null)
                 {
                     AddCommandWord(command);
