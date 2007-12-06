@@ -33,6 +33,30 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1D7FFC1B6D237A099B2CF8067E8F1273"
+        "OwnerKey" = "8:_93F2478F8FD242B99E945912216FD6B1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1D7FFC1B6D237A099B2CF8067E8F1273"
+        "OwnerKey" = "8:_D314E7F40E19425883DF5880D600BD48"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1D7FFC1B6D237A099B2CF8067E8F1273"
+        "OwnerKey" = "8:_BF375466CB4E4BF2838E7DB7C616BEE2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1D7FFC1B6D237A099B2CF8067E8F1273"
+        "OwnerKey" = "8:_2D626A6E4A94EDF164D42366BC7C1558"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1E541FD5C6D9410C9A199175304F040C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -51,8 +75,80 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2849C90BCDCD1A5D992DC4D6EE44E15C"
+        "OwnerKey" = "8:_E2CEEF0B8E024ED9B6DD0869AC9595FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2AC2C46F2AEB4087A15055BF33A56278"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2D626A6E4A94EDF164D42366BC7C1558"
+        "OwnerKey" = "8:_93F2478F8FD242B99E945912216FD6B1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
+        "OwnerKey" = "8:_27056D1B3FA244C9BA545F9634BEB10C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
+        "OwnerKey" = "8:_2849C90BCDCD1A5D992DC4D6EE44E15C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
+        "OwnerKey" = "8:_E2CEEF0B8E024ED9B6DD0869AC9595FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
+        "OwnerKey" = "8:_D314E7F40E19425883DF5880D600BD48"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
+        "OwnerKey" = "8:_BF375466CB4E4BF2838E7DB7C616BEE2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
+        "OwnerKey" = "8:_2D626A6E4A94EDF164D42366BC7C1558"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
+        "OwnerKey" = "8:_93F2478F8FD242B99E945912216FD6B1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
+        "OwnerKey" = "8:_73280991ADED41488801F41D348D1EF2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
+        "OwnerKey" = "8:_5B039C8FEA1146A1BBE608235201AFDF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
+        "OwnerKey" = "8:_4E7D75AE07924ADD9A63E46B0C78884E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -124,12 +220,6 @@
         "Entry"
         {
         "MsmKey" = "8:_9C68BEE25F4E44F0BBC301916D99C4CD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9E7227ECBF8E4B1C84C38298964949ED"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -208,6 +298,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2849C90BCDCD1A5D992DC4D6EE44E15C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D53D7397C4BC49E7B41F0D1B7453E68E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -256,6 +352,18 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2D626A6E4A94EDF164D42366BC7C1558"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1D7FFC1B6D237A099B2CF8067E8F1273"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_86D9820C6E66433CBDEFAAFEC912E836"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -299,6 +407,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_27056D1B3FA244C9BA545F9634BEB10C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_497EDCD14BAE9CD8D50B97342906A17C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -425,6 +539,68 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1D7FFC1B6D237A099B2CF8067E8F1273"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:TigerLoaderLib, Version=1.0.2892.39527, Culture=neutral, PublicKeyToken=d92de7829e911efd, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1D7FFC1B6D237A099B2CF8067E8F1273"
+                    {
+                    "Name" = "8:TigerLoaderLib.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:TigerLoaderLib.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_2EB762EAD6DB4C54A0E7AC941978D9FB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2849C90BCDCD1A5D992DC4D6EE44E15C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:XMLLevelEditors, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_2849C90BCDCD1A5D992DC4D6EE44E15C"
+                    {
+                    "Name" = "8:XMLLevelEditors.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:XMLLevelEditors.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_9D919A28355544EC9B4236C2C5981578"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2AC2C46F2AEB4087A15055BF33A56278"
             {
             "SourcePath" = "8:..\\docs\\TigerMUD_Developers Guide.htm"
@@ -443,6 +619,68 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2D626A6E4A94EDF164D42366BC7C1558"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:TigerMUD, Version=1.0.2892.39527, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_2D626A6E4A94EDF164D42366BC7C1558"
+                    {
+                    "Name" = "8:TigerMUD.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:TigerMUD.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_2EB762EAD6DB4C54A0E7AC941978D9FB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_497EDCD14BAE9CD8D50B97342906A17C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:TigerLIB, Version=1.0.2892.39526, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_497EDCD14BAE9CD8D50B97342906A17C"
+                    {
+                    "Name" = "8:TigerLIB.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:TigerLIB.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C4E807ED7FA346EAA0CD3D18BE8849A8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6FC258E2AB3346DF87682432F58CF004"
@@ -491,26 +729,6 @@
             "TargetName" = "8:TigerMUD_Changes.txt"
             "Tag" = "8:"
             "Folder" = "8:_23559019219B489D9ADDD2E52B7E2CC4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9E7227ECBF8E4B1C84C38298964949ED"
-            {
-            "SourcePath" = "8:..\\TigerLoader\\App.ico"
-            "TargetName" = "8:App.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_8501FFEC6C8A48838DD873A5BBDA9834"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
