@@ -91,6 +91,7 @@
       <SpecificVersion>False</SpecificVersion>
       <ExecutableExtension>.exe</ExecutableExtension>
       <Private>False</Private>
+      <HintPath>..\obj\Debug\TigerMUD.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

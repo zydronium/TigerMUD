@@ -49,11 +49,13 @@
     <Reference Include="TigerLIB, Version=1.0.2892.25317, Culture=neutral, PublicKeyToken=d92de7829e911efd, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
+      <HintPath>..\output\TigerLIB.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ItemReader.cs" />
     <Compile Include="LevelReader.cs" />
+    <Compile Include="MobReader.cs" />
     <Compile Include="SpellReader.cs" />
   </ItemGroup>
   <ItemGroup>

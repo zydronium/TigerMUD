@@ -4235,6 +4235,66 @@ namespace TigerMUD
 
 
     /// <summary>
+    /// Builder command. Loads an XML with mob definitions.
+    /// </summary>
+    public class Command_loadxmlmob : Command, ICommand
+    {
+
+        public Command_loadxmlmob()
+        {
+            name = "command_loadxmlmob";
+            words = new string[2] { "loadxmlmob", "lxm" };
+            help.Command = "loadXMLmob";
+            help.Summary = "Loads an XML file with mob definitions.";
+            help.Syntax = "loadxmlmob <filename>";
+            help.Examples = new string[3];
+            help.Examples[0] = "loadxmlmob mobdef.xml";
+            help.Examples[0] = "lxm mobdef.xml";
+            help.Description = "This creates a set of computer controlled actors (mobs) as defined in an XML file ";
+        }
+
+        public override bool DoCommand(Actor actor, string command, string arguments)
+        {
+            ArrayList words = Lib.GetWords(arguments);
+
+            if (words.Count < 1)
+            {
+                actor.SendError("You must specify filename.\r\n");
+                return false;
+
+            }
+
+            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"XMLLevelEditors\\")) + (string)words[0];
+
+            if (!File.Exists(filename))
+            {
+                actor.SendError("File does not exist.\r\n");
+                return false;
+            }
+
+            // TODO: Add support for filenames longer than one word.
+
+            // Load the file
+            try
+            {
+                // does this make sense? No it doesn't. Fix. 
+                MobReader reader = new MobReader(filename);
+                reader.Load(filename);
+            }
+            catch (Exception ex)
+            {
+                actor.SendError("File load failed with the error: " + ex.Message + ex.StackTrace + "\r\n");
+                return false;
+            }
+            actor.Send("The file was loaded successfully.\r\n");
+            return true;
+        }
+
+    }
+
+
+
+    /// <summary>
     /// Lists a the stats of the user.
     /// </summary>
     public class Command_stats : Command, ICommand

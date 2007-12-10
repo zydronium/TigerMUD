@@ -1,56 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
-  <item>
-    <nameprefix>a</nameprefix>
-    <name>Fake Wand</name>
-    <shortname>fakewand</shortname>
-    <shortnameupper>FakeWand</shortnameupper>
+  <mob>
+    <nameprefix></nameprefix>
+    <name>Kristine the Dancer</name>
+    <shortname>kristine</shortname>
+    <shortnameupper>Kristine</shortnameupper>
 
-    <combatactive></combatactive>
-    <quantity></quantity>
-    <equippable></equippable>
-    <equipslot></equipslot>
-    <equipped></equipped>
-    <room>0</room>
-    <container></container>
-    <ownerid> 0 </ownerid>
-    <lockedout></lockedout>
-
-    <!--TODO: Write complete list here in this sample Head, shoulders, weapon1, etc. -->
-
+    <gender>female</gender>
+    <subtype></subtype>
+    <defaultsay></defaultsay>
+    <descr>A girl.</descr>
+    
     <health>0</health>
     <healthmax></healthmax>
     <mana></mana>
     <manamax></manamax>
     <staminamax></staminamax>
     <strength></strength>
-    <intellect></intellect>
+    <intellect>10</intellect>
     <agility></agility>
-    <speed></speed>
+    <speed>0</speed>
     <spirit></spirit>
     <aggression></aggression>
     <damagemin></damagemin>
     <damagemax></damagemax>
     <experience></experience>
 
+    <reputation>0</reputation>
+    <userlevel>1</userlevel>
+    <!--accesslevel></accesslevel-->
 
-    <defaultsay></defaultsay>
-    <descr>This is the first test room I created.</descr>
+    <combatactive></combatactive>
+    <room></room>
+    <container>New Spirit's Garden</container>
+    <ownerid> 0 </ownerid>
+    <lockedout></lockedout>
 
-    <respawntimer></respawntimer>
+    <mobile></mobile> 
+    <biome></biome>
 
-    <cash></cash>
-    <worth>10</worth>
-    <!-- Stuff for the auction-->
-    <askprice></askprice>
-    <bidprice></bidprice>
-    <buyoutprice></buyoutprice>
-    <saleexpiration></saleexpiration>
-    <!-- End auction-->
+    <respawntimer>20</respawntimer>
+
+    <cash>0</cash>
+    
 
     <wordwrap></wordwrap>
     <created></created>
     <credits>Ross D.</credits>
 
-  </item>
+  </mob>
 </root>
