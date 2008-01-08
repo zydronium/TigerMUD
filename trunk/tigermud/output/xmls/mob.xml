@@ -11,39 +11,36 @@
     <defaultsay></defaultsay>
     <descr>A girl.</descr>
     
-    <health>0</health>
-    <healthmax></healthmax>
-    <mana></mana>
-    <manamax></manamax>
-    <staminamax></staminamax>
-    <strength></strength>
+    <health>100</health>
+    <healthmax>100</healthmax>
+    <mana>100</mana>
+    <manamax>100</manamax>
+    <staminamax>100</staminamax>
+    <strength>10</strength>
     <intellect>10</intellect>
-    <agility></agility>
+    <agility>10</agility>
     <speed>0</speed>
-    <spirit></spirit>
-    <aggression></aggression>
-    <damagemin></damagemin>
-    <damagemax></damagemax>
-    <experience></experience>
+    <spirit>10</spirit>
+    <aggression>0</aggression>
+    <damagemin>0</damagemin>
+    <damagemax>0</damagemax>
+    <experience>0</experience>
 
     <reputation>0</reputation>
     <userlevel>1</userlevel>
-    <!--accesslevel></accesslevel-->
 
-    <combatactive></combatactive>
     <room></room>
     <container>New Spirit's Garden</container>
     <ownerid> 0 </ownerid>
     <lockedout></lockedout>
 
-    <mobile></mobile> 
+    <mobile>0</mobile> 
     <biome></biome>
 
     <respawntimer>20</respawntimer>
 
     <cash>0</cash>
     
-
     <wordwrap></wordwrap>
     <created></created>
     <credits>Ross D.</credits>

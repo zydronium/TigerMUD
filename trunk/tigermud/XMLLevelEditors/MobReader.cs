@@ -71,7 +71,9 @@ namespace TigerMUD
                         newMob["played"] = 0;
                         newMob["equipable"] = false;
                         newMob["containertype"] = "room";
-                        newMob["spellpending"] = false;
+                        newMob["spellpending"] = "";
+                        newMob["accesslevel"] = 1;
+                        newMob["combatactive"] = 0;
                         //newRoom["equippable"] = false;
                         //newRoom["shortnameupper"] = "";
                         //newRoom["combatactive"] = false;

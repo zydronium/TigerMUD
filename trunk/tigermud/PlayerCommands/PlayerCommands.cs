@@ -4083,7 +4083,7 @@ namespace TigerMUD
 
             }
 
-            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"XMLLevelEditors\\")) + (string)words[0];
+            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"xmls\\")) + (string)words[0];
 
             if (!File.Exists(filename))
             {
@@ -4144,7 +4144,8 @@ namespace TigerMUD
 
             }
 
-            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"XMLLevelEditors\\")) + (string)words[0];
+            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"xmls\\")) + (string)words[0];
+
 
             if (!File.Exists(filename))
             {
@@ -4205,7 +4206,7 @@ namespace TigerMUD
 
             }
 
-            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"XMLLevelEditors\\")) + (string)words[0];
+            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"xmls\\")) + (string)words[0];
 
             if (!File.Exists(filename))
             {
@@ -4264,7 +4265,7 @@ namespace TigerMUD
 
             }
 
-            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"XMLLevelEditors\\")) + (string)words[0];
+            string filename = Path.GetFullPath(Path.Combine(Lib.PathtoRoot, @"xmls\\")) + (string)words[0];
 
             if (!File.Exists(filename))
             {

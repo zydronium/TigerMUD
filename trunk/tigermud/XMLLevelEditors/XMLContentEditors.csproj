@@ -58,10 +58,4 @@
     <Compile Include="MobReader.cs" />
     <Compile Include="SpellReader.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="it.xml" />
-    <Content Include="mob.xml" />
-    <Content Include="sp.xml" />
-    <Content Include="tl.xml" />
-  </ItemGroup>
 </Project>
