@@ -37,8 +37,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CastingManager.cs" />
+    <Compile Include="DialogueManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoryManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TigerLIB\TigerLIB.csproj">
+      <Project>{2368943E-2F34-4E21-81AF-C9AA24FBFB50}</Project>
+      <Name>TigerLIB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

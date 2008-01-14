@@ -105,6 +105,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DramaManager\DramaManager.csproj">
+      <Project>{99585CE1-E1FD-400F-9947-94882D02B6ED}</Project>
+      <Name>DramaManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XMLLevelEditors\XMLContentEditors.csproj">
       <Project>{9B6E0F62-EE54-4B9D-A1F8-BE57F2BB9862}</Project>
       <Name>XMLContentEditors</Name>

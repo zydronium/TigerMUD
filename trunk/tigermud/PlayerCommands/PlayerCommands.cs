@@ -453,6 +453,42 @@ namespace TigerMUD
 
     }
 
+
+    /// <summary>
+    /// Enables story mode
+    /// </summary>
+    public class Command_storymode : Command, ICommand
+    {
+
+
+
+
+        public Command_storymode()
+        {
+            name = "command_storymode";
+            words = new string[2] { "storymode", "sm" };
+            help.Command = "storymode";
+            help.Summary = "Enables story mode.";
+            help.Syntax = "storymode";
+            help.Examples = new string[2];
+            help.Examples[0] = "storymode";
+            help.Examples[1] = "sm";
+
+        }
+
+        public override bool DoCommand(Actor actor, string command, string arguments)
+        {
+            // i dunno yet.
+
+            StoryManager manager = new StoryManager();
+
+            //manager
+
+            return true;
+        }
+
+    }
+
     /// <summary>
     /// Picks a plant.
     /// </summary>

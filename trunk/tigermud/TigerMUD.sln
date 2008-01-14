@@ -51,6 +51,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		output\scripts\say.tmc.cs = output\scripts\say.tmc.cs
 		output\scripts\setdefaultsay.tmc.cs = output\scripts\setdefaultsay.tmc.cs
 		output\xmls\sp.xml = output\xmls\sp.xml
+		output\story.mdb = output\story.mdb
 		output\scripts\testcommand.tmc.cs = output\scripts\testcommand.tmc.cs
 		output\TigerMUD.ico = output\TigerMUD.ico
 		output\tigermud.mdb = output\tigermud.mdb
