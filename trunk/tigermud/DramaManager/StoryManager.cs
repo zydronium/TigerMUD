@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Text;
-using System.Data.OleDb;
+using System.Data.Odbc;
 
 namespace TigerMUD
 {
@@ -84,36 +84,33 @@ namespace TigerMUD
 
         public StoryManager()
         {
-            //create the database connection
-            string filename = Lib.PathtoRoot + "story.mdb";
-            OleDbConnection aConnection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filename);
+            ////create the database connection
+            //string filename = Lib.PathtoRoot + "story.mdb";
+            //OleDbConnection aConnection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filename);
 
-            //create the command object and store the sql query
-            OleDbCommand aCommand = new OleDbCommand("select * from story", aConnection);
+            ////create the command object and store the sql query
+            //OleDbCommand aCommand = new OleDbCommand(, aConnection);
             try
             {
-                aConnection.Open();
+                //aConnection.Open();
 
                 //create the datareader object to connect to table
-                OleDbDataReader aReader = aCommand.ExecuteReader();
-                Console.WriteLine("This is the returned data from story table");
+                Lib.StoryDbCommand.CommandText = "select * from profiles";
+                OdbcDataReader aReader = Lib.StoryDbCommand.ExecuteReader();
+                //Console.WriteLine("This is the returned data from story table");
 
                 //Iterate throuth the database
                 while (aReader.Read())
                 {
-                    
-                    Console.WriteLine(aReader.GetString(1).ToString());
+                    Lib.PrintLine(aReader.GetString(0).ToString());
                 }
 
                 //close the reader 
                 aReader.Close();
-
-                //close the connection Its important.
-                aConnection.Close();
             }
 
             //Some usual exception handling
-            catch (OleDbException e)
+            catch (OdbcException e)
             {
                 Console.WriteLine("Error: {0}", e.Errors[0].Message);
             }

@@ -105,6 +105,7 @@ namespace TigerMUD
     {
         public static DbService dbService; // Abstracts all database functions
         public static string dbConnectionString; // The database connection string
+        public static string dbStoryConnectionString; // The story database connection string
         public static ArrayList users = new ArrayList(); // List of Connected users
         public static string Serverversion = "1.9";
         public static string Creditsdev = "Adam Miller, William Crawford, Luke Venediger, Doug Miller, Jeff Bosche, Brian Newton, Andrew Conrad, Andrew Jump, John Ingram, David Kolln";
@@ -162,8 +163,15 @@ namespace TigerMUD
         public static Regex Lettersspacesonly = new Regex("^[a-zA-Z ]+$"); // Contains only letters, spaces
         public static Regex Sentencecharsonly = new Regex("^[\\w,!\\?\\.,+-/\\\\()\\s]+$"); // Contains only characters that would be in a sentence.
         public static ServerInfo Serverinfo;
+        //ODBC Connections
         public static OdbcConnection Conn = new OdbcConnection();
         public static OdbcCommand Dbcommand = new OdbcCommand();
+
+        public static OdbcConnection StoryConn = new OdbcConnection();
+        public static OdbcCommand StoryDbCommand = new OdbcCommand();
+
+        public static ArrayList RelationshipList = new ArrayList();
+
         // MUD clock starts at January 1st, Year 0001 at midnight.
         public static System.DateTime Gametime = new System.DateTime(1, 1, 1, 0, 0, 0);
         // CommandWords contains the words the user will type and the name of the 
@@ -366,6 +374,41 @@ namespace TigerMUD
 
             // Set the connection string property
             dbConnectionString = sqlstr;
+
+            return sqlstr;
+        }
+
+
+        /// <summary>
+        /// Get connection for the story databases. Currently only supports MS Access
+        /// </summary>
+        /// <returns>sql Connect string</returns>
+        public static string GetStoryconnstring()
+        {
+                // for now, assume MS ACCESS
+               
+                string sqlstr;
+
+                string filename = Lib.PathtoRoot + "story.mdb";
+                //new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filename);
+                
+                Lib.Print("Connecting to story database at: " + filename + "...");
+                try
+                {
+                    sqlstr = @"Driver={Microsoft Access Driver (*.mdb)};" +
+                        @"Dbq=" + filename + ";" +
+                        @"Uid=Admin;" +
+                        @"Pwd=";
+                    Lib.PrintLine("Succeeded.");
+                }
+                catch
+                {
+                    Lib.PrintLine("Failed.");
+                    throw new Exception("Could not find story database file.");
+                }
+
+            // Set the connection string property
+            dbStoryConnectionString = sqlstr;
 
             return sqlstr;
         }

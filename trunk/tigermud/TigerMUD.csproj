@@ -100,6 +100,10 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <ProjectReference Include="DramaManager\DramaManager.csproj">
+      <Project>{99585CE1-E1FD-400F-9947-94882D02B6ED}</Project>
+      <Name>DramaManager</Name>
+    </ProjectReference>
     <ProjectReference Include="TigerLoaderLib\TigerLoaderLib.csproj">
       <Name>TigerLoaderLib</Name>
       <Project>{528DDED3-C8D8-4743-B362-93832DAFD791}</Project>

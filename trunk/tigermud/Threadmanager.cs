@@ -162,6 +162,7 @@ namespace TigerMUD
             Lib.PrintLine();
 
             InitDatabase();
+            InitStoryDatabase();
             Lib.LoadServerState();
             Lib.PrintLine("Loaded server state table.");
 
@@ -367,6 +368,68 @@ namespace TigerMUD
             Lib.dbService = new TigerMUD.DatabaseLib.DbService(Lib.dbConnectionString);
             // Set the Log Statements option
             Lib.dbService.LogStatements = Lib.Serverinfo.ShowSQLStatements;
+        }
+
+        // for Story manager
+        private void InitStoryDatabase()
+        {
+            //string filename = Lib.PathtoRoot + "story.mdb";
+            //new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filename);
+
+            Lib.StoryConn.ConnectionString = Lib.GetStoryconnstring();                 
+            Lib.StoryDbCommand.Connection = Lib.StoryConn;
+            Lib.StoryConn.Open();
+
+            // Transfer this somewhere. I dunno where yet. So far I will compile all database calls to two functions
+            // At InitStoryDatabase and at CommitStoryDatabase
+            Lib.StoryDbCommand.CommandText = "SELECT * FROM relationships";
+            OdbcDataReader aReader = Lib.StoryDbCommand.ExecuteReader();
+            
+            // Load Actors
+            RelationshipType r;
+            Actor a1;
+            Actor a2;
+            Relationship NewRel;
+
+            while (aReader.Read())
+            {
+                
+                 //name of actor
+                a1 = (Actor)Lib.GetActionByName(aReader.GetString(1).ToString());
+                
+                //acquaintance of actor
+                a2 = (Actor)Lib.GetActionByName(aReader.GetString(2).ToString());
+                //their relationship
+
+                r = (RelationshipType)aReader.GetInt16(3);
+
+                NewRel = new Relationship(a1, a2, r);
+                Lib.RelationshipList.Add(NewRel);
+            }
+
+                //close the reader 
+                aReader.Close();
+        }
+
+        private void CommitStoryDatabase()
+        {
+            OdbcDataReader aReader;
+
+            // TODO: Find a more efficient way of doing this
+            foreach (Relationship rel in Lib.RelationshipList)
+            { 
+                //check if relationship is existing
+                Lib.StoryDbCommand.CommandText = "SELECT * FROM relationships WHERE name = '"+ rel.actor1["name"] + "' AND acquaintance = '" + rel.actor2["name"] + "'";
+
+                aReader = Lib.StoryDbCommand.ExecuteReader();
+                if(aReader.HasRows)
+                {
+                    //aReader.Read();
+                    //if(rel.relation != aReader.GetInt16(3))
+                        Lib.StoryDbCommand.CommandText = "UPDATE relationships SET relationship = " + rel.relation + " WHERE name = '" + rel.actor1["name"] + "' AND acquaintance = '" + rel.actor2["name"] + "'";
+
+                }
+            }
         }
 
         // Add each global command to the list in this method
@@ -698,7 +761,8 @@ namespace TigerMUD
             Lib.PrintLine("Empty system containers.");
             Lib.actors.Clear();
             Lib.Conn.Close();
-            Lib.Commands.Clear();
+            Lib.StoryConn.Close();
+            CommitStoryDatabase();
             Lib.SystemCommandWords.Clear();
             Lib.PlayerCommandWords.Clear();
             Lib.BuilderCommandWords.Clear();

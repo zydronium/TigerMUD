@@ -3308,6 +3308,14 @@ namespace TigerMUD
             }
 
             //update status
+
+            #region LegacyObjects
+            // support for legacy objects, remove later when item stats are finalized, or when a better approch is found
+            if(item["healthmaxup"] == null)
+                item["healthmaxup"] = 0;
+                
+            #endregion
+
             this["healthmax"] = Convert.ToInt16(this["healthmax"].ToString()) - Convert.ToInt16(item["healthmaxup"].ToString());
             this["manamax"] = Convert.ToInt16(this["manamax"].ToString()) - Convert.ToInt16(item["manamax"].ToString());
             this["strength"] = Convert.ToInt16(this["strength"].ToString()) - Convert.ToInt16(item["strength"].ToString());
@@ -3397,6 +3405,15 @@ namespace TigerMUD
             }
 
             //update status
+
+            #region LegacyObjects
+            // support for legacy objects, remove later when item stats are finalized, or when a better approch is found
+            // add stats when they are not found
+            if (item["healthmaxup"] == null)
+                item["healthmaxup"] = 0;
+
+            #endregion
+
             this["healthmax"] = Convert.ToInt16(this["healthmax"].ToString()) + Convert.ToInt16(item["healthmaxup"].ToString());
             this["manamax"] = Convert.ToInt16(this["manamax"].ToString()) + Convert.ToInt16(item["manamax"].ToString());
             this["strength"] = Convert.ToInt16(this["strength"].ToString()) + Convert.ToInt16(item["strength"].ToString());
