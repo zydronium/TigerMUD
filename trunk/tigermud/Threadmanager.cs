@@ -719,6 +719,7 @@ namespace TigerMUD
             }
 
             // Abort system threads
+            // testing123
             Lib.PrintLine("Kill system threads.");
             counter = 0;
             timerthread.Abort();
