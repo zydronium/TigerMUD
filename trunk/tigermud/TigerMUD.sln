@@ -1,5 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
+# SharpDevelop 2.2.1.2648
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerMUD", "TigerMUD.csproj", "{A3C7BEB1-7A58-457C-A408-832120D7AB97}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2368943E-2F34-4E21-81AF-C9AA24FBFB50} = {2368943E-2F34-4E21-81AF-C9AA24FBFB50}
@@ -24,8 +26,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartActions", "CartActions\
 	ProjectSection(ProjectDependencies) = postProject
 		{2368943E-2F34-4E21-81AF-C9AA24FBFB50} = {2368943E-2F34-4E21-81AF-C9AA24FBFB50}
 	EndProjectSection
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TigerMUD_Setup", "Setup\Setup1.vdproj", "{06782937-25DC-42BD-AB7C-62FB5B1FA256}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerLoaderLib", "TigerLoaderLib\TigerLoaderLib.csproj", "{528DDED3-C8D8-4743-B362-93832DAFD791}"
 EndProject
@@ -119,6 +119,7 @@ Global
 		{99585CE1-E1FD-400F-9947-94882D02B6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99585CE1-E1FD-400F-9947-94882D02B6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99585CE1-E1FD-400F-9947-94882D02B6ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06782937-25DC-42BD-AB7C-62FB5B1FA256}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
